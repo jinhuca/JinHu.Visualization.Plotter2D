@@ -1,0 +1,9 @@
+﻿<Window x:Class="V02.MarkerSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:jin="http://jinhuca.visualization.com/Plotter2D/1.0"
+        Title="Mark Samples" Loaded="Window_Loaded">
+  <Grid>
+    <jin:Plotter Name="plotter" Margin="20"/>
+  </Grid>
+</Window>
