@@ -6,8 +6,7 @@ namespace JinHu.Visualization.Plotter2D
 {
   public sealed class GenericChartPlotter<THorizontal, TVertical>
   {
-    private readonly AxisBase<THorizontal> horizontalAxis;
-    public AxisBase<THorizontal> HorizontalAxis => horizontalAxis;
+    public AxisBase<THorizontal> HorizontalAxis { get; }
 
     private readonly AxisBase<TVertical> verticalAxis;
     public AxisBase<TVertical> VerticalAxis => verticalAxis;
@@ -15,9 +14,9 @@ namespace JinHu.Visualization.Plotter2D
     private readonly Plotter plotter;
     public Plotter Plotter => plotter;
 
-    public Func<THorizontal, double> HorizontalToDoubleConverter => horizontalAxis.ConvertToDouble;
+    public Func<THorizontal, double> HorizontalToDoubleConverter => HorizontalAxis.ConvertToDouble;
 
-    public Func<double, THorizontal> DoubleToHorizontalConverter => horizontalAxis.ConvertFromDouble;
+    public Func<double, THorizontal> DoubleToHorizontalConverter => HorizontalAxis.ConvertFromDouble;
 
     public Func<TVertical, double> VerticalToDoubleConverter => verticalAxis.ConvertToDouble;
 
@@ -27,7 +26,7 @@ namespace JinHu.Visualization.Plotter2D
 
     internal GenericChartPlotter(Plotter plotter, AxisBase<THorizontal> horizontalAxis, AxisBase<TVertical> verticalAxis)
     {
-      this.horizontalAxis = horizontalAxis ?? throw new ArgumentNullException(Strings.Exceptions.PlotterMainHorizontalAxisShouldNotBeNull);
+      this.HorizontalAxis = horizontalAxis ?? throw new ArgumentNullException(Strings.Exceptions.PlotterMainHorizontalAxisShouldNotBeNull);
       this.verticalAxis = verticalAxis ?? throw new ArgumentNullException(Strings.Exceptions.PlotterMainVerticalAxisShouldNotBeNull);
       this.plotter = plotter;
     }

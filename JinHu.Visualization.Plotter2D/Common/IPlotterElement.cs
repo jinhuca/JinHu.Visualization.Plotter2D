@@ -21,7 +21,7 @@
     /// This should be done as each chart can be added only one Plotter at one moment of time.
     /// </summary>
     /// <param name="plotter">
-    /// The plotter.
+    /// The parent plotter.
     /// </param>
     void OnPlotterDetaching(PlotterBase plotter);
 
@@ -30,7 +30,7 @@
     /// Should be equal to null if item is not connected to any plotter.
     /// </summary>
     /// <value>
-    /// The plotter.
+    /// The parent plotter.
     /// </value>
     PlotterBase Plotter { get; }
   }

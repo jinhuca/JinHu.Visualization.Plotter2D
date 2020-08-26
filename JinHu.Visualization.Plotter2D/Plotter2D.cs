@@ -6,18 +6,33 @@ using System.Windows.Controls;
 namespace JinHu.Visualization.Plotter2D
 {
 	/// <summary>
-	///   Control for plotting 2d images
+	/// Control for plotting 2d images
 	/// </summary>
 	public class Plotter2D : PlotterBase
 	{
-		/// <summary>
-		///   Initializes a new instance of the <see cref="Plotter2D"/> class.
-		/// </summary>
-		public Plotter2D() : base(PlotterLoadMode.Normal)
+    #region Plotter2D Constructors
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Plotter2D"/> class.
+    /// </summary>
+    public Plotter2D() : base(PlotterLoadMode.Normal)
 		{
 			Children.CollectionChanged += (s, e) => viewport.UpdateIterationCount = 0;
 			InitViewport();
 		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Plotter2D"/> class with a <see cref="PlotterLoadMode"/>.
+		/// </summary>
+		/// <param name="loadMode"></param>
+		protected Plotter2D(PlotterLoadMode loadMode) : base(loadMode)
+		{
+			if (loadMode != PlotterLoadMode.Empty)
+			{
+				InitViewport();
+			}
+		}
+
 
 		private void InitViewport()
 		{
@@ -32,13 +47,7 @@ namespace JinHu.Visualization.Plotter2D
 			}
 		}
 
-		protected Plotter2D(PlotterLoadMode loadMode) : base(loadMode)
-		{
-			if (loadMode != PlotterLoadMode.Empty)
-			{
-				InitViewport();
-			}
-		}
+		#endregion Plotter2D Constructors
 
 		/// <summary>
 		/// Gets or sets the panel, which contains viewport.
@@ -110,10 +119,10 @@ namespace JinHu.Visualization.Plotter2D
 		}
 
 		/// <summary>
-		///   Gets or sets the data transform.
+		/// Gets or sets DataTransform property.
 		/// </summary>
 		/// <value>
-		///   The data transform.
+		/// The DataTransform.
 		/// </value>
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public DataTransform DataTransform
@@ -123,10 +132,10 @@ namespace JinHu.Visualization.Plotter2D
 		}
 
 		/// <summary>
-		///   Gets or sets the transform.
+		/// Gets or sets the CoordinateTransform.
 		/// </summary>
 		/// <value>
-		///   The transform.
+		/// The Transform.
 		/// </value>
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
 		public CoordinateTransform Transform
@@ -167,10 +176,10 @@ namespace JinHu.Visualization.Plotter2D
 		}
 
 		/// <summary>
-		///   Gets the constraints being applied to viewport.
+		/// Gets the constraints being applied to viewport.
 		/// </summary>
 		/// <value>
-		///   The constraints.
+		/// The constraints.
 		/// </value>
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
 		public ConstraintCollection Constraints => viewport.Constraints;

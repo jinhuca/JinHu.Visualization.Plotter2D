@@ -7,7 +7,7 @@ using System.Windows.Controls;
 namespace JinHu.Visualization.Plotter2D
 {
 	/// <summary>
-	/// Chart plotter is a plotter that renders axis and grid
+	/// Plotter that can render axis and grid
 	/// </summary>
 	public class Plotter : Plotter2D
 	{
@@ -83,7 +83,8 @@ namespace JinHu.Visualization.Plotter2D
 		/// <returns>
 		///   GenericChartPlotter, associated to this Plotter.
 		/// </returns>
-		public GenericChartPlotter<THorizontal, TVertical> GetGenericPlotter<THorizontal, TVertical>() => new GenericChartPlotter<THorizontal, TVertical>(this);
+		public GenericChartPlotter<THorizontal, TVertical> GetGenericPlotter<THorizontal, TVertical>() 
+			=> new GenericChartPlotter<THorizontal, TVertical>(this);
 
 		/// <summary>
 		///   Creates generic plotter from this Plotter.

@@ -35,11 +35,10 @@ namespace JinHu.Visualization.Plotter2D
 	{
 		protected PlotterLoadMode LoadMode { get; } = PlotterLoadMode.Normal;
 
-		protected PlotterBase() : this(PlotterLoadMode.Normal) { }
+    #region Constructors
 
-		/// <summary>
-		///   Initializes a new instance of the <see cref="PlotterBase"/> class.
-		/// </summary>
+    protected PlotterBase() : this(PlotterLoadMode.Normal) { }
+
 		protected PlotterBase(PlotterLoadMode _loadMode)
 		{
 			LoadMode = _loadMode;
@@ -60,34 +59,50 @@ namespace JinHu.Visualization.Plotter2D
 			ContextMenu = null;
 		}
 
-		void Plotter_Unloaded(object sender, RoutedEventArgs e) => OnUnloaded();
+		#endregion Constructors
+
+		#region Loading
+
+		private void Plotter_Loaded(object sender, RoutedEventArgs e)
+		{
+			ExecuteWaitingChildrenAdditions();
+			OnLoaded();
+		}
+
+    protected virtual void OnLoaded() => Focus();
+
+    #endregion Loading
+
+    #region Unloading
+
+    void Plotter_Unloaded(object sender, RoutedEventArgs e) => OnUnloaded();
 
 		protected virtual void OnUnloaded() { }
+		
+		#endregion Unloading
 
 		protected override AutomationPeer OnCreateAutomationPeer() => new PlotterAutomationPeer(this);
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public override bool ShouldSerializeContent() => false;
 
+		/// <summary>
+		/// Do not serialize context menu if it was created by DefaultContextMenu, 
+		/// because that context menu items contains references of plotter.
+		/// </summary>
+		/// <param name="dp"></param>
+		/// <returns></returns>
 		protected override bool ShouldSerializeProperty(DependencyProperty dp)
 		{
-			// do not serialize context menu if it was created by DefaultContextMenu, because that context menu items contains references of plotter.
-			if (dp == ContextMenuProperty && Children.Any(el => el is DefaultContextMenu))
+			if (dp == ContextMenuProperty && Children.Any(element => element is DefaultContextMenu))
 			{
 				return false;
 			}
-
-			if (dp == TemplateProperty)
+			if (dp == TemplateProperty || dp == ContentProperty)
 			{
 				return false;
 			}
-
-			if (dp == ContentProperty)
-			{
-				return false;
-			}
-
-			return base.ShouldSerializeProperty(dp);
+      return base.ShouldSerializeProperty(dp);
 		}
 
 		private const string TemplateKey = "defaultPlotterTemplate";
@@ -105,7 +120,7 @@ namespace JinHu.Visualization.Plotter2D
 		protected ResourceDictionary GenericResources { get; }
 
 		/// <summary>
-		///   Forces plotter to load.
+		/// Forces plotter to load.
 		/// </summary>
 		public void PerformLoad()
 		{
@@ -117,12 +132,6 @@ namespace JinHu.Visualization.Plotter2D
 		private bool _isLoadedIntensionally = false;
 		protected virtual bool IsLoadedInternal => _isLoadedIntensionally || IsLoaded;
 
-		private void Plotter_Loaded(object sender, RoutedEventArgs e)
-		{
-			ExecuteWaitingChildrenAdditions();
-			OnLoaded();
-		}
-
 		protected internal void ExecuteWaitingChildrenAdditions()
 		{
 			foreach (var action in waitingForExecute)
@@ -130,21 +139,6 @@ namespace JinHu.Visualization.Plotter2D
 				action();
 			}
 			waitingForExecute.Clear();
-		}
-
-		protected virtual void OnLoaded()
-		{
-			// this is done to enable keyboard shortcuts
-			Focus();
-
-			//foreach (var plotterElement in elementsWaitingForBeingAttached)
-			//{
-			//    if (Children.Contains(plotterElement))
-			//    {
-			//        plotterElement.OnPlotterAttached(this);
-			//    }
-			//}
-			//elementsWaitingForBeingAttached.Clear();
 		}
 
 		protected override void OnTemplateChanged(ControlTemplate oldTemplate, ControlTemplate newTemplate)
@@ -846,4 +840,3 @@ namespace JinHu.Visualization.Plotter2D
 
 	public delegate void PlotterChangedEventHandler(object sender, PlotterChangedEventArgs e);
 }
-

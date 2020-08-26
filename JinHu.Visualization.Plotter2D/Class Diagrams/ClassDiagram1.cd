@@ -7,20 +7,6 @@
       <FileName>Common\NotifiableCollection.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="JinHu.Visualization.Plotter2D.Plotter2D" Collapsed="true">
-    <Position X="11" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAQAAAAAAAEABQQBAAAAAQAAkAABBAIggAAAAAAAAA=</HashCode>
-      <FileName>Plotter2D.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="JinHu.Visualization.Plotter2D.TimeChartPlotter" Collapsed="true">
-    <Position X="11" Y="4" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>TimeChartPlotter.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="JinHu.Visualization.Plotter2D.Charts.FilterCollection" Collapsed="true">
     <Position X="0.75" Y="8.75" Width="2.25" />
     <TypeIdentifier>
@@ -137,20 +123,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAAQgABAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
       <FileName>Charts\Navigation\TouchPadScroll.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="JinHu.Visualization.Plotter2D.PlotterBase" Collapsed="true">
-    <Position X="11" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AcAEAxAAhAHIIBBUTEBMKINQAQVZimIYEWRCwRITBDA=</HashCode>
-      <FileName>Common\PlotterBase.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="JinHu.Visualization.Plotter2D.Plotter" Collapsed="true">
-    <Position X="11" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>IUAAIEEEJQAAA0QuAAAUAgQAEBAAAAQZQEEQAABBAIA=</HashCode>
-      <FileName>Plotter.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

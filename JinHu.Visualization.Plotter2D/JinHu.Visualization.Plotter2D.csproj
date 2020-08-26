@@ -670,6 +670,7 @@
     <None Include="Class Diagrams\ClassDiagram1.cd" />
     <None Include="Class Diagrams\ClassDiagram2.cd" />
     <None Include="Class Diagrams\ClassDiagram3.cd" />
+    <None Include="Class Diagrams\PlotterDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

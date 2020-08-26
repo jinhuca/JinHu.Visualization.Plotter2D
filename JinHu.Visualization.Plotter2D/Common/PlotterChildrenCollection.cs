@@ -18,7 +18,7 @@ namespace JinHu.Visualization.Plotter2D.Common
 		/// </summary>
 		internal PlotterChildrenCollection(PlotterBase plotter)
 		{
-      Plotter = plotter ?? throw new ArgumentNullException("plotter");
+      Plotter = plotter ?? throw new ArgumentNullException(nameof(plotter));
 		}
 
     public PlotterBase Plotter { get; }
@@ -31,7 +31,7 @@ namespace JinHu.Visualization.Plotter2D.Common
 		{
 			if (item == null)
       {
-        throw new ArgumentNullException("item");
+        throw new ArgumentNullException(nameof(item));
       }
     }
 
@@ -54,7 +54,7 @@ namespace JinHu.Visualization.Plotter2D.Common
 		{
 			if (content == null)
       {
-        throw new ArgumentNullException("content");
+        throw new ArgumentNullException(nameof(content));
       }
 
       IPlotterElement plotterElement = content as IPlotterElement;
@@ -78,7 +78,7 @@ namespace JinHu.Visualization.Plotter2D.Common
       switch (value)
       {
         case null:
-          throw new ArgumentNullException("value");
+          throw new ArgumentNullException(nameof(value));
         case FrameworkElement content:
           Add(content);
           return 0;
