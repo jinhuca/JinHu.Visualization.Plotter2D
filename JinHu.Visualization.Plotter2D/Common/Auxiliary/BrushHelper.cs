@@ -3,78 +3,78 @@
 namespace JinHu.Visualization.Plotter2D
 {
   public static class BrushHelper
-	{
-		/// <summary>
-		///   Creates a SolidColorBrush with random hue of its color.
-		/// </summary>
-		/// <returns>
+  {
+    /// <summary>
+    ///   Creates a SolidColorBrush with random hue of its color.
+    /// </summary>
+    /// <returns>
     ///   A SolicColorBrush with random hue of its color.
     /// </returns>
-		public static SolidColorBrush CreateBrushWithRandomHue()
-		{
-			return new SolidColorBrush { Color = ColorHelper.CreateColorWithRandomHue() };
-		}
+    public static SolidColorBrush CreateBrushWithRandomHue()
+    {
+      return new SolidColorBrush { Color = ColorHelper.CreateColorWithRandomHue() };
+    }
 
-		/// <summary>
-		///   Makes SolidColorBrush transparent.
-		/// </summary>
-		/// <param name="brush">
+    /// <summary>
+    ///   Makes SolidColorBrush transparent.
+    /// </summary>
+    /// <param name="brush">
     ///   The brush.
     /// </param>
-		/// <param name="alpha">
+    /// <param name="alpha">
     ///   The alpha, [0..255]
     /// </param>
-		/// <returns></returns>
-		public static SolidColorBrush MakeTransparent(this SolidColorBrush brush, int alpha)
-		{
-			Color color = brush.Color;
-			color.A = (byte)alpha;
-			return new SolidColorBrush(color);
-		}
+    /// <returns></returns>
+    public static SolidColorBrush MakeTransparent(this SolidColorBrush brush, int alpha)
+    {
+      Color color = brush.Color;
+      color.A = (byte)alpha;
+      return new SolidColorBrush(color);
+    }
 
-		/// <summary>
-		///   Makes SolidColorBrush transparent.
-		/// </summary>
-		/// <param name="brush">
+    /// <summary>
+    ///   Makes SolidColorBrush transparent.
+    /// </summary>
+    /// <param name="brush">
     ///   The brush.
     /// </param>
-		/// <param name="alpha">
+    /// <param name="alpha">
     ///   The alpha, [0.0 .. 1.0].
     /// </param>
-		/// <returns></returns>
-		public static SolidColorBrush MakeTransparent(this SolidColorBrush brush, double opacity)
-		{
-			return MakeTransparent(brush, (int)(opacity * 255));
-		}
+    /// <returns></returns>
+    public static SolidColorBrush MakeTransparent(this SolidColorBrush brush, double opacity)
+    {
+      return MakeTransparent(brush, (int)(opacity * 255));
+    }
 
-		public static SolidColorBrush ChangeLightness(this SolidColorBrush brush, double lightnessFactor)
-		{
-			var color = brush.Color;
-			var hsbColor = HsbColor.FromArgbColor(color);
-			hsbColor.Brightness *= lightnessFactor;
+    public static SolidColorBrush ChangeLightness(this SolidColorBrush brush, double lightnessFactor)
+    {
+      var color = brush.Color;
+      var hsbColor = HsbColor.FromArgbColor(color);
+      hsbColor.Brightness *= lightnessFactor;
 
       if (hsbColor.Brightness > 1.0)
       {
         hsbColor.Brightness = 1.0;
       }
 
-			var result = new SolidColorBrush(hsbColor.ToArgbColor());
-			return result;
-		}
+      var result = new SolidColorBrush(hsbColor.ToArgbColor());
+      return result;
+    }
 
-		public static SolidColorBrush ChangeSaturation(this SolidColorBrush brush, double saturationFactor)
-		{
-			var color = brush.Color;
-			var hsbColor = HsbColor.FromArgbColor(color);
-			hsbColor.Saturation *= saturationFactor;
+    public static SolidColorBrush ChangeSaturation(this SolidColorBrush brush, double saturationFactor)
+    {
+      var color = brush.Color;
+      var hsbColor = HsbColor.FromArgbColor(color);
+      hsbColor.Saturation *= saturationFactor;
 
-			if (hsbColor.Saturation > 1.0)
+      if (hsbColor.Saturation > 1.0)
       {
         hsbColor.Saturation = 1.0;
       }
 
       var result = new SolidColorBrush(hsbColor.ToArgbColor());
-			return result;
-		}
-	}
+      return result;
+    }
+  }
 }

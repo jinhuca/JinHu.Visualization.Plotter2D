@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:jin="http://jinhuca.visualization.com/Plotter2D/1.0"
         Title="MainWindow" Loaded="Window_Loaded" Width="600" Height="440">
-  <Grid Background="AntiqueWhite">
+  <Grid>
     <jin:Plotter x:Name="plotter" Margin="20"/>
   </Grid>
 </Window>

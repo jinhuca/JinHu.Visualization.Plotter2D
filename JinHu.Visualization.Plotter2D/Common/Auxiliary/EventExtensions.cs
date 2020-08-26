@@ -8,7 +8,7 @@ using System.Windows;
 namespace JinHu.Visualization.Plotter2D
 {
   public static class EventExtensions
-	{
+  {
     [DebuggerStepThrough]
     [DebuggerHidden]
     public static void Raise<T>(this EventHandler<T> @event, object sender, T args) where T : EventArgs => @event?.Invoke(sender, args);
@@ -39,10 +39,10 @@ namespace JinHu.Visualization.Plotter2D
     public static void Raise(this NotifyCollectionChangedEventHandler @event, object sender, NotifyCollectionChangedAction action) => @event?.Invoke(sender, new NotifyCollectionChangedEventArgs(action));
 
     [DebuggerStepThrough]
-		[DebuggerHidden]
-		public static void Raise(this NotifyCollectionChangedEventHandler @event, object sender, NotifyCollectionChangedEventArgs e)
-		{
-			if (e == null)
+    [DebuggerHidden]
+    public static void Raise(this NotifyCollectionChangedEventHandler @event, object sender, NotifyCollectionChangedEventArgs e)
+    {
+      if (e == null)
       {
         throw new ArgumentNullException("e");
       }
@@ -64,34 +64,34 @@ namespace JinHu.Visualization.Plotter2D
     /// <param name="prevValue">The previous value.</param>
     /// <param name="currValue">The current value.</param>
     [DebuggerStepThrough]
-		[DebuggerHidden]
-		public static void Raise<TValue>(this EventHandler<ValueChangedEventArgs<TValue>> @event, object sender, TValue prevValue, TValue currValue)
-		{
-			if (@event != null)
-			{
-				ValueChangedEventArgs<TValue> args = new ValueChangedEventArgs<TValue>(prevValue, currValue);
-				@event(sender, args);
-			}
-		}
+    [DebuggerHidden]
+    public static void Raise<TValue>(this EventHandler<ValueChangedEventArgs<TValue>> @event, object sender, TValue prevValue, TValue currValue)
+    {
+      if (@event != null)
+      {
+        ValueChangedEventArgs<TValue> args = new ValueChangedEventArgs<TValue>(prevValue, currValue);
+        @event(sender, args);
+      }
+    }
 
-		/// <summary>
-		/// Raises the specified value changed event.
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <typeparam name="TValue">The type of the value.</typeparam>
-		/// <param name="event">The event.</param>
-		/// <param name="sender">The sender of event.</param>
-		/// <param name="prevValue">The previous value.</param>
-		/// <param name="currValue">The current value.</param>
-		[DebuggerStepThrough]
-		[DebuggerHidden]
-		public static void Raise<TValue>(this EventHandler<ValueChangedEventArgs<TValue>> @event, object sender, object prevValue, object currValue)
-		{
-			if (@event != null)
-			{
-				ValueChangedEventArgs<TValue> args = new ValueChangedEventArgs<TValue>((TValue)prevValue, (TValue)currValue);
-				@event(sender, args);
-			}
-		}
-	}
+    /// <summary>
+    /// Raises the specified value changed event.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="TValue">The type of the value.</typeparam>
+    /// <param name="event">The event.</param>
+    /// <param name="sender">The sender of event.</param>
+    /// <param name="prevValue">The previous value.</param>
+    /// <param name="currValue">The current value.</param>
+    [DebuggerStepThrough]
+    [DebuggerHidden]
+    public static void Raise<TValue>(this EventHandler<ValueChangedEventArgs<TValue>> @event, object sender, object prevValue, object currValue)
+    {
+      if (@event != null)
+      {
+        ValueChangedEventArgs<TValue> args = new ValueChangedEventArgs<TValue>((TValue)prevValue, (TValue)currValue);
+        @event(sender, args);
+      }
+    }
+  }
 }

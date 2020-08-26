@@ -89,13 +89,13 @@ namespace JinHu.Visualization.Plotter2D.Common
 
     public void Add(T item) => collection.Add(item);
 
-    public void Clear()=> collection.Clear();
+    public void Clear() => collection.Clear();
 
-    public bool Contains(T item)=> collection.Contains(item);
+    public bool Contains(T item) => collection.Contains(item);
 
-    public void CopyTo(T[] array, int arrayIndex)=> collection.CopyTo(array, arrayIndex);
+    public void CopyTo(T[] array, int arrayIndex) => collection.CopyTo(array, arrayIndex);
 
-    public int Count=> collection.Count;
+    public int Count => collection.Count;
 
     public bool IsReadOnly => throw new NotImplementedException();
 
@@ -105,7 +105,7 @@ namespace JinHu.Visualization.Plotter2D.Common
 
     #region IEnumerable<T> Members
 
-    public IEnumerator<T> GetEnumerator()=> collection.GetEnumerator();
+    public IEnumerator<T> GetEnumerator() => collection.GetEnumerator();
 
     #endregion
 

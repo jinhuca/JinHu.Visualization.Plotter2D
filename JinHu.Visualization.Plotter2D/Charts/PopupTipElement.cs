@@ -98,10 +98,10 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
     #region IPlotterElement Members
 
-    private Plotter2D plotter;
+    private PlotterBase plotter;
     public void OnPlotterAttached(PlotterBase plotter)
     {
-      this.plotter = (Plotter2D)plotter;
+      this.plotter = (PlotterBase)plotter;
       plotter.CentralGrid.MouseMove += OnMouseMove;
       plotter.CentralGrid.MouseLeave += OnMouseLeave;
     }

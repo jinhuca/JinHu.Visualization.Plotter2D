@@ -21,7 +21,7 @@ namespace JinHu.Visualization.Plotter2D.DataSources
       get => _data;
       set
       {
-				_data = value ?? throw new ArgumentNullException(nameof(value));
+        _data = value ?? throw new ArgumentNullException(nameof(value));
         if (_data is INotifyCollectionChanged observableCollection)
         {
           observableCollection.CollectionChanged += ObservableCollection_CollectionChanged;

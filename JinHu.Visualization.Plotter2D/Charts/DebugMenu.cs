@@ -26,7 +26,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
     public MenuItem TryFindMenuItem(string itemName)
     {
-      return Menu.Items.OfType<MenuItem>().Where(item => item.Header.ToString() == itemName).FirstOrDefault();
+      return Menu.Items.OfType<MenuItem>().FirstOrDefault(item => item.Header.ToString() == itemName);
     }
 
     #region IPlotterElement Members

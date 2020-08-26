@@ -6,447 +6,393 @@ using System.Windows.Controls;
 
 namespace JinHu.Visualization.Plotter2D
 {
-	/// <summary>
-	/// Plotter that can render axis and grid
-	/// </summary>
-	public class Plotter : Plotter2D
-	{
-		private GeneralAxis horizontalAxis = new HorizontalAxis();
-		private GeneralAxis verticalAxis = new VerticalAxis();
+  /// <summary>
+  /// Plotter that can render axis and grid
+  /// </summary>
+  public class Plotter : PlotterBase
+  {
+    private GeneralAxis _horizontalAxis = new HorizontalAxis();
+    private GeneralAxis _verticalAxis = new VerticalAxis();
 
-		public Legend Legend { get; set; } = new Legend();
+    public Legend Legend { get; set; } = new Legend();
 
-		public ItemsPanelTemplate LegendPanelTemplate
-		{
-			get => Legend.ItemsPanel;
-			set => Legend.ItemsPanel = value;
-		}
+    public ItemsPanelTemplate LegendPanelTemplate
+    {
+      get => Legend.ItemsPanel;
+      set => Legend.ItemsPanel = value;
+    }
 
-		public Style LegendStyle
-		{
-			get => Legend.Style;
-			set => Legend.Style = value;
-		}
+    public Style LegendStyle
+    {
+      get => Legend.Style;
+      set => Legend.Style = value;
+    }
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="Plotter"/> class.
-		/// </summary>
-		public Plotter()
-		{
-			horizontalAxis.TicksChanged += OnHorizontalAxisTicksChanged;
-			verticalAxis.TicksChanged += OnVerticalAxisTicksChanged;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Plotter"/> class.
+    /// </summary>
+    public Plotter()
+    {
+      _horizontalAxis.TicksChanged += OnHorizontalAxisTicksChanged;
+      _verticalAxis.TicksChanged += OnVerticalAxisTicksChanged;
 
-			SetIsDefaultAxis(horizontalAxis as DependencyObject, true);
-			SetIsDefaultAxis(verticalAxis as DependencyObject, true);
+      SetIsDefaultAxis(_horizontalAxis, true);
+      SetIsDefaultAxis(_verticalAxis, true);
 
-			_mouseNavigation = new MouseNavigation();
-			_keyboardNavigation = new KeyboardNavigation();
-			_defaultContextMenu = new DefaultContextMenu();
-			horizontalAxisNavigation = new AxisNavigation { Placement = AxisPlacement.Bottom };
-			verticalAxisNavigation = new AxisNavigation { Placement = AxisPlacement.Left };
+      _mouseNavigation = new MouseNavigation();
+      _keyboardNavigation = new KeyboardNavigation();
+      _defaultContextMenu = new DefaultContextMenu();
+      horizontalAxisNavigation = new AxisNavigation { Placement = AxisPlacement.Bottom };
+      verticalAxisNavigation = new AxisNavigation { Placement = AxisPlacement.Left };
 
-			Children.AddMany(
-				horizontalAxis,
-				verticalAxis,
-				AxisGrid,
-				_mouseNavigation,
-				_keyboardNavigation,
-				_defaultContextMenu,
-				horizontalAxisNavigation,
-				verticalAxisNavigation,
-				new LongOperationsIndicator(),
-				Legend);
+      Children.AddMany(
+        _horizontalAxis,
+        _verticalAxis,
+        AxisGrid,
+        _mouseNavigation,
+        _keyboardNavigation,
+        _defaultContextMenu,
+        horizontalAxisNavigation,
+        verticalAxisNavigation,
+        new LongOperationsIndicator(),
+        Legend);
 
 #if DEBUG
-			Children.Add(new DebugMenu());
+      Children.Add(new DebugMenu());
 #endif
 
-			SetAllChildrenAsDefault();
-		}
+      SetAllChildrenAsDefault();
+    }
 
-		/// <summary>
-		///   Creates generic plotter from this Plotter.
-		/// </summary>
-		/// <returns></returns>
-		public GenericChartPlotter<double, double> GetGenericPlotter() => new GenericChartPlotter<double, double>(this);
+    protected Plotter(PlotterLoadMode loadMode) : base(loadMode) { }
 
-		/// <summary>
-		///   Creates generic plotter from this Plotter.
-		///   Horizontal and Vertical types of GenericPlotter should correspond to Plotter's actual main axes types.
-		/// </summary>
-		/// <typeparam name="THorizontal">
-		///   The type of horizontal values.
-		/// </typeparam>
-		/// <typeparam name="TVertical">
-		///   The type of vertical values.
-		/// </typeparam>
-		/// <returns>
-		///   GenericChartPlotter, associated to this Plotter.
-		/// </returns>
-		public GenericChartPlotter<THorizontal, TVertical> GetGenericPlotter<THorizontal, TVertical>() 
-			=> new GenericChartPlotter<THorizontal, TVertical>(this);
+    #region Default charts
 
-		/// <summary>
-		///   Creates generic plotter from this Plotter.
-		/// </summary>
-		/// <typeparam name="THorizontal">
-		///   The type of the horizontal axis.
-		/// </typeparam>
-		/// <typeparam name="TVertical">
-		///   The type of the vertical axis.
-		/// </typeparam>
-		/// <param name="horizontalAxis">
-		///   The horizontal axis to use as data conversion source.
-		/// </param>
-		/// <param name="verticalAxis">
-		///   The vertical axis to use as data conversion source.
-		/// </param>
-		/// <returns>
-		///   GenericChartPlotter, associated to this Plotter.
-		/// </returns>
-		public GenericChartPlotter<THorizontal, TVertical> GetGenericPlotter<THorizontal, TVertical>(AxisBase<THorizontal> horizontalAxis, AxisBase<TVertical> verticalAxis) => new GenericChartPlotter<THorizontal, TVertical>(this, horizontalAxis, verticalAxis);
+    private readonly MouseNavigation _mouseNavigation;
+    /// <summary>
+    /// Gets the default mouse navigation of Plotter.
+    /// </summary>
+    /// <value>The mouse navigation.</value>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public MouseNavigation MouseNavigation => _mouseNavigation;
 
-		protected Plotter(PlotterLoadMode loadMode) : base(loadMode) { }
+    private readonly KeyboardNavigation _keyboardNavigation;
+    /// <summary>
+    /// Gets the default keyboard navigation of Plotter.
+    /// </summary>
+    /// <value>The keyboard navigation.</value>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public KeyboardNavigation KeyboardNavigation => _keyboardNavigation;
 
-		/// <summary>
-		///   Creates empty plotter without any axes, navigation, etc.
-		/// </summary>
-		/// <returns>
-		///   Empty plotter without any axes, navigation, etc.
-		/// </returns>
-		public static Plotter CreateEmpty() => new Plotter(PlotterLoadMode.OnlyViewport);
+    private readonly DefaultContextMenu _defaultContextMenu;
+    /// <summary>
+    /// Gets the default context menu of Plotter.
+    /// </summary>
+    /// <value>The default context menu.</value>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public DefaultContextMenu DefaultContextMenu => _defaultContextMenu;
 
-		public void BeginLongOperation() => LongOperationsIndicator.BeginLongOperation(this);
+    private AxisNavigation horizontalAxisNavigation;
+    /// <summary>
+    /// Gets the default horizontal axis navigation of Plotter.
+    /// </summary>
+    /// <value>The horizontal axis navigation.</value>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public AxisNavigation HorizontalAxisNavigation => horizontalAxisNavigation;
 
-		public void EndLongOperation() => LongOperationsIndicator.EndLongOperation(this);
+    private AxisNavigation verticalAxisNavigation;
+    /// <summary>
+    /// Gets the default vertical axis navigation of Plotter.
+    /// </summary>
+    /// <value>The vertical axis navigation.</value>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public AxisNavigation VerticalAxisNavigation => verticalAxisNavigation;
 
-		#region Default charts
+    /// <summary>
+    /// Gets the default axis grid of Plotter.
+    /// </summary>
+    /// <value>The axis grid.</value>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public AxisGrid AxisGrid { get; } = new AxisGrid();
 
-		private readonly MouseNavigation _mouseNavigation;
-		/// <summary>
-		/// Gets the default mouse navigation of Plotter.
-		/// </summary>
-		/// <value>The mouse navigation.</value>
-		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public MouseNavigation MouseNavigation => _mouseNavigation;
+    #endregion
 
-		private readonly KeyboardNavigation _keyboardNavigation;
-		/// <summary>
-		/// Gets the default keyboard navigation of Plotter.
-		/// </summary>
-		/// <value>The keyboard navigation.</value>
-		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public KeyboardNavigation KeyboardNavigation => _keyboardNavigation;
+    private void OnHorizontalAxisTicksChanged(object sender, EventArgs e)
+    {
+      GeneralAxis axis = (GeneralAxis)sender;
+      UpdateHorizontalTicks(axis);
+    }
 
-		private readonly DefaultContextMenu _defaultContextMenu;
-		/// <summary>
-		/// Gets the default context menu of Plotter.
-		/// </summary>
-		/// <value>The default context menu.</value>
-		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public DefaultContextMenu DefaultContextMenu => _defaultContextMenu;
+    private void UpdateHorizontalTicks(GeneralAxis axis)
+    {
+      AxisGrid.BeginTicksUpdate();
 
-		private AxisNavigation horizontalAxisNavigation;
-		/// <summary>
-		/// Gets the default horizontal axis navigation of Plotter.
-		/// </summary>
-		/// <value>The horizontal axis navigation.</value>
-		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public AxisNavigation HorizontalAxisNavigation => horizontalAxisNavigation;
+      if (axis != null)
+      {
+        AxisGrid.HorizontalTicks = axis.ScreenTicks;
+        AxisGrid.MinorHorizontalTicks = axis.MinorScreenTicks;
+      }
+      else
+      {
+        AxisGrid.HorizontalTicks = null;
+        AxisGrid.MinorHorizontalTicks = null;
+      }
 
-		private AxisNavigation verticalAxisNavigation;
-		/// <summary>
-		/// Gets the default vertical axis navigation of Plotter.
-		/// </summary>
-		/// <value>The vertical axis navigation.</value>
-		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public AxisNavigation VerticalAxisNavigation => verticalAxisNavigation;
+      AxisGrid.EndTicksUpdate();
+    }
 
-		/// <summary>
-		/// Gets the default axis grid of Plotter.
-		/// </summary>
-		/// <value>The axis grid.</value>
-		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public AxisGrid AxisGrid { get; } = new AxisGrid();
+    private void OnVerticalAxisTicksChanged(object sender, EventArgs e)
+    {
+      GeneralAxis axis = (GeneralAxis)sender;
+      UpdateVerticalTicks(axis);
+    }
 
-		#endregion
+    private void UpdateVerticalTicks(GeneralAxis axis)
+    {
+      AxisGrid.BeginTicksUpdate();
 
-		private void OnHorizontalAxisTicksChanged(object sender, EventArgs e)
-		{
-			GeneralAxis axis = (GeneralAxis)sender;
-			UpdateHorizontalTicks(axis);
-		}
+      if (axis != null)
+      {
+        AxisGrid.VerticalTicks = axis.ScreenTicks;
+        AxisGrid.MinorVerticalTicks = axis.MinorScreenTicks;
+      }
+      else
+      {
+        AxisGrid.VerticalTicks = null;
+        AxisGrid.MinorVerticalTicks = null;
+      }
 
-		private void UpdateHorizontalTicks(GeneralAxis axis)
-		{
-			AxisGrid.BeginTicksUpdate();
+      AxisGrid.EndTicksUpdate();
+    }
 
-			if (axis != null)
-			{
-				AxisGrid.HorizontalTicks = axis.ScreenTicks;
-				AxisGrid.MinorHorizontalTicks = axis.MinorScreenTicks;
-			}
-			else
-			{
-				AxisGrid.HorizontalTicks = null;
-				AxisGrid.MinorHorizontalTicks = null;
-			}
+    bool _keepOldAxis = false;
+    bool _updatingAxis = false;
 
-			AxisGrid.EndTicksUpdate();
-		}
+    /// <summary>
+    /// Gets or sets the main vertical axis of Plotter.
+    /// Main vertical axis of Plotter is axis which ticks are used to draw horizontal lines on AxisGrid.
+    /// Value can be set to null to completely remove main vertical axis.
+    /// </summary>
+    /// <value>The main vertical axis.</value>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public GeneralAxis MainVerticalAxis
+    {
+      get => _verticalAxis;
+      set
+      {
+        if (_updatingAxis)
+        {
+          return;
+        }
 
-		private void OnVerticalAxisTicksChanged(object sender, EventArgs e)
-		{
-			GeneralAxis axis = (GeneralAxis)sender;
-			UpdateVerticalTicks(axis);
-		}
+        if (value == null && _verticalAxis != null)
+        {
+          if (!_keepOldAxis)
+          {
+            Children.Remove(_verticalAxis);
+          }
+          _verticalAxis.TicksChanged -= OnVerticalAxisTicksChanged;
+          _verticalAxis = null;
+          UpdateVerticalTicks(_verticalAxis);
+          return;
+        }
 
-		private void UpdateVerticalTicks(GeneralAxis axis)
-		{
-			AxisGrid.BeginTicksUpdate();
+        VerifyAxisType(value.Placement, AxisType.Vertical);
 
-			if (axis != null)
-			{
-				AxisGrid.VerticalTicks = axis.ScreenTicks;
-				AxisGrid.MinorVerticalTicks = axis.MinorScreenTicks;
-			}
-			else
-			{
-				AxisGrid.VerticalTicks = null;
-				AxisGrid.MinorVerticalTicks = null;
-			}
+        if (value != _verticalAxis)
+        {
+          ValidateVerticalAxis(value);
+          _updatingAxis = true;
+          if (_verticalAxis != null)
+          {
+            _verticalAxis.TicksChanged -= OnVerticalAxisTicksChanged;
+            SetIsDefaultAxis(_verticalAxis, false);
+            if (!_keepOldAxis)
+            {
+              Children.Remove(_verticalAxis);
+            }
+            value.Visibility = _verticalAxis.Visibility;
+          }
+          SetIsDefaultAxis(value, true);
+          _verticalAxis = value;
+          _verticalAxis.TicksChanged += OnVerticalAxisTicksChanged;
 
-			AxisGrid.EndTicksUpdate();
-		}
+          if (!Children.Contains(value))
+          {
+            Children.Add(value);
+          }
 
-		bool _keepOldAxis = false;
-		bool _updatingAxis = false;
+          UpdateVerticalTicks(value);
+          OnVerticalAxisChanged();
+          _updatingAxis = false;
+        }
+      }
+    }
 
-		/// <summary>
-		/// Gets or sets the main vertical axis of Plotter.
-		/// Main vertical axis of Plotter is axis which ticks are used to draw horizontal lines on AxisGrid.
-		/// Value can be set to null to completely remove main vertical axis.
-		/// </summary>
-		/// <value>The main vertical axis.</value>
-		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public GeneralAxis MainVerticalAxis
-		{
-			get => verticalAxis;
-			set
-			{
-				if (_updatingAxis)
-				{
-					return;
-				}
+    protected virtual void OnVerticalAxisChanged() { }
+    protected virtual void ValidateVerticalAxis(GeneralAxis axis) { }
 
-				if (value == null && verticalAxis != null)
-				{
-					if (!_keepOldAxis)
-					{
-						Children.Remove(verticalAxis);
-					}
-					verticalAxis.TicksChanged -= OnVerticalAxisTicksChanged;
-					verticalAxis = null;
-					UpdateVerticalTicks(verticalAxis);
-					return;
-				}
+    /// <summary>
+    ///   Gets or sets the main horizontal axis visibility.
+    /// </summary>
+    /// <value>
+    ///   The main horizontal axis visibility.
+    /// </value>
+    public Visibility MainHorizontalAxisVisibility
+    {
+      get { return MainHorizontalAxis?.Visibility ?? Visibility.Hidden; }
+      set
+      {
+        if (MainHorizontalAxis != null)
+        {
+          MainHorizontalAxis.Visibility = value;
+        }
+      }
+    }
 
-				VerifyAxisType(value.Placement, AxisType.Vertical);
+    /// <summary>
+    ///   Gets or sets the main vertical axis visibility.
+    /// </summary>
+    /// <value>
+    ///   The main vertical axis visibility.
+    /// </value>
+    public Visibility MainVerticalAxisVisibility
+    {
+      get { return MainVerticalAxis?.Visibility ?? Visibility.Hidden; }
+      set
+      {
+        if (MainVerticalAxis != null)
+        {
+          MainVerticalAxis.Visibility = value;
+        }
+      }
+    }
 
-				if (value != verticalAxis)
-				{
-					ValidateVerticalAxis(value);
-					_updatingAxis = true;
-					if (verticalAxis != null)
-					{
-						verticalAxis.TicksChanged -= OnVerticalAxisTicksChanged;
-						SetIsDefaultAxis(verticalAxis, false);
-						if (!_keepOldAxis)
-						{
-							Children.Remove(verticalAxis);
-						}
-						value.Visibility = verticalAxis.Visibility;
-					}
-					SetIsDefaultAxis(value, true);
-					verticalAxis = value;
-					verticalAxis.TicksChanged += OnVerticalAxisTicksChanged;
+    /// <summary>
+    ///   Gets or sets the main horizontal axis of Plotter.
+    ///   Main horizontal axis of Plotter is axis which ticks are used to draw vertical lines on AxisGrid.
+    ///   Value can be set to null to completely remove main horizontal axis.
+    /// </summary>
+    /// <value>
+    ///   The main horizontal axis.
+    /// </value>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public GeneralAxis MainHorizontalAxis
+    {
+      get => _horizontalAxis;
+      set
+      {
+        if (_updatingAxis)
+        {
+          return;
+        }
 
-					if (!Children.Contains(value))
-					{
-						Children.Add(value);
-					}
+        if (value == null && _horizontalAxis != null)
+        {
+          Children.Remove(_horizontalAxis);
+          _horizontalAxis.TicksChanged -= OnHorizontalAxisTicksChanged;
+          _horizontalAxis = null;
+          UpdateHorizontalTicks(_horizontalAxis);
+          return;
+        }
 
-					UpdateVerticalTicks(value);
-					OnVerticalAxisChanged();
-					_updatingAxis = false;
-				}
-			}
-		}
+        VerifyAxisType(value.Placement, AxisType.Horizontal);
 
-		protected virtual void OnVerticalAxisChanged() { }
-		protected virtual void ValidateVerticalAxis(GeneralAxis axis) { }
+        if (value != _horizontalAxis)
+        {
+          ValidateHorizontalAxis(value);
+          _updatingAxis = true;
+          if (_horizontalAxis != null)
+          {
+            _horizontalAxis.TicksChanged -= OnHorizontalAxisTicksChanged;
+            SetIsDefaultAxis(_horizontalAxis, false);
+            if (!_keepOldAxis)
+            {
+              Children.Remove(_horizontalAxis);
+            }
+            value.Visibility = _horizontalAxis.Visibility;
+          }
+          SetIsDefaultAxis(value, true);
+          _horizontalAxis = value;
+          _horizontalAxis.TicksChanged += OnHorizontalAxisTicksChanged;
 
-		/// <summary>
-		///   Gets or sets the main horizontal axis visibility.
-		/// </summary>
-		/// <value>
-		///   The main horizontal axis visibility.
-		/// </value>
-		public Visibility MainHorizontalAxisVisibility
-		{
-			get { return MainHorizontalAxis?.Visibility ?? Visibility.Hidden; }
-			set
-			{
-				if (MainHorizontalAxis != null)
-				{
-					MainHorizontalAxis.Visibility = value;
-				}
-			}
-		}
+          if (!Children.Contains(value))
+          {
+            Children.Add(value);
+          }
 
-		/// <summary>
-		///   Gets or sets the main vertical axis visibility.
-		/// </summary>
-		/// <value>
-		///   The main vertical axis visibility.
-		/// </value>
-		public Visibility MainVerticalAxisVisibility
-		{
-			get { return MainVerticalAxis?.Visibility ?? Visibility.Hidden; }
-			set
-			{
-				if (MainVerticalAxis != null)
-				{
-					MainVerticalAxis.Visibility = value;
-				}
-			}
-		}
+          UpdateHorizontalTicks(value);
+          OnHorizontalAxisChanged();
+          _updatingAxis = false;
+        }
+      }
+    }
 
-		/// <summary>
-		///   Gets or sets the main horizontal axis of Plotter.
-		///   Main horizontal axis of Plotter is axis which ticks are used to draw vertical lines on AxisGrid.
-		///   Value can be set to null to completely remove main horizontal axis.
-		/// </summary>
-		/// <value>
-		///   The main horizontal axis.
-		/// </value>
-		[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-		public GeneralAxis MainHorizontalAxis
-		{
-			get => horizontalAxis;
-			set
-			{
-				if (_updatingAxis)
-				{
-					return;
-				}
+    protected virtual void OnHorizontalAxisChanged() { }
+    protected virtual void ValidateHorizontalAxis(GeneralAxis axis) { }
 
-				if (value == null && horizontalAxis != null)
-				{
-					Children.Remove(horizontalAxis);
-					horizontalAxis.TicksChanged -= OnHorizontalAxisTicksChanged;
-					horizontalAxis = null;
-					UpdateHorizontalTicks(horizontalAxis);
-					return;
-				}
+    private static void VerifyAxisType(AxisPlacement axisPlacement, AxisType axisType)
+    {
+      var result = false;
+      switch (axisPlacement)
+      {
+        case AxisPlacement.Left:
+        case AxisPlacement.Right:
+          result = axisType == AxisType.Vertical;
+          break;
+        case AxisPlacement.Top:
+        case AxisPlacement.Bottom:
+          result = axisType == AxisType.Horizontal;
+          break;
+      }
 
-				VerifyAxisType(value.Placement, AxisType.Horizontal);
+      if (!result)
+      {
+        throw new ArgumentException(Strings.Exceptions.InvalidAxisPlacement);
+      }
+    }
 
-				if (value != horizontalAxis)
-				{
-					ValidateHorizontalAxis(value);
-					_updatingAxis = true;
-					if (horizontalAxis != null)
-					{
-						horizontalAxis.TicksChanged -= OnHorizontalAxisTicksChanged;
-						SetIsDefaultAxis(horizontalAxis, false);
-						if (!_keepOldAxis)
-						{
-							Children.Remove(horizontalAxis);
-						}
-						value.Visibility = horizontalAxis.Visibility;
-					}
-					SetIsDefaultAxis(value, true);
-					horizontalAxis = value;
-					horizontalAxis.TicksChanged += OnHorizontalAxisTicksChanged;
+    protected override void OnIsDefaultAxisChangedCore(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+      var axis = d as GeneralAxis;
+      if (axis != null)
+      {
+        var value = (bool)e.NewValue;
+        var oldKeepOldAxis = _keepOldAxis;
+        var horizontal = axis.Placement == AxisPlacement.Bottom || axis.Placement == AxisPlacement.Top;
+        _keepOldAxis = true;
 
-					if (!Children.Contains(value))
-					{
-						Children.Add(value);
-					}
+        if (value && horizontal)
+        {
+          MainHorizontalAxis = axis;
+        }
+        else if (value && !horizontal)
+        {
+          MainVerticalAxis = axis;
+        }
+        else if (!value && horizontal)
+        {
+          MainHorizontalAxis = null;
+        }
+        else if (!value && !horizontal)
+        {
+          MainVerticalAxis = null;
+        }
 
-					UpdateHorizontalTicks(value);
-					OnHorizontalAxisChanged();
-					_updatingAxis = false;
-				}
-			}
-		}
+        _keepOldAxis = oldKeepOldAxis;
+      }
+    }
 
-		protected virtual void OnHorizontalAxisChanged() { }
-		protected virtual void ValidateHorizontalAxis(GeneralAxis axis) { }
+    public bool NewLegendVisible
+    {
+      get => Legend.LegendVisible;
+      set => Legend.LegendVisible = value;
+    }
 
-		private static void VerifyAxisType(AxisPlacement axisPlacement, AxisType axisType)
-		{
-			var result = false;
-			switch (axisPlacement)
-			{
-				case AxisPlacement.Left:
-				case AxisPlacement.Right:
-					result = axisType == AxisType.Vertical;
-					break;
-				case AxisPlacement.Top:
-				case AxisPlacement.Bottom:
-					result = axisType == AxisType.Horizontal;
-					break;
-			}
-
-			if (!result)
-			{
-				throw new ArgumentException(Strings.Exceptions.InvalidAxisPlacement);
-			}
-		}
-
-		protected override void OnIsDefaultAxisChangedCore(DependencyObject d, DependencyPropertyChangedEventArgs e)
-		{
-			var axis = d as GeneralAxis;
-			if (axis != null)
-			{
-				var value = (bool)e.NewValue;
-				var oldKeepOldAxis = _keepOldAxis;
-				var horizontal = axis.Placement == AxisPlacement.Bottom || axis.Placement == AxisPlacement.Top;
-				_keepOldAxis = true;
-
-				if (value && horizontal)
-				{
-					MainHorizontalAxis = axis;
-				}
-				else if (value && !horizontal)
-				{
-					MainVerticalAxis = axis;
-				}
-				else if (!value && horizontal)
-				{
-					MainHorizontalAxis = null;
-				}
-				else if (!value && !horizontal)
-				{
-					MainVerticalAxis = null;
-				}
-
-				_keepOldAxis = oldKeepOldAxis;
-			}
-		}
-
-		public bool NewLegendVisible
-		{
-			get => Legend.LegendVisible;
-			set => Legend.LegendVisible = value;
-		}
-
-		private enum AxisType
-		{
-			Horizontal,
-			Vertical
-		}
-	}
+    private enum AxisType
+    {
+      Horizontal,
+      Vertical
+    }
+  }
 }

@@ -6,11 +6,11 @@ using System.Windows;
 namespace JinHu.Visualization.Plotter2D.DataSources
 {
   public static class DataSourceHelper
-	{
-		public static IEnumerable<Point> GetPoints(IPointDataSource dataSource) => GetPoints(dataSource, null);
+  {
+    public static IEnumerable<Point> GetPoints(IPointDataSource dataSource) => GetPoints(dataSource, null);
 
-		public static IEnumerable<Point> GetPoints(IPointDataSource dataSource, DependencyObject context)
-		{
+    public static IEnumerable<Point> GetPoints(IPointDataSource dataSource, DependencyObject context)
+    {
       if (dataSource == null)
       {
         throw new ArgumentNullException(nameof(dataSource));
@@ -21,16 +21,16 @@ namespace JinHu.Visualization.Plotter2D.DataSources
         context = new DataSource2dContext();
       }
 
-			using (IPointEnumerator enumerator = dataSource.GetEnumerator(context))
-			{
-				Point p = new Point();
-				while (enumerator.MoveNext())
-				{
-					enumerator.GetCurrent(ref p);
-					yield return p;
-					p = new Point();
-				}
-			}
-		}
-	}
+      using (IPointEnumerator enumerator = dataSource.GetEnumerator(context))
+      {
+        Point p = new Point();
+        while (enumerator.MoveNext())
+        {
+          enumerator.GetCurrent(ref p);
+          yield return p;
+          p = new Point();
+        }
+      }
+    }
+  }
 }

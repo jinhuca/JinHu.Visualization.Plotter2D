@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace JinHu.Visualization.Plotter2D.Charts
+﻿namespace JinHu.Visualization.Plotter2D.Charts
 {
-	public interface IPlotterContextMenuSource
-	{
-		void BuildMenu();
-	}
+  public interface IPlotterContextMenuSource
+  {
+    void BuildMenu();
+  }
 }

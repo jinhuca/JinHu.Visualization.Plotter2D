@@ -5,45 +5,45 @@ using System.Windows;
 namespace JinHu.Visualization.Plotter2D
 {
   public static class BoundsHelper
-	{
-		/// <summary>
+  {
+    /// <summary>
     ///   Computes bounding rectangle for sequence of points.
     /// </summary>
-		/// <param name="points">
+    /// <param name="points">
     ///   Points sequence.
     /// </param>
-		/// <returns>
+    /// <returns>
     ///   Minimal axis-aligned bounding rectangle.
     /// </returns>
-		public static DataRect GetViewportBounds(IEnumerable<Point> viewportPoints)
-		{
-			var bounds = DataRect.Empty;
-			var xMin = double.PositiveInfinity;
-			var xMax = double.NegativeInfinity;
-			var yMin = double.PositiveInfinity;
-			var yMax = double.NegativeInfinity;
+    public static DataRect GetViewportBounds(IEnumerable<Point> viewportPoints)
+    {
+      var bounds = DataRect.Empty;
+      var xMin = double.PositiveInfinity;
+      var xMax = double.NegativeInfinity;
+      var yMin = double.PositiveInfinity;
+      var yMax = double.NegativeInfinity;
 
-			foreach (var p in viewportPoints)
-			{
-				xMin = Math.Min(xMin, p.X);
-				xMax = Math.Max(xMax, p.X);
+      foreach (var p in viewportPoints)
+      {
+        xMin = Math.Min(xMin, p.X);
+        xMax = Math.Max(xMax, p.X);
 
-				yMin = Math.Min(yMin, p.Y);
-				yMax = Math.Max(yMax, p.Y);
-			}
+        yMin = Math.Min(yMin, p.Y);
+        yMax = Math.Max(yMax, p.Y);
+      }
 
-			// were some points in collection
-			if (!double.IsInfinity(xMin))
-			{
-				bounds = DataRect.Create(xMin, yMin, xMax, yMax);
-			}
+      // were some points in collection
+      if (!double.IsInfinity(xMin))
+      {
+        bounds = DataRect.Create(xMin, yMin, xMax, yMax);
+      }
 
-			return bounds;
-		}
+      return bounds;
+    }
 
-		public static DataRect GetViewportBounds(IEnumerable<Point> dataPoints, DataTransform transform)
-		{
-			return GetViewportBounds(dataPoints.DataToViewport(transform));
-		}
-	}
+    public static DataRect GetViewportBounds(IEnumerable<Point> dataPoints, DataTransform transform)
+    {
+      return GetViewportBounds(dataPoints.DataToViewport(transform));
+    }
+  }
 }

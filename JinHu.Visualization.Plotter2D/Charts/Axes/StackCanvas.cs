@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Controls;
+﻿using JinHu.Visualization.Plotter2D.Common;
+using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
-using System.Diagnostics;
-using JinHu.Visualization.Plotter2D.Common;
 
 namespace JinHu.Visualization.Plotter2D.Charts
 {
@@ -217,7 +213,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
             elementSize.Height = size;
           }
         }
-        
+
         // shift for common tick labels, not for major ones.
         if (isHorizontal)
         {

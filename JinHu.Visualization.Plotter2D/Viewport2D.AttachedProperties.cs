@@ -21,7 +21,7 @@ namespace JinHu.Visualization.Plotter2D
       IPlotterElement plotterElement = d as IPlotterElement;
       if (plotterElement != null && plotterElement.Plotter != null)
       {
-        Plotter2D plotter2d = (Plotter2D)plotterElement.Plotter;
+        PlotterBase plotter2d = (PlotterBase)plotterElement.Plotter;
         plotter2d.Viewport.UpdateContentBoundsHosts();
       }
     }
@@ -46,8 +46,8 @@ namespace JinHu.Visualization.Plotter2D
       DataRect currBounds = (DataRect)value;
       bool approximateComparanceAllowed = GetUsesApproximateContentBoundsComparison(d);
       bool areClose = approximateComparanceAllowed && currBounds.IsCloseTo(prevBounds, 0.005);
-			return areClose ? DependencyProperty.UnsetValue : value;
-		}
+      return areClose ? DependencyProperty.UnsetValue : value;
+    }
 
     private static void OnContentBoundsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
@@ -60,7 +60,7 @@ namespace JinHu.Visualization.Plotter2D
           frElement.RaiseEvent(new RoutedEventArgs(ContentBoundsChangedEvent));
         }
 
-        Plotter2D plotter2d = element.Plotter as Plotter2D;
+        PlotterBase plotter2d = element.Plotter as PlotterBase;
         if (plotter2d != null)
         {
           plotter2d.Viewport.UpdateContentBoundsHosts();
@@ -117,7 +117,7 @@ namespace JinHu.Visualization.Plotter2D
       IPlotterElement element = d as IPlotterElement;
       if (element != null)
       {
-        Plotter2D plotter2d = element.Plotter as Plotter2D;
+        PlotterBase plotter2d = element.Plotter as PlotterBase;
         if (plotter2d != null)
         {
           plotter2d.Viewport.UpdateVisible();

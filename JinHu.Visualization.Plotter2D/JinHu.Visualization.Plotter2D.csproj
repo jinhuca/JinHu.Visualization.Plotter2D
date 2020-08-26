@@ -453,7 +453,6 @@
     <Compile Include="Common\Auxiliary\ListGenerator.cs" />
     <Compile Include="DataSources\OneDimensional\Mapping.cs" />
     <Compile Include="DataSources\OneDimensional\ObservableDataSource.cs" />
-    <Compile Include="Plotter2D.cs" />
     <Compile Include="DataSources\OneDimensional\RawPointEnumerator.cs" />
     <Compile Include="DataSources\OneDimensional\RawDataSource.cs" />
     <Compile Include="DataSources\OneDimensional\TableDataSource.cs" />
@@ -476,7 +475,7 @@
     <Compile Include="Common\Auxiliary\PointExtensions.cs" />
     <Compile Include="Charts\PointGraphBase.cs" />
     <Compile Include="Common\VerticalAxisTitle.cs" />
-    <Compile Include="Plotter2DExtensions.cs" />
+    <Compile Include="PlotterBaseExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -1,8 +1,6 @@
 ﻿using JinHu.Visualization.Plotter2D;
 using JinHu.Visualization.Plotter2D.DataSources;
 using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 

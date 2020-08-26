@@ -26,9 +26,9 @@ namespace JinHu.Visualization.Plotter2D
     {
 #pragma warning disable CS0618 // 'FormattedText.FormattedText(string, CultureInfo, FlowDirection, Typeface, double, Brush)' is obsolete: 'Use the PixelsPerDip override'
       FormattedText textToDraw = new FormattedText(
-        Text, 
+        Text,
         Thread.CurrentThread.CurrentCulture,
-        FlowDirection.LeftToRight, 
+        FlowDirection.LeftToRight,
         new Typeface(TypefaceName), 12, Brushes.Black);
 #pragma warning restore CS0618 // 'FormattedText.FormattedText(string, CultureInfo, FlowDirection, Typeface, double, Brush)' is obsolete: 'Use the PixelsPerDip override'
 

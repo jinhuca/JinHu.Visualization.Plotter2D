@@ -1,18 +1,18 @@
 ﻿namespace JinHu.Visualization.Plotter2D
 {
-    /// <summary>
-    /// Interaction logic for LineLegendItem.xaml
-    /// </summary>
-    public partial class LineLegendItem : LegendItem
+  /// <summary>
+  /// Interaction logic for LineLegendItem.xaml
+  /// </summary>
+  public partial class LineLegendItem : LegendItem
+  {
+    public LineLegendItem()
     {
-        public LineLegendItem()
-        {
-            InitializeComponent();
-        }
-
-        public LineLegendItem(Description description) : base(description)
-        {
-            InitializeComponent();
-        }
+      InitializeComponent();
     }
+
+    public LineLegendItem(Description description) : base(description)
+    {
+      InitializeComponent();
+    }
+  }
 }

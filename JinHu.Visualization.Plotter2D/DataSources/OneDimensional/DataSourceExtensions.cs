@@ -5,10 +5,10 @@ namespace JinHu.Visualization.Plotter2D.DataSources
 {
   public static class DataSourceExtensions
   {
-    public static RawDataSource AsDataSource(this IEnumerable<Point> points) 
+    public static RawDataSource AsDataSource(this IEnumerable<Point> points)
       => new RawDataSource(points);
 
-    public static EnumerableDataSource<T> AsDataSource<T>(this IEnumerable<T> collection) 
+    public static EnumerableDataSource<T> AsDataSource<T>(this IEnumerable<T> collection)
       => new EnumerableDataSource<T>(collection);
 
     public static EnumerableDataSource<T> AsXDataSource<T>(this IEnumerable<T> collection)
@@ -65,7 +65,7 @@ namespace JinHu.Visualization.Plotter2D.DataSources
       return ds;
     }
 
-    public static CompositeDataSource Join(this IPointDataSource ds1, IPointDataSource ds2) 
+    public static CompositeDataSource Join(this IPointDataSource ds1, IPointDataSource ds2)
       => new CompositeDataSource(ds1, ds2);
 
     public static IEnumerable<Point> GetPoints(this IPointDataSource dataSource)

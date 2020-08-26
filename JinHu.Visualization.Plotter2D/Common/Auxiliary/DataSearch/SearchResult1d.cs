@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace JinHu.Visualization.Plotter2D.Common
+﻿namespace JinHu.Visualization.Plotter2D.Common
 {
   internal struct SearchResult1d
   {

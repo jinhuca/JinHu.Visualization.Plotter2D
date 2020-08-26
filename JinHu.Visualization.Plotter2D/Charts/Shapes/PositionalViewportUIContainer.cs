@@ -1,18 +1,11 @@
 ﻿#define old
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Controls;
-using System.Windows;
-using JinHu.Visualization.Plotter2D;
-using System.Windows.Threading;
-using System.Diagnostics;
-using System.Windows.Markup;
-using System.Collections.ObjectModel;
 using JinHu.Visualization.Plotter2D.Common;
-using System.Windows.Data;
+using System;
+using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace JinHu.Visualization.Plotter2D.Charts
 {
@@ -113,7 +106,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
     private const string canvasName = "ViewportUIContainer_Canvas";
     private ViewportHostPanel hostPanel;
-    private Plotter2D plotter;
+    private PlotterBase plotter;
     public void OnPlotterAttached(PlotterBase plotter)
     {
       if (Parent == null)
@@ -149,13 +142,13 @@ namespace JinHu.Visualization.Plotter2D.Charts
 #else
 #endif
 
-      Plotter2D plotter2d = (Plotter2D)plotter;
+      PlotterBase plotter2d = (PlotterBase)plotter;
       this.plotter = plotter2d;
     }
 
     public void OnPlotterDetaching(PlotterBase plotter)
     {
-      Plotter2D plotter2d = (Plotter2D)plotter;
+      PlotterBase plotter2d = (PlotterBase)plotter;
 
 #if !old
 			Canvas hostCanvas = (Canvas)hostPanel.FindName(canvasName);
@@ -180,7 +173,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
       this.plotter = null;
     }
 
-    public Plotter2D Plotter
+    public PlotterBase Plotter
     {
       get { return plotter; }
     }

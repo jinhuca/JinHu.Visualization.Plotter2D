@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace JinHu.Visualization.Plotter2D.Common
+﻿namespace JinHu.Visualization.Plotter2D.Common
 {
   //public static class RandomExtensions
   //{

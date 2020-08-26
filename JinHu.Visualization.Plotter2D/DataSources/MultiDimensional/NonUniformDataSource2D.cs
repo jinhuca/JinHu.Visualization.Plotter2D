@@ -32,7 +32,7 @@ namespace JinHu.Visualization.Plotter2D.DataSources
     public void ApplyMappings(DependencyObject marker, int x, int y) => throw new NotImplementedException();
     public Point[,] Grid { get; private set; }
     public int Width => XCoordinates.Length;
-    public int Height => YCoordinates.Length; 
+    public int Height => YCoordinates.Length;
 #pragma warning disable CS0067 // The event 'NonUniformDataSource2D<T>.Changed' is never used
     public event EventHandler Changed;
 #pragma warning restore CS0067 // The event 'NonUniformDataSource2D<T>.Changed' is never used

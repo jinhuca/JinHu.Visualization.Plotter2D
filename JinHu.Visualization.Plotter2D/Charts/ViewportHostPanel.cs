@@ -3,7 +3,6 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using d3 = JinHu.Visualization.Plotter2D;
 
 namespace JinHu.Visualization.Plotter2D.Charts
 {
@@ -38,7 +37,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
       }
       if (owner.plotter == null && e.CurrentPlotter != null)
       {
-        owner.plotter = (Plotter2D)e.CurrentPlotter;
+        owner.plotter = (PlotterBase)e.CurrentPlotter;
         owner.viewport = owner.plotter.Viewport;
         owner.viewport.PropertyChanged += owner.Viewport_PropertyChanged;
       }
@@ -54,13 +53,13 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
     #region IPlotterElement Members
 
-    private Plotter2D plotter;
-    protected Plotter2D Plotter => plotter;
+    private PlotterBase plotter;
+    protected PlotterBase Plotter => plotter;
 
     Viewport2D viewport;
     public virtual void OnPlotterAttached(PlotterBase plotter)
     {
-      this.plotter = (Plotter2D)plotter;
+      this.plotter = (PlotterBase)plotter;
       viewport = this.plotter.Viewport;
       if (!IsMarkersHost)
       {

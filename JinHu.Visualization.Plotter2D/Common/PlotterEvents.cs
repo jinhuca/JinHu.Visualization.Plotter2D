@@ -3,13 +3,13 @@
 namespace JinHu.Visualization.Plotter2D.Common
 {
   public static class PlotterEvents
-	{
-		internal static void Notify(FrameworkElement target, PlotterChangedEventArgs args)
-		{
-			PlotterAttachedEvent.Notify(target, args);
-			PlotterChangedEvent.Notify(target, args);
-			PlotterDetachingEvent.Notify(target, args);
-		}
+  {
+    internal static void Notify(FrameworkElement target, PlotterChangedEventArgs args)
+    {
+      PlotterAttachedEvent.Notify(target, args);
+      PlotterChangedEvent.Notify(target, args);
+      PlotterDetachingEvent.Notify(target, args);
+    }
 
     public static PlotterEventHelper PlotterAttachedEvent => new PlotterEventHelper(PlotterBase.PlotterAttachedEvent);
 

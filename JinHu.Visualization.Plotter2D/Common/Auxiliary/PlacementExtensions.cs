@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using JinHu.Visualization.Plotter2D.Charts;
+﻿using JinHu.Visualization.Plotter2D.Charts;
 
 namespace JinHu.Visualization.Plotter2D.Common
 {

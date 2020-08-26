@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
-using System;
 
 namespace JinHu.Visualization.Plotter2D
 {

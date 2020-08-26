@@ -2,9 +2,6 @@
 using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using JinHu.Visualization.Plotter2D.Common;
-using System.Diagnostics;
 
 namespace JinHu.Visualization.Plotter2D
 {

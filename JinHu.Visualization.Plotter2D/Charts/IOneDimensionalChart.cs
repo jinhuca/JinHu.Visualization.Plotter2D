@@ -4,8 +4,8 @@ using System;
 namespace JinHu.Visualization.Plotter2D
 {
   public interface IOneDimensionalChart
-	{
-		IPointDataSource DataSource { get; set; }
-		event EventHandler DataChanged;
-	}
+  {
+    IPointDataSource DataSource { get; set; }
+    event EventHandler DataChanged;
+  }
 }

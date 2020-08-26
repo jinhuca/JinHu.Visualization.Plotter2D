@@ -25,7 +25,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
     {
       if (currPlotter != null)
       {
-        Plotter2D plotter2d = (Plotter2D)currPlotter;
+        PlotterBase plotter2d = (PlotterBase)currPlotter;
         viewport = plotter2d.Viewport;
       }
       else

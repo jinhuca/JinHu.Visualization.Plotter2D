@@ -7,13 +7,13 @@ using System.Windows.Media.Imaging;
 namespace JinHu.Visualization.Plotter2D.Charts
 {
   public class NaiveColorMap
-	{
-		public double[,] Data { get; set; }
+  {
+    public double[,] Data { get; set; }
 
-		public IPalette Palette { get; set; }
+    public IPalette Palette { get; set; }
 
-		public BitmapSource BuildImage()
-		{
+    public BitmapSource BuildImage()
+    {
       if (Data == null)
       {
         throw new ArgumentNullException("Data");
@@ -23,32 +23,32 @@ namespace JinHu.Visualization.Plotter2D.Charts
         throw new ArgumentNullException("Palette");
       }
 
-			int width = Data.GetLength(0);
-			int height = Data.GetLength(1);
+      int width = Data.GetLength(0);
+      int height = Data.GetLength(1);
 
-			int[] pixels = new int[width * height];
-			var minMax = Data.GetMinMax();
-			var min = minMax.Min;
-			var rangeDelta = minMax.GetLength();
+      int[] pixels = new int[width * height];
+      var minMax = Data.GetMinMax();
+      var min = minMax.Min;
+      var rangeDelta = minMax.GetLength();
 
-			int pointer = 0;
-			for (int iy = 0; iy < height; iy++)
-			{
-				for (int ix = 0; ix < width; ix++)
-				{
-					double value = Data[ix, height - 1 - iy];
-					double ratio = (value - min) / rangeDelta;
-					Color color = Palette.GetColor(ratio);
-					int argb = color.ToArgb();
-					pixels[pointer++] = argb;
-				}
-			}
+      int pointer = 0;
+      for (int iy = 0; iy < height; iy++)
+      {
+        for (int ix = 0; ix < width; ix++)
+        {
+          double value = Data[ix, height - 1 - iy];
+          double ratio = (value - min) / rangeDelta;
+          Color color = Palette.GetColor(ratio);
+          int argb = color.ToArgb();
+          pixels[pointer++] = argb;
+        }
+      }
 
-			WriteableBitmap bitmap = new WriteableBitmap(width, height, 96, 96, PixelFormats.Pbgra32, null);
-			int bpp = (bitmap.Format.BitsPerPixel + 7) / 8;
-			int stride = bitmap.PixelWidth * bpp;
-			bitmap.WritePixels(new Int32Rect(0, 0, width, height), pixels, stride, 0);
-			return bitmap;
-		}
-	}
+      WriteableBitmap bitmap = new WriteableBitmap(width, height, 96, 96, PixelFormats.Pbgra32, null);
+      int bpp = (bitmap.Format.BitsPerPixel + 7) / 8;
+      int stride = bitmap.PixelWidth * bpp;
+      bitmap.WritePixels(new Int32Rect(0, 0, width, height), pixels, stride, 0);
+      return bitmap;
+    }
+  }
 }

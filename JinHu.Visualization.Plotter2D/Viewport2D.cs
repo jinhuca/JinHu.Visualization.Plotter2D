@@ -21,19 +21,17 @@ namespace JinHu.Visualization.Plotter2D
     /// </summary>
     internal int UpdateIterationCount { get; set; }
 
-    private readonly Plotter2D plotter;
-    internal Plotter2D Plotter2D => plotter; 
+    internal PlotterBase PlotterBase { get; }
 
-    private readonly FrameworkElement hostElement;
-    internal FrameworkElement HostElement => hostElement;
+    internal FrameworkElement HostElement { get; }
 
-    protected internal Viewport2D(FrameworkElement _host, Plotter2D _plotter)
+    protected internal Viewport2D(FrameworkElement _host, PlotterBase _plotter)
     {
-      hostElement = _host;
+      HostElement = _host;
       _host.ClipToBounds = true;
       _host.SizeChanged += OnHostElementSizeChanged;
 
-      plotter = _plotter;
+      PlotterBase = _plotter;
       _plotter.Children.CollectionChanged += OnPlotterChildrenChanged;
       constraints = new ConstraintCollection(this);
       constraints.Add(new MinimalSizeConstraint());
@@ -130,7 +128,7 @@ namespace JinHu.Visualization.Plotter2D
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public Plotter2D Plotter => plotter; 
+    public PlotterBase Plotter => PlotterBase;
 
     private readonly ConstraintCollection constraints;
 
@@ -160,7 +158,7 @@ namespace JinHu.Visualization.Plotter2D
     ///   The fit to view constraints.
     /// </value>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-    public ConstraintCollection FitToViewConstraints => fitToViewConstraints; 
+    public ConstraintCollection FitToViewConstraints => fitToViewConstraints;
 
     #region Output property
 
@@ -265,7 +263,7 @@ namespace JinHu.Visualization.Plotter2D
     private void UpdateContentBoundsHosts()
     {
       contentBoundsHosts.Clear();
-      foreach (var item in plotter.Children)
+      foreach (var item in PlotterBase.Children)
       {
         DependencyObject dependencyObject = item as DependencyObject;
         if (dependencyObject != null)
@@ -350,7 +348,7 @@ namespace JinHu.Visualization.Plotter2D
             continue;
           }
 
-          var plotter = (Plotter2D)plotterElement.Plotter;
+          var plotter = (PlotterBase)plotterElement.Plotter;
           var visual = plotter.VisualBindings[plotterElement];
           if (visual.Visibility == Visibility.Visible)
           {
@@ -541,7 +539,7 @@ namespace JinHu.Visualization.Plotter2D
     }
 
     private CoordinateTransform transform = CoordinateTransform.CreateDefault();
-    
+
     /// <summary>
     ///   Gets or sets the coordinate transform of Viewport.
     /// </summary>

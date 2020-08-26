@@ -1,11 +1,10 @@
-﻿using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media;
+﻿using JinHu.Visualization.Plotter2D.Charts;
+using JinHu.Visualization.Plotter2D.Common;
 using Microsoft.Win32;
 using System;
-using JinHu.Visualization.Plotter2D.Common;
 using System.Collections.Generic;
-using JinHu.Visualization.Plotter2D.Charts;
+using System.Windows;
+using System.Windows.Input;
 
 namespace JinHu.Visualization.Plotter2D
 {
@@ -429,10 +428,10 @@ namespace JinHu.Visualization.Plotter2D
       get { return plotter2D.Viewport; }
     }
 
-    private Plotter2D plotter2D;
+    private PlotterBase plotter2D;
     void IPlotterElement.OnPlotterAttached(PlotterBase plotter)
     {
-      plotter2D = (Plotter2D)plotter;
+      plotter2D = (PlotterBase)plotter;
 
       InitCommands();
     }

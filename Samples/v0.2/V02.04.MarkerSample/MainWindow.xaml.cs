@@ -2,7 +2,6 @@
 using JinHu.Visualization.Plotter2D.Charts;
 using JinHu.Visualization.Plotter2D.DataSources;
 using System;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media;
 

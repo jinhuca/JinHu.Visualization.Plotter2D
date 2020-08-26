@@ -98,10 +98,10 @@ namespace JinHu.Visualization.Plotter2D.Common
       }
 
       RenderTargetBitmap bmp = new RenderTargetBitmap(
-        (int)uiElement.RenderSize.Width, 
+        (int)uiElement.RenderSize.Width,
         (int)uiElement.RenderSize.Height,
-        96, 
-        96, 
+        96,
+        96,
         PixelFormats.Default);
 
       // this is waiting for dispatcher to perform measure, arrange and render passes

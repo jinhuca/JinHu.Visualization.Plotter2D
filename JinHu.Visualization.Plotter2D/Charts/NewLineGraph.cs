@@ -197,7 +197,7 @@ namespace JinHu.Visualization.Plotter2D
     {
       var currentTransform = plotter.Transform;
 
-      var shift = transformWhenCreated.ViewportRect.Location.ViewportToScreen(currentTransform) 
+      var shift = transformWhenCreated.ViewportRect.Location.ViewportToScreen(currentTransform)
         - currentTransform.ViewportRect.Location.ViewportToScreen(currentTransform);
 
       layoutTransform.X = shift.X;
@@ -270,10 +270,10 @@ namespace JinHu.Visualization.Plotter2D
 
     #region IPlotterElement Members
 
-    private Plotter2D plotter;
+    private PlotterBase plotter;
     public void OnPlotterAttached(PlotterBase plotter)
     {
-      this.plotter = (Plotter2D)plotter;
+      this.plotter = (PlotterBase)plotter;
       this.plotter.Viewport.PropertyChanged += Viewport_PropertyChanged;
 
       plotter.CentralGrid.Children.Add(this);

@@ -1,92 +1,88 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using JinHu.Visualization.Plotter2D;
-using System.Windows.Media;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Media;
 
 namespace JinHu.Visualization.Plotter2D.Charts
 {
+  /// <summary>
+  /// Represents an axis with ticks of <see cref="System.DateTime"/> type.
+  /// </summary>
+  public class DateTimeAxis : AxisBase<DateTime>
+  {
     /// <summary>
-    /// Represents an axis with ticks of <see cref="System.DateTime"/> type.
+    /// Initializes a new instance of the <see cref="DateTimeAxis"/> class.
     /// </summary>
-    public class DateTimeAxis : AxisBase<DateTime>
+    public DateTimeAxis()
+        : base(new DateTimeAxisControl(), DoubleToDate,
+            dt => dt.Ticks / 10000000000.0)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DateTimeAxis"/> class.
-        /// </summary>
-        public DateTimeAxis()
-            : base(new DateTimeAxisControl(), DoubleToDate,
-                dt => dt.Ticks / 10000000000.0)
-        {
-            AxisControl.SetBinding(MajorLabelBackgroundBrushProperty, new Binding("MajorLabelBackgroundBrush") { Source = this });
-            AxisControl.SetBinding(MajorLabelRectangleBorderPropertyProperty, new Binding("MajorLabelRectangleBorderProperty") { Source = this });
-        }
+      AxisControl.SetBinding(MajorLabelBackgroundBrushProperty, new Binding("MajorLabelBackgroundBrush") { Source = this });
+      AxisControl.SetBinding(MajorLabelRectangleBorderPropertyProperty, new Binding("MajorLabelRectangleBorderProperty") { Source = this });
+    }
 
-        #region VisualProperties
+    #region VisualProperties
 
-        /// <summary>
-        /// Gets or sets the major tick labels' background brush. This is a DependencyProperty.
-        /// </summary>
-        /// <value>The major label background brush.</value>
-        public Brush MajorLabelBackgroundBrush
-        {
-            get { return (Brush)GetValue(MajorLabelBackgroundBrushProperty); }
-            set { SetValue(MajorLabelBackgroundBrushProperty, value); }
-        }
+    /// <summary>
+    /// Gets or sets the major tick labels' background brush. This is a DependencyProperty.
+    /// </summary>
+    /// <value>The major label background brush.</value>
+    public Brush MajorLabelBackgroundBrush
+    {
+      get { return (Brush)GetValue(MajorLabelBackgroundBrushProperty); }
+      set { SetValue(MajorLabelBackgroundBrushProperty, value); }
+    }
 
-        public static readonly DependencyProperty MajorLabelBackgroundBrushProperty = DependencyProperty.Register(
-          "MajorLabelBackgroundBrush",
-          typeof(Brush),
-          typeof(DateTimeAxis),
-          new FrameworkPropertyMetadata(Brushes.Beige));
+    public static readonly DependencyProperty MajorLabelBackgroundBrushProperty = DependencyProperty.Register(
+      "MajorLabelBackgroundBrush",
+      typeof(Brush),
+      typeof(DateTimeAxis),
+      new FrameworkPropertyMetadata(Brushes.Beige));
 
 
-        public Brush MajorLabelRectangleBorderProperty
-        {
-            get { return (Brush)GetValue(MajorLabelRectangleBorderPropertyProperty); }
-            set { SetValue(MajorLabelRectangleBorderPropertyProperty, value); }
-        }
+    public Brush MajorLabelRectangleBorderProperty
+    {
+      get { return (Brush)GetValue(MajorLabelRectangleBorderPropertyProperty); }
+      set { SetValue(MajorLabelRectangleBorderPropertyProperty, value); }
+    }
 
-        public static readonly DependencyProperty MajorLabelRectangleBorderPropertyProperty = DependencyProperty.Register(
-          "MajorLabelRectangleBorderProperty",
-          typeof(Brush),
-          typeof(DateTimeAxis),
-          new FrameworkPropertyMetadata(Brushes.Peru));
+    public static readonly DependencyProperty MajorLabelRectangleBorderPropertyProperty = DependencyProperty.Register(
+      "MajorLabelRectangleBorderProperty",
+      typeof(Brush),
+      typeof(DateTimeAxis),
+      new FrameworkPropertyMetadata(Brushes.Peru));
 
-        #endregion // end of VisualProperties
+    #endregion // end of VisualProperties
 
-		private ViewportConstraint constraint = new DateTimeHorizontalAxisConstraint();
-		protected ViewportConstraint Constraint
-        {
-			get { return constraint; }
-            set { constraint = value; }
-        }
+    private ViewportConstraint constraint = new DateTimeHorizontalAxisConstraint();
+    protected ViewportConstraint Constraint
+    {
+      get { return constraint; }
+      set { constraint = value; }
+    }
 
-        protected override void OnPlotterAttached(Plotter2D plotter)
-        {
-            base.OnPlotterAttached(plotter);
+    protected override void OnPlotterAttached(PlotterBase plotter)
+    {
+      base.OnPlotterAttached(plotter);
 
-            plotter.Viewport.Constraints.Add(constraint);
-        }
+      plotter.Viewport.Constraints.Add(constraint);
+    }
 
-        protected override void OnPlotterDetaching(Plotter2D plotter)
-        {
-            plotter.Viewport.Constraints.Remove(constraint);
+    protected override void OnPlotterDetaching(PlotterBase plotter)
+    {
+      plotter.Viewport.Constraints.Remove(constraint);
 
-            base.OnPlotterDetaching(plotter);
-        }
+      base.OnPlotterDetaching(plotter);
+    }
 
-        private static readonly long minTicks = DateTime.MinValue.Ticks;
-        private static readonly long maxTicks = DateTime.MaxValue.Ticks;
-        private static DateTime DoubleToDate(double d)
-        {
-            long ticks = (long)(d * 10000000000L);
+    private static readonly long minTicks = DateTime.MinValue.Ticks;
+    private static readonly long maxTicks = DateTime.MaxValue.Ticks;
+    private static DateTime DoubleToDate(double d)
+    {
+      long ticks = (long)(d * 10000000000L);
 
-            // todo should we throw an exception if number of ticks is too big or small?
-            if (ticks < minTicks)
+      // todo should we throw an exception if number of ticks is too big or small?
+      if (ticks < minTicks)
       {
         ticks = minTicks;
       }
@@ -96,22 +92,22 @@ namespace JinHu.Visualization.Plotter2D.Charts
       }
 
       return new DateTime(ticks);
-        }
-
-        /// <summary>
-        /// Sets conversions of axis - functions used to convert values of axis type to and from double values of viewport.
-        /// Sets both ConvertToDouble and ConvertFromDouble properties.
-        /// </summary>
-        /// <param name="min">The minimal viewport value.</param>
-        /// <param name="minValue">The value of axis type, corresponding to minimal viewport value.</param>
-        /// <param name="max">The maximal viewport value.</param>
-        /// <param name="maxValue">The value of axis type, corresponding to maximal viewport value.</param>
-        public override void SetConversion(double min, DateTime minValue, double max, DateTime maxValue)
-        {
-            var conversion = new DateTimeToDoubleConversion(min, minValue, max, maxValue);
-
-            ConvertToDouble = conversion.ToDouble;
-            ConvertFromDouble = conversion.FromDouble;
-        }
     }
+
+    /// <summary>
+    /// Sets conversions of axis - functions used to convert values of axis type to and from double values of viewport.
+    /// Sets both ConvertToDouble and ConvertFromDouble properties.
+    /// </summary>
+    /// <param name="min">The minimal viewport value.</param>
+    /// <param name="minValue">The value of axis type, corresponding to minimal viewport value.</param>
+    /// <param name="max">The maximal viewport value.</param>
+    /// <param name="maxValue">The value of axis type, corresponding to maximal viewport value.</param>
+    public override void SetConversion(double min, DateTime minValue, double max, DateTime maxValue)
+    {
+      var conversion = new DateTimeToDoubleConversion(min, minValue, max, maxValue);
+
+      ConvertToDouble = conversion.ToDouble;
+      ConvertFromDouble = conversion.FromDouble;
+    }
+  }
 }

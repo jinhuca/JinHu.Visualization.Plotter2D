@@ -1,15 +1,14 @@
-﻿using System;
+﻿using JinHu.Visualization.Plotter2D.Common;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Windows.Data;
-using JinHu.Visualization.Plotter2D.Common;
-using System.Windows.Threading;
 
 namespace JinHu.Visualization.Plotter2D.Charts
 {

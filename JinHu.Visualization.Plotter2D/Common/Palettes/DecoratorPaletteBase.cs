@@ -7,11 +7,11 @@ namespace JinHu.Visualization.Plotter2D.Common
   ///   Represents a base class for decorating palette, which wraps another palette and intercepts calls to it.
   /// </summary>
   public abstract class DecoratorPaletteBase : PaletteBase
-	{
-		/// <summary>
-		///   Initializes a new instance of the <see cref="DecoratorPaletteBase"/> class.
-		/// </summary>
-		protected DecoratorPaletteBase() { }
+  {
+    /// <summary>
+    ///   Initializes a new instance of the <see cref="DecoratorPaletteBase"/> class.
+    /// </summary>
+    protected DecoratorPaletteBase() { }
 
     /// <summary>
     ///   Initializes a new instance of the <see cref="DecoratorPaletteBase"/> class.
@@ -22,28 +22,28 @@ namespace JinHu.Visualization.Plotter2D.Common
     public DecoratorPaletteBase(IPalette palette) => Palette = palette;
 
     private IPalette palette = null;
-		
+
     /// <summary>
-		///   Gets or sets the palette being decorated.
-		/// </summary>
-		/// <value>
+    ///   Gets or sets the palette being decorated.
+    /// </summary>
+    /// <value>
     ///   The palette.
     /// </value>
-		public IPalette Palette
-		{
-			get { return palette; }
-			set
-			{
+    public IPalette Palette
+    {
+      get { return palette; }
+      set
+      {
         if (palette != null)
         {
           palette.Changed -= OnChildPaletteChanged;
         }
 
-				palette = value ?? throw new ArgumentNullException("value");
-				palette.Changed += OnChildPaletteChanged;
-				RaiseChanged();
-			}
-		}
+        palette = value ?? throw new ArgumentNullException("value");
+        palette.Changed += OnChildPaletteChanged;
+        RaiseChanged();
+      }
+    }
 
     void OnChildPaletteChanged(object sender, EventArgs e) => RaiseChanged();
 
@@ -57,5 +57,5 @@ namespace JinHu.Visualization.Plotter2D.Common
     ///   Color.
     /// </returns>
     public override Color GetColor(double t) => palette.GetColor(t);
-	}
+  }
 }

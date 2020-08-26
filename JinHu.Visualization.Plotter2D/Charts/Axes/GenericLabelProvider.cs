@@ -3,49 +3,49 @@ using System.Windows.Controls;
 
 namespace JinHu.Visualization.Plotter2D.Charts
 {
-	/// <summary>
-	/// Represents default implementation of label provider for specified type.
-	/// </summary>
-	/// <typeparam name="T">Axis values type.</typeparam>
-	public class GenericLabelProvider<T> : LabelProviderBase<T>
-	{
-		/// <summary>
-		/// Initializes a new instance of the <see cref="GenericLabelProvider&lt;T&gt;"/> class.
-		/// </summary>
-		public GenericLabelProvider() { }
+  /// <summary>
+  /// Represents default implementation of label provider for specified type.
+  /// </summary>
+  /// <typeparam name="T">Axis values type.</typeparam>
+  public class GenericLabelProvider<T> : LabelProviderBase<T>
+  {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="GenericLabelProvider&lt;T&gt;"/> class.
+    /// </summary>
+    public GenericLabelProvider() { }
 
-		#region ILabelProvider<T> Members
+    #region ILabelProvider<T> Members
 
-		/// <summary>
-		/// Creates the labels by given ticks info.
-		/// </summary>
-		/// <param name="ticksInfo">The ticks info.</param>
-		/// <returns>
-		/// Array of <see cref="UIElement"/>s, which are axis labels for specified axis ticks.
-		/// </returns>
-		public override UIElement[] CreateLabels(ITicksInfo<T> ticksInfo)
-		{
-			var ticks = ticksInfo.Ticks;
-			var info = ticksInfo.Info;
+    /// <summary>
+    /// Creates the labels by given ticks info.
+    /// </summary>
+    /// <param name="ticksInfo">The ticks info.</param>
+    /// <returns>
+    /// Array of <see cref="UIElement"/>s, which are axis labels for specified axis ticks.
+    /// </returns>
+    public override UIElement[] CreateLabels(ITicksInfo<T> ticksInfo)
+    {
+      var ticks = ticksInfo.Ticks;
+      var info = ticksInfo.Info;
 
-			LabelTickInfo<T> tickInfo = new LabelTickInfo<T>();
-			UIElement[] res = new UIElement[ticks.Length];
-			for (int i = 0; i < res.Length; i++)
-			{
-				tickInfo.Tick = ticks[i];
-				tickInfo.Info = info;
+      LabelTickInfo<T> tickInfo = new LabelTickInfo<T>();
+      UIElement[] res = new UIElement[ticks.Length];
+      for (int i = 0; i < res.Length; i++)
+      {
+        tickInfo.Tick = ticks[i];
+        tickInfo.Info = info;
 
-				string text = GetString(tickInfo);
+        string text = GetString(tickInfo);
 
-				res[i] = new TextBlock
-				{
-					Text = text,
-					ToolTip = ticks[i].ToString()
-				};
-			}
-			return res;
-		}
+        res[i] = new TextBlock
+        {
+          Text = text,
+          ToolTip = ticks[i].ToString()
+        };
+      }
+      return res;
+    }
 
-		#endregion
-	}
+    #endregion
+  }
 }

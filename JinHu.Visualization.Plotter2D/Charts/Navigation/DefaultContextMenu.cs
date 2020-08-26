@@ -149,10 +149,10 @@ namespace JinHu.Visualization.Plotter2D
 
     #region IPlotterElement Members
 
-    private Plotter2D plotter;
+    private PlotterBase plotter;
     void IPlotterElement.OnPlotterAttached(PlotterBase plotter)
     {
-      this.plotter = (Plotter2D)plotter;
+      this.plotter = (PlotterBase)plotter;
 
       ContextMenu menu = PopulateContextMenu(plotter);
       plotter.ContextMenu = menu;

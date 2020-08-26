@@ -1,73 +1,71 @@
-﻿using System;
+﻿using JinHu.Visualization.Plotter2D.Charts;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using JinHu.Visualization.Plotter2D.Charts;
 using System.Windows;
 
 namespace JinHu.Visualization.Plotter2D
 {
-	public class FrequencyFilter2 : PointsFilterBase
-	{
-		private Rect screenRect;
-		public override void SetScreenRect(Rect screenRect)
-		{
-			this.screenRect = screenRect;
-		}
+  public class FrequencyFilter2 : PointsFilterBase
+  {
+    private Rect screenRect;
+    public override void SetScreenRect(Rect screenRect)
+    {
+      this.screenRect = screenRect;
+    }
 
-		public override List<Point> Filter(List<Point> points)
-		{
-			List<Point> result = new List<Point>();
+    public override List<Point> Filter(List<Point> points)
+    {
+      List<Point> result = new List<Point>();
 
-			using (var enumerator = points.GetEnumerator())
-			{
-				double currentX = double.NegativeInfinity;
+      using (var enumerator = points.GetEnumerator())
+      {
+        double currentX = double.NegativeInfinity;
 
-				double minX = 0, maxX = 0, minY = 0, maxY = 0;
+        double minX = 0, maxX = 0, minY = 0, maxY = 0;
 
-				Point left = new Point(), right = new Point(), top = new Point(), bottom = new Point();
+        Point left = new Point(), right = new Point(), top = new Point(), bottom = new Point();
 
-				bool isFirstPoint = true;
-				while (enumerator.MoveNext())
-				{
-					Point currPoint = enumerator.Current;
-					double x = currPoint.X;
-					double y = currPoint.Y;
-					double xInt = Math.Floor(x);
-					if (xInt == currentX)
-					{
-						if (x > maxX)
-						{
-							maxX = x;
-							right = currPoint;
-						}
+        bool isFirstPoint = true;
+        while (enumerator.MoveNext())
+        {
+          Point currPoint = enumerator.Current;
+          double x = currPoint.X;
+          double y = currPoint.Y;
+          double xInt = Math.Floor(x);
+          if (xInt == currentX)
+          {
+            if (x > maxX)
+            {
+              maxX = x;
+              right = currPoint;
+            }
 
-						if (y > maxY)
-						{
-							maxY = y;
-							top = currPoint;
-						}
-						else if (y < minY)
-						{
-							minY = y;
-							bottom = currPoint;
-						}
-					}
-					else
-					{
-						if (!isFirstPoint)
-						{
-							result.Add(left);
+            if (y > maxY)
+            {
+              maxY = y;
+              top = currPoint;
+            }
+            else if (y < minY)
+            {
+              minY = y;
+              bottom = currPoint;
+            }
+          }
+          else
+          {
+            if (!isFirstPoint)
+            {
+              result.Add(left);
 
-							Point leftY = top.X < bottom.X ? top : bottom;
-							Point rightY = top.X > bottom.X ? top : bottom;
+              Point leftY = top.X < bottom.X ? top : bottom;
+              Point rightY = top.X > bottom.X ? top : bottom;
 
-							if (top != bottom)
-							{
-								result.Add(leftY);
-								result.Add(rightY);
-							}
-							else if (top != left)
+              if (top != bottom)
+              {
+                result.Add(leftY);
+                result.Add(rightY);
+              }
+              else if (top != left)
               {
                 result.Add(top);
               }
@@ -78,17 +76,17 @@ namespace JinHu.Visualization.Plotter2D
               }
             }
 
-						currentX = xInt;
-						left = right = top = bottom = currPoint;
-						minX = maxX = x;
-						minY = maxY = y;
-					}
+            currentX = xInt;
+            left = right = top = bottom = currPoint;
+            minX = maxX = x;
+            minY = maxY = y;
+          }
 
-					isFirstPoint = false;
-				}
-			}
+          isFirstPoint = false;
+        }
+      }
 
-			return result;
-		}
-	}
+      return result;
+    }
+  }
 }

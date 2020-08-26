@@ -1,5 +1,4 @@
-﻿using System;
-using JinHu.Visualization.Plotter2D.Common;
+﻿using JinHu.Visualization.Plotter2D.Common;
 using System.Windows;
 
 namespace JinHu.Visualization.Plotter2D.Charts

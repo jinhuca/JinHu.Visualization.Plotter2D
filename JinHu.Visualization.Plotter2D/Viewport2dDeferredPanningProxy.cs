@@ -5,7 +5,7 @@ namespace JinHu.Visualization.Plotter2D
   internal sealed class Viewport2dDeferredPanningProxy : Viewport2D
   {
     private Viewport2D viewport;
-    internal Viewport2dDeferredPanningProxy(Viewport2D viewport) : base(viewport.HostElement, viewport.Plotter2D)
+    internal Viewport2dDeferredPanningProxy(Viewport2D viewport) : base(viewport.HostElement, viewport.PlotterBase)
     {
       viewport.PropertyChanged += viewport_PropertyChanged;
       viewport.PanningStateChanged += viewport_PanningStateChanged;
@@ -60,14 +60,14 @@ namespace JinHu.Visualization.Plotter2D
     }
 
     public override CoordinateTransform Transform
-		{
-			get => viewport.PanningState == Viewport2DPanningState.Panning
-					? viewport.Transform.WithRects(prevVisible, viewport.Output)
-					: viewport.Transform;
-			set => base.Transform = value;
-		}
+    {
+      get => viewport.PanningState == Viewport2DPanningState.Panning
+          ? viewport.Transform.WithRects(prevVisible, viewport.Output)
+          : viewport.Transform;
+      set => base.Transform = value;
+    }
 
-		protected override void RaisePropertyChanged(ExtendedPropertyChangedEventArgs args)
+    protected override void RaisePropertyChanged(ExtendedPropertyChangedEventArgs args)
     {
       if (args.PropertyName == "Visible")
       {

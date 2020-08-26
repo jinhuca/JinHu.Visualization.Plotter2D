@@ -333,7 +333,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
     }
 
     private object data;
-    
+
     /// <summary>
     ///   Gets or sets the additional custom data.
     /// </summary>

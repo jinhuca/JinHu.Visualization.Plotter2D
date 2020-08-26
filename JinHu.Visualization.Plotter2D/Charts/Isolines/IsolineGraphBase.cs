@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using JinHu.Visualization.Plotter2D.Common;
+﻿using JinHu.Visualization.Plotter2D.Common;
 using JinHu.Visualization.Plotter2D.DataSources;
-using DataSource = JinHu.Visualization.Plotter2D.DataSources.IDataSource2D<double>;
+using System;
 using System.Windows;
+using DataSource = JinHu.Visualization.Plotter2D.DataSources.IDataSource2D<double>;
 
 namespace JinHu.Visualization.Plotter2D.Charts
 {

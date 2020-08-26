@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Markup;
-using System.Windows.Data;
-using System.Windows;
-using System.Windows.Threading;
 using System.ComponentModel;
+using System.Windows;
+using System.Windows.Data;
+using System.Windows.Markup;
+using System.Windows.Threading;
 
 namespace JinHu.Visualization.Plotter2D.Charts
 {
@@ -120,7 +118,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
     void IPlotterElement.OnPlotterAttached(PlotterBase plotter)
     {
-      this.plotter = (Plotter2D)plotter;
+      this.plotter = (PlotterBase)plotter;
 
       if (polyline != null)
       {
@@ -133,7 +131,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
       this.plotter = null;
     }
 
-    private Plotter2D plotter;
+    private PlotterBase plotter;
     /// <summary>
     /// Gets the parent plotter of chart.
     /// Should be equal to null if item is not connected to any plotter.

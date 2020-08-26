@@ -2,19 +2,18 @@
 using JinHu.Visualization.Plotter2D.DataSources;
 using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace JinHu.Visualization.Plotter2D
 {
   /// <summary>
-  ///   Extensions for <see cref="Plotter2DSurface"/> - simplified methods to add line and marker charts.
+  ///   Extensions for <see cref="PlotterBase"/> - simplified methods to add line and marker charts.
   /// </summary>
-  public static class Plotter2DExtensions
+  public static class PlotterBaseExtensions
   {
     #region [-- Cursor Coordinate Graphs --]
 
-    public static void AddCursor(this Plotter2D plotter, CursorCoordinateGraph cursorGraph)
+    public static void AddCursor(this PlotterBase plotter, CursorCoordinateGraph cursorGraph)
     {
       plotter.Children.Add(cursorGraph);
     }
@@ -29,7 +28,7 @@ namespace JinHu.Visualization.Plotter2D
     /// <param name="pointSource">
     ///   The point source.
     /// </param>
-    public static LineGraph AddLineGraph(this Plotter2D plotter, IPointDataSource pointSource)
+    public static LineGraph AddLineGraph(this PlotterBase plotter, IPointDataSource pointSource)
       => AddLineGraph(plotter, pointSource, ColorHelper.CreateRandomHsbColor());
 
     /// <summary>
@@ -42,7 +41,7 @@ namespace JinHu.Visualization.Plotter2D
     ///   Color of the line.
     /// </param>
     /// <returns></returns>
-    public static LineGraph AddLineGraph(this Plotter2D plotter, IPointDataSource pointSource, Color lineColor)
+    public static LineGraph AddLineGraph(this PlotterBase plotter, IPointDataSource pointSource, Color lineColor)
       => AddLineGraph(plotter, pointSource, lineColor, 1);
 
     /// <summary>
@@ -55,7 +54,7 @@ namespace JinHu.Visualization.Plotter2D
     ///   The line thickness.
     /// </param>
     /// <returns></returns>
-    public static LineGraph AddLineGraph(this Plotter2D plotter, IPointDataSource pointSource, double lineThickness)
+    public static LineGraph AddLineGraph(this PlotterBase plotter, IPointDataSource pointSource, double lineThickness)
       => AddLineGraph(plotter, pointSource, ColorHelper.CreateRandomHsbColor(), lineThickness);
 
     /// <summary>
@@ -74,7 +73,7 @@ namespace JinHu.Visualization.Plotter2D
     ///   Description of data.
     /// </param>
     /// <returns></returns>
-    public static LineGraph AddLineGraph(this Plotter2D plotter, IPointDataSource pointSource, Color lineColor, double lineThickness, string description)
+    public static LineGraph AddLineGraph(this PlotterBase plotter, IPointDataSource pointSource, Color lineColor, double lineThickness, string description)
       => AddLineGraph(plotter, pointSource, new Pen(new SolidColorBrush(lineColor), lineThickness), new PenDescription(description));
 
     /// <summary>
@@ -84,7 +83,7 @@ namespace JinHu.Visualization.Plotter2D
     /// <param name="lineColor">Color of the line.</param>
     /// <param name="lineThickness">The line thickness.</param>
     /// <returns></returns>
-    public static LineGraph AddLineGraph(this Plotter2D plotter, IPointDataSource pointSource, Color lineColor, double lineThickness)
+    public static LineGraph AddLineGraph(this PlotterBase plotter, IPointDataSource pointSource, Color lineColor, double lineThickness)
       => AddLineGraph(plotter, pointSource, new Pen(new SolidColorBrush(lineColor), lineThickness), null);
 
     /// <summary>
@@ -93,7 +92,7 @@ namespace JinHu.Visualization.Plotter2D
     /// <param name="pointSource">The point source.</param>
     /// <param name="description">The description.</param>
     /// <returns></returns>
-    public static LineGraph AddLineGraph(this Plotter2D plotter, IPointDataSource pointSource, string description)
+    public static LineGraph AddLineGraph(this PlotterBase plotter, IPointDataSource pointSource, string description)
     {
       LineGraph graph = AddLineGraph(plotter, pointSource);
       graph.Description = new PenDescription(description);
@@ -108,7 +107,7 @@ namespace JinHu.Visualization.Plotter2D
     /// <param name="lineThickness">The line thickness.</param>
     /// <param name="description">The description.</param>
     /// <returns></returns>
-    public static LineGraph AddLineGraph(this Plotter2D plotter, IPointDataSource pointSource, double lineThickness, string description)
+    public static LineGraph AddLineGraph(this PlotterBase plotter, IPointDataSource pointSource, double lineThickness, string description)
     {
       var res = AddLineGraph(
         plotter,
@@ -121,7 +120,7 @@ namespace JinHu.Visualization.Plotter2D
     }
 
     [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
-    public static LineGraph AddLineGraph(this Plotter2D plotter, IPointDataSource pointSource, Pen linePen, Description description)
+    public static LineGraph AddLineGraph(this PlotterBase plotter, IPointDataSource pointSource, Pen linePen, Description description)
     {
       if (pointSource == null)
       {
@@ -164,7 +163,7 @@ namespace JinHu.Visualization.Plotter2D
     /// <returns></returns>
     [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
     public static LineAndMarker<MarkerPointsGraph> AddLineGraph(
-      this Plotter2D plotter,
+      this PlotterBase plotter,
       IPointDataSource pointSource,
       Pen linePen,
       PointMarker marker,
@@ -228,7 +227,7 @@ namespace JinHu.Visualization.Plotter2D
     /// <returns></returns>
     [SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters")]
     public static LineAndMarker<ElementMarkerPointsGraph> AddLineGraph(
-      this Plotter2D plotter,
+      this PlotterBase plotter,
       IPointDataSource pointSource,
       Pen linePen,
       ElementPointMarker marker,
@@ -286,7 +285,7 @@ namespace JinHu.Visualization.Plotter2D
 
     #region Attaching LineGraphs
 
-    public static void AttachLineGraph(this Plotter2D plotter, IPointDataSource pointSource, Pen linePen, PointMarker marker, Description desc)
+    public static void AttachLineGraph(this PlotterBase plotter, IPointDataSource pointSource, Pen linePen, PointMarker marker, Description desc)
     {
     }
 

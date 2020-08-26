@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Collections.ObjectModel;
-using System.Windows;
-using JinHu.Visualization.Plotter2D.Common;
+﻿using System.Collections.ObjectModel;
 
 namespace JinHu.Visualization.Plotter2D.Charts
 {
@@ -14,7 +8,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
   public sealed class IsolineTextAnnotater
   {
     private double wayBeforeText = 10;
-    
+
     /// <summary>
     ///   Gets or sets the distance between text labels.
     /// </summary>

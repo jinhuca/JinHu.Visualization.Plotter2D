@@ -1,74 +1,67 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using JinHu.Visualization.Plotter2D.Common;
-
-namespace JinHu.Visualization.Plotter2D
+﻿namespace JinHu.Visualization.Plotter2D
 {
-	/// <summary>
-	/// Represents a constraint which returns data rectangle, intersected with specified data domain.
-	/// </summary>
-	public class DomainConstraint : ViewportConstraint
-	{
-		/// <summary>
-		/// Initializes a new instance of the <see cref="DomainConstraint"/> class.
-		/// </summary>
-		public DomainConstraint() { }
+  /// <summary>
+  /// Represents a constraint which returns data rectangle, intersected with specified data domain.
+  /// </summary>
+  public class DomainConstraint : ViewportConstraint
+  {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DomainConstraint"/> class.
+    /// </summary>
+    public DomainConstraint() { }
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="DomainConstraint"/> class with given domain property.
-		/// </summary>
-		/// <param name="domain">
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DomainConstraint"/> class with given domain property.
+    /// </summary>
+    /// <param name="domain">
     /// The domain.
     /// </param>
-		public DomainConstraint(DataRect domain)
-		{
+    public DomainConstraint(DataRect domain)
+    {
       Domain = domain;
-		}
+    }
 
-		private DataRect domain = new DataRect(-1, -1, 2, 2);
+    private DataRect domain = new DataRect(-1, -1, 2, 2);
 
-		/// <summary>
-		/// Gets or sets the domain.
-		/// </summary>
-		/// <value>
+    /// <summary>
+    /// Gets or sets the domain.
+    /// </summary>
+    /// <value>
     /// The domain.
     /// </value>
-		public DataRect Domain
-		{
-			get { return domain; }
-			set
-			{
-				if (domain != value)
-				{
-					domain = value;
-					RaiseChanged();
-				}
-			}
-		}
+    public DataRect Domain
+    {
+      get { return domain; }
+      set
+      {
+        if (domain != value)
+        {
+          domain = value;
+          RaiseChanged();
+        }
+      }
+    }
 
-		/// <summary>
-		/// Applies the specified old data rect.
-		/// </summary>
-		/// <param name="oldDataRect">The old data rect.</param>
-		/// <param name="newDataRect">The new data rect.</param>
-		/// <param name="viewport">The viewport.</param>
-		/// <returns></returns>
-		public override DataRect Apply(DataRect oldDataRect, DataRect newDataRect, Viewport2D viewport)
-		{
-			DataRect res = domain;
-			if (domain.IsEmpty)
-			{
-				res = newDataRect;
-			}
-			else if (newDataRect.IntersectsWith(domain))
-			{
-				res = newDataRect;
-				if (newDataRect.Size == oldDataRect.Size)
-				{
-					if (res.XMin < domain.XMin)
+    /// <summary>
+    /// Applies the specified old data rect.
+    /// </summary>
+    /// <param name="oldDataRect">The old data rect.</param>
+    /// <param name="newDataRect">The new data rect.</param>
+    /// <param name="viewport">The viewport.</param>
+    /// <returns></returns>
+    public override DataRect Apply(DataRect oldDataRect, DataRect newDataRect, Viewport2D viewport)
+    {
+      DataRect res = domain;
+      if (domain.IsEmpty)
+      {
+        res = newDataRect;
+      }
+      else if (newDataRect.IntersectsWith(domain))
+      {
+        res = newDataRect;
+        if (newDataRect.Size == oldDataRect.Size)
+        {
+          if (res.XMin < domain.XMin)
           {
             res.XMin = domain.XMin;
           }
@@ -88,13 +81,13 @@ namespace JinHu.Visualization.Plotter2D
             res.YMin += domain.YMax - res.YMax;
           }
         }
-				else
-				{
-					res = DataRect.Intersect(newDataRect, domain);
-				}
-			}
+        else
+        {
+          res = DataRect.Intersect(newDataRect, domain);
+        }
+      }
 
-			return res;
-		}
-	}
+      return res;
+    }
+  }
 }

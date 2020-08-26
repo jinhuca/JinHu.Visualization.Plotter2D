@@ -32,18 +32,18 @@ namespace JinHu.Visualization.Plotter2D
     }
 
     public GenericRect<THorizontal, TVertical> ViewportRect
-		{
-			get => CreateGenericRect(plotter.Viewport.Visible);
-			set => plotter.Viewport.Visible = CreateRect(value);
-		}
+    {
+      get => CreateGenericRect(plotter.Viewport.Visible);
+      set => plotter.Viewport.Visible = CreateRect(value);
+    }
 
-		public GenericRect<THorizontal, TVertical> DataRect
-		{
-			get => CreateGenericRect(plotter.Viewport.Visible.ViewportToData(plotter.Viewport.Transform));
-			set => plotter.Viewport.Visible = CreateRect(value).DataToViewport(plotter.Viewport.Transform);
-		}
+    public GenericRect<THorizontal, TVertical> DataRect
+    {
+      get => CreateGenericRect(plotter.Viewport.Visible.ViewportToData(plotter.Viewport.Transform));
+      set => plotter.Viewport.Visible = CreateRect(value).DataToViewport(plotter.Viewport.Transform);
+    }
 
-		private DataRect CreateRect(GenericRect<THorizontal, TVertical> value)
+    private DataRect CreateRect(GenericRect<THorizontal, TVertical> value)
     {
       double xMin = HorizontalToDoubleConverter(value.XMin);
       double xMax = HorizontalToDoubleConverter(value.XMax);

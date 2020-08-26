@@ -3,13 +3,13 @@
 namespace JinHu.Visualization.Plotter2D.Charts
 {
   public class DefaultDateTimeTicksStrategy : IDateTimeTicksStrategy
-	{
-		public virtual DifferenceIn GetDifference(TimeSpan span)
-		{
-			span = span.Duration();
+  {
+    public virtual DifferenceIn GetDifference(TimeSpan span)
+    {
+      span = span.Duration();
 
-			DifferenceIn diff;
-			if (span.Days > 365)
+      DifferenceIn diff;
+      if (span.Days > 365)
       {
         diff = DifferenceIn.Year;
       }
@@ -39,32 +39,32 @@ namespace JinHu.Visualization.Plotter2D.Charts
       }
 
       return diff;
-		}
+    }
 
-		public virtual bool TryGetLowerDiff(DifferenceIn diff, out DifferenceIn lowerDiff)
-		{
-			lowerDiff = diff;
+    public virtual bool TryGetLowerDiff(DifferenceIn diff, out DifferenceIn lowerDiff)
+    {
+      lowerDiff = diff;
 
-			int code = (int)diff;
-			bool res = code > (int)DifferenceIn.Smallest;
-			if (res)
-			{
-				lowerDiff = (DifferenceIn)(code - 1);
-			}
-			return res;
-		}
+      int code = (int)diff;
+      bool res = code > (int)DifferenceIn.Smallest;
+      if (res)
+      {
+        lowerDiff = (DifferenceIn)(code - 1);
+      }
+      return res;
+    }
 
-		public virtual bool TryGetBiggerDiff(DifferenceIn diff, out DifferenceIn biggerDiff)
-		{
-			biggerDiff = diff;
+    public virtual bool TryGetBiggerDiff(DifferenceIn diff, out DifferenceIn biggerDiff)
+    {
+      biggerDiff = diff;
 
-			int code = (int)diff;
-			bool res = code < (int)DifferenceIn.Biggest;
-			if (res)
-			{
-				biggerDiff = (DifferenceIn)(code + 1);
-			}
-			return res;
-		}
-	}
+      int code = (int)diff;
+      bool res = code < (int)DifferenceIn.Biggest;
+      if (res)
+      {
+        biggerDiff = (DifferenceIn)(code + 1);
+      }
+      return res;
+    }
+  }
 }

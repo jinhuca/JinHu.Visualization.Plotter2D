@@ -1,27 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace JinHu.Visualization.Plotter2D.Charts
 {
-	public class ExtendedDaysStrategy : IDateTimeTicksStrategy
-	{
-		private static readonly DifferenceIn[] diffs = new DifferenceIn[] { 
-			DifferenceIn.Year,
-			DifferenceIn.Day,
-			DifferenceIn.Hour,
-			DifferenceIn.Minute,
-			DifferenceIn.Second,
-			DifferenceIn.Millisecond
-		};
+  public class ExtendedDaysStrategy : IDateTimeTicksStrategy
+  {
+    private static readonly DifferenceIn[] diffs = new DifferenceIn[] {
+      DifferenceIn.Year,
+      DifferenceIn.Day,
+      DifferenceIn.Hour,
+      DifferenceIn.Minute,
+      DifferenceIn.Second,
+      DifferenceIn.Millisecond
+    };
 
-		public DifferenceIn GetDifference(TimeSpan span)
-		{
-			span = span.Duration();
+    public DifferenceIn GetDifference(TimeSpan span)
+    {
+      span = span.Duration();
 
-			DifferenceIn diff;
-			if (span.Days > 365)
+      DifferenceIn diff;
+      if (span.Days > 365)
       {
         diff = DifferenceIn.Year;
       }
@@ -47,14 +44,14 @@ namespace JinHu.Visualization.Plotter2D.Charts
       }
 
       return diff;
-		}
+    }
 
-		public bool TryGetLowerDiff(DifferenceIn diff, out DifferenceIn lowerDiff)
-		{
-			lowerDiff = diff;
+    public bool TryGetLowerDiff(DifferenceIn diff, out DifferenceIn lowerDiff)
+    {
+      lowerDiff = diff;
 
-			int index = Array.IndexOf(diffs, diff);
-			if (index == -1)
+      int index = Array.IndexOf(diffs, diff);
+      if (index == -1)
       {
         return false;
       }
@@ -65,21 +62,21 @@ namespace JinHu.Visualization.Plotter2D.Charts
       }
 
       lowerDiff = diffs[index + 1];
-			return true;
-		}
+      return true;
+    }
 
-		public bool TryGetBiggerDiff(DifferenceIn diff, out DifferenceIn biggerDiff)
-		{
-			biggerDiff = diff;
+    public bool TryGetBiggerDiff(DifferenceIn diff, out DifferenceIn biggerDiff)
+    {
+      biggerDiff = diff;
 
-			int index = Array.IndexOf(diffs, diff);
-			if (index == -1 || index == 0)
+      int index = Array.IndexOf(diffs, diff);
+      if (index == -1 || index == 0)
       {
         return false;
       }
 
       biggerDiff = diffs[index - 1];
-			return true;
-		}
-	}
+      return true;
+    }
+  }
 }

@@ -11,109 +11,109 @@ namespace JinHu.Visualization.Plotter2D.Common
   /// </summary>
   /// <typeparam name="T"></typeparam>
   public abstract class NotifiableCollection<T> : ObservableCollection<T>
-	{
-		#region Overrides
+  {
+    #region Overrides
 
-		protected override void InsertItem(int index, T item)
-		{
-			OnItemAdding(item);
-			base.InsertItem(index, item);
-			OnItemAdded(item);
-		}
+    protected override void InsertItem(int index, T item)
+    {
+      OnItemAdding(item);
+      base.InsertItem(index, item);
+      OnItemAdded(item);
+    }
 
-		protected override void ClearItems()
-		{
-			foreach (var item in Items)
-			{
-				OnItemRemoving(item);
-			}
-			base.ClearItems();
-		}
+    protected override void ClearItems()
+    {
+      foreach (var item in Items)
+      {
+        OnItemRemoving(item);
+      }
+      base.ClearItems();
+    }
 
-		protected override void RemoveItem(int index)
-		{
-			T item = Items[index];
-			OnItemRemoving(item);
-			base.RemoveItem(index);
-		}
+    protected override void RemoveItem(int index)
+    {
+      T item = Items[index];
+      OnItemRemoving(item);
+      base.RemoveItem(index);
+    }
 
-		protected override void SetItem(int index, T item)
-		{
-			T oldItem = Items[index];
-			OnItemRemoving(oldItem);
-			OnItemAdding(item);
-			base.SetItem(index, item);
-			OnItemAdded(item);
-		}
+    protected override void SetItem(int index, T item)
+    {
+      T oldItem = Items[index];
+      OnItemRemoving(oldItem);
+      OnItemAdding(item);
+      base.SetItem(index, item);
+      OnItemAdded(item);
+    }
 
-		protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
-		{
-			attemptsToRaiseEvent++;
-			if (raiseCollectionChangedEvent)
-			{
-				base.OnCollectionChanged(e);
-			}
-		}
+    protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
+    {
+      attemptsToRaiseEvent++;
+      if (raiseCollectionChangedEvent)
+      {
+        base.OnCollectionChanged(e);
+      }
+    }
 
-		#endregion
-		
-		/// <summary>
-		///   Called before item added to collection. Enables to perform validation.
-		/// </summary>
-		/// <param name="item">
+    #endregion
+
+    /// <summary>
+    ///   Called before item added to collection. Enables to perform validation.
+    /// </summary>
+    /// <param name="item">
     ///   The adding item.
     /// </param>
-		protected virtual void OnItemAdding(T item) { }
+    protected virtual void OnItemAdding(T item) { }
 
-		/// <summary>
-		///   Called when item is added.
-		/// </summary>
-		/// <param name="item">
+    /// <summary>
+    ///   Called when item is added.
+    /// </summary>
+    /// <param name="item">
     ///   The added item.
     /// </param>
-		protected virtual void OnItemAdded(T item) { }
+    protected virtual void OnItemAdded(T item) { }
 
-		/// <summary>
-		///   Called when item is being removed, but before it is actually removed.
-		/// </summary>
-		/// <param name="item">
+    /// <summary>
+    ///   Called when item is being removed, but before it is actually removed.
+    /// </summary>
+    /// <param name="item">
     ///   The removing item.
     /// </param>
-		protected virtual void OnItemRemoving(T item) { }
-    
-		int attemptsToRaiseEvent = 0;
-		bool raiseCollectionChangedEvent = true;
+    protected virtual void OnItemRemoving(T item) { }
+
+    int attemptsToRaiseEvent = 0;
+    bool raiseCollectionChangedEvent = true;
 
     #region Public
 
     public void BeginUpdate()
-		{
-			attemptsToRaiseEvent = 0;
-			raiseCollectionChangedEvent = false;
-		}
+    {
+      attemptsToRaiseEvent = 0;
+      raiseCollectionChangedEvent = false;
+    }
 
-		public void EndUpdate(bool raiseReset)
-		{
-			raiseCollectionChangedEvent = true;
-			if (attemptsToRaiseEvent > 0 && raiseReset)
-			{
-				OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
-			}
-		}
+    public void EndUpdate(bool raiseReset)
+    {
+      raiseCollectionChangedEvent = true;
+      if (attemptsToRaiseEvent > 0 && raiseReset)
+      {
+        OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+      }
+    }
 
     public IDisposable BlockEvents(bool raiseReset) => new EventBlocker<T>(this, raiseReset);
 
     private sealed class EventBlocker<TT> : IDisposable
-		{
-			private readonly NotifiableCollection<TT> collection;
-			private readonly bool raiseReset = true;
+    {
+      private readonly NotifiableCollection<TT> collection;
+      private readonly bool raiseReset = true;
 
-			public EventBlocker(NotifiableCollection<TT> _collection, bool _raiseReset)
-			{
+      public EventBlocker(NotifiableCollection<TT> _collection, bool _raiseReset)
+      {
         collection = _collection;
         raiseReset = _raiseReset;
-				_collection.BeginUpdate();
-			}
+        _collection.BeginUpdate();
+      }
 
       #region IDisposable Members
 
@@ -122,6 +122,6 @@ namespace JinHu.Visualization.Plotter2D.Common
       #endregion
     }
 
-		#endregion 
-	}
+    #endregion
+  }
 }

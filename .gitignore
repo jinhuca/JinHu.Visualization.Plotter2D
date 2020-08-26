@@ -338,3 +338,7 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+*.dll
+*.vtuneproj
+/Samples/v0.2/V02.04.MarkerSample/VTune Profiler Results/V02.04.MarkerSample/r000hs/data.0
+/Samples/v0.2/V02.04.MarkerSample/VTune Profiler Results/V02.04.MarkerSample/r000hs
