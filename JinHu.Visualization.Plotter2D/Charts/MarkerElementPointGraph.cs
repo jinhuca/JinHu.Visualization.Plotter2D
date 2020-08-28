@@ -41,12 +41,12 @@ namespace JinHu.Visualization.Plotter2D
       grid = new Grid();
       canvas = new Canvas { ClipToBounds = true };
       grid.Children.Add(canvas);
-      Plotter2D.CentralGrid.Children.Add(grid);
+      Plotter.CentralGrid.Children.Add(grid);
     }
 
     protected override void OnPlotterDetaching(PlotterBase plotter)
     {
-      Plotter2D.CentralGrid.Children.Remove(grid);
+      Plotter.CentralGrid.Children.Remove(grid);
       grid = null;
       canvas = null;
       base.OnPlotterDetaching(plotter);

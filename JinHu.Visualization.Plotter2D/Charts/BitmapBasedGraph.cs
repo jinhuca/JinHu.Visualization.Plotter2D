@@ -109,7 +109,7 @@ namespace JinHu.Visualization.Plotter2D
       }
 
       Point p = e.GetPosition(this);
-      Point dp = p.ScreenToData(Plotter2D.Transform);
+      Point dp = p.ScreenToData(Plotter.Transform);
 
       var tooltip = GetTooltipForPoint(p, completedRequest.Visible, completedRequest.Output);
       if (tooltip == null)

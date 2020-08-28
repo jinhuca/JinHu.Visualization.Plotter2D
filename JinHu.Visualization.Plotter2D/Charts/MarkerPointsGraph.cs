@@ -55,7 +55,7 @@ namespace JinHu.Visualization.Plotter2D
         return;
       }
 
-      var transform = Plotter2D.Viewport.Transform;
+      var transform = Plotter.Viewport.Transform;
       DataRect bounds = DataRect.Empty;
       using (IPointEnumerator enumerator = DataSource.GetEnumerator(GetContext()))
       {

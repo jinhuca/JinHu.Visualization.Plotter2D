@@ -469,7 +469,6 @@
     <Compile Include="Common\HorizontalAxisTitle.cs" />
     <Compile Include="Common\Auxiliary\HsbColor.cs" />
     <Compile Include="Common\Auxiliary\ListExtensions.cs" />
-    <Compile Include="Common\PlotterElement.cs" />
     <Compile Include="Common\Auxiliary\RectExtensions.cs" />
     <Compile Include="Common\RenderState.cs" />
     <Compile Include="Common\Auxiliary\PointExtensions.cs" />

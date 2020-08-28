@@ -11,7 +11,7 @@ using System.Windows.Shapes;
 namespace JinHu.Visualization.Plotter2D
 {
   /// <summary>
-  ///   Represents a series of points connected by one polyline.
+  /// Class represents a series of points connected by one polyline.
   /// </summary>
   public class LineGraph : PointsGraphBase
   {
@@ -46,7 +46,7 @@ namespace JinHu.Visualization.Plotter2D
 
     private void filters_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
     {
-      filteredPoints = null;
+      FilteredPoints = null;
       Update();
     }
 
@@ -96,7 +96,7 @@ namespace JinHu.Visualization.Plotter2D
             LinePen = pen;
           }
 
-          RaisePropertyChanged("Stroke");
+          RaisePropertyChanged();
         }
       }
     }
@@ -139,39 +139,35 @@ namespace JinHu.Visualization.Plotter2D
     [NotNull]
     public Pen LinePen
     {
-      get { return (Pen)GetValue(LinePenProperty); }
-      set { SetValue(LinePenProperty, value); }
+      get => (Pen)GetValue(LinePenProperty);
+      set => SetValue(LinePenProperty, value);
     }
 
     public static readonly DependencyProperty LinePenProperty = DependencyProperty.Register(
-      "LinePen",
+      nameof(LinePen),
       typeof(Pen),
       typeof(LineGraph),
-      new FrameworkPropertyMetadata(new Pen(Brushes.Blue, 1), FrameworkPropertyMetadataOptions.AffectsRender),
-      OnValidatePen);
+      new FrameworkPropertyMetadata(new Pen(Brushes.Blue, 1), FrameworkPropertyMetadataOptions.AffectsRender), OnValidatePen);
 
-    private static bool OnValidatePen(object value)
-    {
-      return value != null;
-    }
+    private static bool OnValidatePen(object value) => value != null;
 
     #endregion
 
     protected override void OnOutputChanged(Rect newRect, Rect oldRect)
     {
-      filteredPoints = null;
+      FilteredPoints = null;
       base.OnOutputChanged(newRect, oldRect);
     }
 
     protected override void OnDataChanged()
     {
-      filteredPoints = null;
+      FilteredPoints = null;
       base.OnDataChanged();
     }
 
     protected override void OnDataSourceChanged(DependencyPropertyChangedEventArgs args)
     {
-      filteredPoints = null;
+      FilteredPoints = null;
       base.OnDataSourceChanged(args);
     }
 
@@ -179,18 +175,13 @@ namespace JinHu.Visualization.Plotter2D
     {
       if (newRect.Size != oldRect.Size)
       {
-        filteredPoints = null;
+        FilteredPoints = null;
       }
 
       base.OnVisibleChanged(newRect, oldRect);
     }
 
-    private FakePointList filteredPoints;
-    protected FakePointList FilteredPoints
-    {
-      get { return filteredPoints; }
-      set { filteredPoints = value; }
-    }
+    protected FakePointList FilteredPoints { get; set; }
 
     protected override void UpdateCore()
     {
@@ -207,7 +198,7 @@ namespace JinHu.Visualization.Plotter2D
       Rect output = Viewport.Output;
       var transform = GetTransform();
 
-      if (filteredPoints == null || !(transform.DataTransform is IdentityTransform))
+      if (FilteredPoints == null || !(transform.DataTransform is IdentityTransform))
       {
         IEnumerable<Point> points = GetPoints();
 
@@ -219,7 +210,7 @@ namespace JinHu.Visualization.Plotter2D
         List<Point> transformedPoints = transform.DataToScreenAsList(points);
 
         // Analysis and filtering of unnecessary points
-        filteredPoints = new FakePointList(FilterPoints(transformedPoints), output.Left, output.Right);
+        FilteredPoints = new FakePointList(FilterPoints(transformedPoints), output.Left, output.Right);
 
         if (ProvideVisiblePoints)
         {
@@ -247,7 +238,7 @@ namespace JinHu.Visualization.Plotter2D
         left -= shift;
         right -= shift;
 
-        filteredPoints.SetXBorders(left, right);
+        FilteredPoints.SetXBorders(left, right);
       }
     }
 
@@ -259,12 +250,12 @@ namespace JinHu.Visualization.Plotter2D
         return;
       }
 
-      if (filteredPoints.HasPoints)
+      if (FilteredPoints.HasPoints)
       {
         using (StreamGeometryContext context = streamGeometry.Open())
         {
-          context.BeginFigure(filteredPoints.StartPoint, false, false);
-          context.PolyLineTo(filteredPoints, true, smoothLinesJoin);
+          context.BeginFigure(FilteredPoints.StartPoint, false, false);
+          context.PolyLineTo(FilteredPoints, true, smoothLinesJoin);
         }
 
         Brush brush = null;
@@ -299,7 +290,7 @@ namespace JinHu.Visualization.Plotter2D
         if (filteringEnabled != value)
         {
           filteringEnabled = value;
-          filteredPoints = null;
+          FilteredPoints = null;
           Update();
         }
       }

@@ -177,7 +177,7 @@ namespace JinHu.Visualization.Plotter2D
       panningStartPointInScreen = e.GetPosition(this);
       panningStartPointInViewport = panningStartPointInScreen.ScreenToViewport(Viewport.Transform);
 
-      Plotter2D.UndoProvider.CaptureOldValue(Viewport, Viewport2D.VisibleProperty, Viewport.Visible);
+      Plotter.UndoProvider.CaptureOldValue(Viewport, Viewport2D.VisibleProperty, Viewport.Visible);
 
       isPanning = true;
 
@@ -363,14 +363,14 @@ namespace JinHu.Visualization.Plotter2D
 
     protected virtual void StopPanning(MouseButtonEventArgs e)
     {
-      Plotter2D.UndoProvider.CaptureNewValue(Plotter2D.Viewport, Viewport2D.VisibleProperty, Viewport.Visible);
+      Plotter.UndoProvider.CaptureNewValue(Plotter.Viewport, Viewport2D.VisibleProperty, Viewport.Visible);
 
       if (!Plotter.IsFocused)
       {
-        Plotter2D.Focus();
+        Plotter.Focus();
       }
 
-      Plotter2D.Viewport.PanningState = Viewport2DPanningState.NotPanning;
+      Plotter.Viewport.PanningState = Viewport2DPanningState.NotPanning;
 
       ReleaseMouseCapture();
       ClearValue(CursorProperty);
@@ -385,7 +385,7 @@ namespace JinHu.Visualization.Plotter2D
       }
       if (isPanning)
       {
-        Plotter2D.Viewport.PanningState = Viewport2DPanningState.NotPanning;
+        Plotter.Viewport.PanningState = Viewport2DPanningState.NotPanning;
         isPanning = false;
       }
       ReleaseMouseCapture();

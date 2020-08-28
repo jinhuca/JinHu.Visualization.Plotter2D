@@ -13,19 +13,23 @@ namespace JinHu.Visualization.Plotter2D
   /// ViewportElement2D is intended to be a child of Viewport2D. 
   /// Specifics of ViewportElement2D is Viewport2D attached property.
   /// </summary>
-  public abstract class ViewportElement2D : PlotterElement, INotifyPropertyChanged
+  public abstract class ViewportElement2D : FrameworkElement, IPlotterElement, INotifyPropertyChanged
   {
-    protected ViewportElement2D() { }
-
     protected virtual Panel GetHostPanel(PlotterBase plotter) => plotter.CentralGrid;
 
-    protected override void OnPlotterAttached(PlotterBase plotter)
+    #region IPlotterElement Members
+
+    void IPlotterElement.OnPlotterAttached(PlotterBase plotter) => OnPlotterAttached(plotter);
+    void IPlotterElement.OnPlotterDetaching(PlotterBase plotter) => OnPlotterDetaching(plotter);
+
+    #endregion
+
+    protected virtual void OnPlotterAttached(PlotterBase plotter)
     {
-      base.OnPlotterAttached(plotter);
-      Plotter2D = (PlotterBase)plotter;
+      Plotter = plotter;
       GetHostPanel(plotter).Children.Add(this);
-      viewport = Plotter2D.Viewport;
-      viewport.PropertyChanged += OnViewportPropertyChanged;
+      Viewport = Plotter.Viewport;
+      Viewport.PropertyChanged += OnViewportPropertyChanged;
     }
 
     private void OnViewportPropertyChanged(object sender, ExtendedPropertyChangedEventArgs e)
@@ -44,16 +48,15 @@ namespace JinHu.Visualization.Plotter2D
       }
     }
 
-    protected override void OnPlotterDetaching(PlotterBase plotter)
+    protected virtual void OnPlotterDetaching(PlotterBase plotter)
     {
-      base.OnPlotterDetaching(plotter);
-      viewport.PropertyChanged -= OnViewportPropertyChanged;
-      viewport = null;
+      Viewport.PropertyChanged -= OnViewportPropertyChanged;
+      Viewport = null;
       GetHostPanel(plotter).Children.Remove(this);
-      Plotter2D = null;
+      Plotter = null;
     }
 
-    protected PlotterBase Plotter2D { get; private set; }
+    public PlotterBase Plotter { get; private set; }
 
     public int ZIndex
     {
@@ -63,8 +66,7 @@ namespace JinHu.Visualization.Plotter2D
 
     #region Viewport
 
-    private Viewport2D viewport;
-    protected Viewport2D Viewport => viewport;
+    protected Viewport2D Viewport { get; private set; }
 
     #endregion
 
@@ -106,7 +108,7 @@ namespace JinHu.Visualization.Plotter2D
         {
           description.Attach(this);
         }
-        RaisePropertyChanged("Description");
+        RaisePropertyChanged();
       }
     }
 
@@ -117,12 +119,7 @@ namespace JinHu.Visualization.Plotter2D
 
     #endregion
 
-    private Vector offset = new Vector();
-    protected internal Vector Offset
-    {
-      get { return offset; }
-      set { offset = value; }
-    }
+    protected internal Vector Offset { get; set; }
 
     //bool SizeEqual(Size s1, Size s2, double eps)
     //{
@@ -136,8 +133,8 @@ namespace JinHu.Visualization.Plotter2D
     {
       if (newRect.Size == oldRect.Size)
       {
-        var transform = viewport.Transform;
-        offset += oldRect.Location.DataToScreen(transform) - newRect.Location.DataToScreen(transform);
+        var transform = Viewport.Transform;
+        Offset += oldRect.Location.DataToScreen(transform) - newRect.Location.DataToScreen(transform);
         if (ManualTranslate)
         {
           Update();
@@ -145,14 +142,14 @@ namespace JinHu.Visualization.Plotter2D
       }
       else
       {
-        offset = new Vector();
+        Offset = new Vector();
         Update();
       }
     }
 
     protected virtual void OnOutputChanged(Rect newRect, Rect oldRect)
     {
-      offset = new Vector();
+      Offset = new Vector();
       Update();
     }
 
@@ -162,7 +159,7 @@ namespace JinHu.Visualization.Plotter2D
     /// <value>
     /// 	<c>true</c> if this instance is translated; otherwise, <c>false</c>.
     /// </value>
-    protected bool IsTranslated => offset.X != 0 || offset.Y != 0;
+    protected bool IsTranslated => Offset.X != 0 || Offset.Y != 0;
 
     #region IsLevel
 
@@ -323,13 +320,13 @@ namespace JinHu.Visualization.Plotter2D
       }
 
       DataRect visible = Viewport.Visible;
-      var transform = viewport.Transform;
+      var transform = Viewport.Transform;
       DrawingVisual visual = new DrawingVisual();
       using (DrawingContext dc = visual.RenderOpen())
       {
         Point outputStart = visible.Location.DataToScreen(transform);
-        double x = -outputStart.X + offset.X;
-        double y = -outputStart.Y + output.Bottom - output.Top + offset.Y;
+        double x = -outputStart.X + Offset.X;
+        double y = -outputStart.Y + output.Bottom - output.Top + Offset.Y;
         bool translate = !manualTranslate && IsTranslated;
         if (translate)
         {
@@ -396,10 +393,6 @@ namespace JinHu.Visualization.Plotter2D
             RenderState state = CreateRenderState(Viewport.Visible, RenderTo.Screen);
             OnRenderCore(context, state);
           }
-          else
-          {
-            // for future use
-          }
         }
         updateCalled = false;
       }
@@ -419,7 +412,7 @@ namespace JinHu.Visualization.Plotter2D
       bool translate = !manualTranslate && IsTranslated;
       if (translate)
       {
-        drawingContext.PushTransform(new TranslateTransform(offset.X, offset.Y));
+        drawingContext.PushTransform(new TranslateTransform(Offset.X, Offset.Y));
       }
 
       drawingContext.DrawDrawing(graphContents);

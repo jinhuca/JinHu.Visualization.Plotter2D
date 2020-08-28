@@ -10,7 +10,7 @@ namespace JinHu.Visualization.Plotter2D
   public abstract class PointsGraphBase : ViewportElement2D, IOneDimensionalChart
   {
     /// <summary>
-    ///   Initializes a new instance of the <see cref="PointsGraphBase"/> class.
+    /// Initializes a new instance of the <see cref="PointsGraphBase"/> class.
     /// </summary>
     protected PointsGraphBase()
     {
@@ -21,24 +21,17 @@ namespace JinHu.Visualization.Plotter2D
 
     public IPointDataSource DataSource
     {
-      get { return (IPointDataSource)GetValue(DataSourceProperty); }
-      set { SetValue(DataSourceProperty, value); }
+      get => (IPointDataSource)GetValue(DataSourceProperty);
+      set => SetValue(DataSourceProperty, value);
     }
 
     public static readonly DependencyProperty DataSourceProperty = DependencyProperty.Register(
-      "DataSource",
-      typeof(IPointDataSource),
-      typeof(PointsGraphBase),
-      new FrameworkPropertyMetadata
-      {
-        AffectsRender = true,
-        DefaultValue = null,
-        PropertyChangedCallback = OnDataSourceChangedCallback
-      });
+      nameof(DataSource), typeof(IPointDataSource), typeof(PointsGraphBase),
+      new FrameworkPropertyMetadata { AffectsRender = true, DefaultValue = null, PropertyChangedCallback = OnDataSourceChangedCallback });
 
     private static void OnDataSourceChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-      PointsGraphBase graph = (PointsGraphBase)d;
+      var graph = (PointsGraphBase)d;
       if (e.NewValue != e.OldValue)
       {
         graph.DetachDataSource(e.OldValue as IPointDataSource);
@@ -82,13 +75,12 @@ namespace JinHu.Visualization.Plotter2D
       {
         UpdateBounds(newDataSource);
       }
-
       Update();
     }
 
     private void UpdateBounds(IPointDataSource dataSource)
     {
-      if (Plotter2D != null)
+      if (Plotter != null)
       {
         var transform = GetTransform();
         DataRect bounds = BoundsHelper.GetViewportBounds(dataSource.GetPoints(), transform.DataTransform);
@@ -96,11 +88,11 @@ namespace JinHu.Visualization.Plotter2D
       }
     }
 
-    #endregion
+    #endregion DataSource
 
     #region DataTransform
 
-    private DataTransform dataTransform = null;
+    private DataTransform dataTransform;
     public DataTransform DataTransform
     {
       get { return dataTransform; }
@@ -120,7 +112,7 @@ namespace JinHu.Visualization.Plotter2D
       {
         return null;
       }
-      var transform = Plotter2D.Viewport.Transform;
+      var transform = Plotter.Viewport.Transform;
       if (dataTransform != null)
       {
         transform = transform.WithDataTransform(dataTransform);
