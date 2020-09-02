@@ -7,22 +7,22 @@ using System.Windows;
 namespace JinHu.Visualization.Plotter2D.DataSources
 {
   /// <summary>
-  ///   Base class for all sources who receive data for charting from any IEnumerable of T
+  /// Base class for all sources who receive data for charting from any IEnumerable of T
   /// </summary>
   /// <typeparam name="T">
-  ///   Type of items in IEnumerable.
+  /// Type of items in IEnumerable.
   /// </typeparam>
   public abstract class EnumerableDataSourceBase<T> : IPointDataSource
   {
-    private IEnumerable _data;
+    private IEnumerable data;
 
     public IEnumerable Data
     {
-      get => _data;
+      get => data;
       set
       {
-        _data = value ?? throw new ArgumentNullException(nameof(value));
-        if (_data is INotifyCollectionChanged observableCollection)
+        data = value ?? throw new ArgumentNullException(nameof(value));
+        if (data is INotifyCollectionChanged observableCollection)
         {
           observableCollection.CollectionChanged += ObservableCollection_CollectionChanged;
         }

@@ -3,7 +3,7 @@
   <Class Name="JinHu.Visualization.Plotter2D.Viewport2D" Collapsed="true">
     <Position X="1.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>JEKJCABCAJkpBALQKQYKDRaAptEMAZhYEAITQCDQIAA=</HashCode>
+      <HashCode>JEKJCABCAJkpBAKQKQYKDRaAptEMAZhYEAITQCDQIAA=</HashCode>
       <FileName>Viewport2D.AttachedProperties.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -14,12 +14,5 @@
       <FileName>Viewport2dDeferredPanningProxy.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="JinHu.Visualization.Plotter2D.DataSources.IPointEnumerator" Collapsed="true">
-    <Position X="4.25" Y="1.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAIAAAIAAAAAAAAAA=</HashCode>
-      <FileName>DataSources\OneDimensional\IPointEnumerator.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
