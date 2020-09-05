@@ -4,6 +4,6 @@
         xmlns:jin="http://jinhuca.visualization.com/Plotter2D/1.0"
         Title="MainWindow" Loaded="Window_Loaded" Width="650" Height="350">
   <Grid>
-    <jin:Plotter x:Name="plotter" Margin="20"/>
+    <jin:Plotter x:Name="plotter"/>
   </Grid>
 </Window>

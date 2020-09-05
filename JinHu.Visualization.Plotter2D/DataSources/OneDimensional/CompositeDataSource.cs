@@ -6,22 +6,22 @@ using System.Windows;
 namespace JinHu.Visualization.Plotter2D.DataSources
 {
   /// <summary>
-  ///   Data source that is a composer from several other data sources.
+  /// Data source that is a composer from several other data sources.
   /// </summary>
   public class CompositeDataSource : IPointDataSource
   {
-    #region [ -- Constructors -- ]
+    #region Constructors
 
     /// <summary>
-    ///   Initializes a new instance of the <see cref="CompositeDataSource"/> class
+    /// Initializes a new instance of the <see cref="CompositeDataSource"/> class
     /// </summary>
     public CompositeDataSource() { }
 
     /// <summary>
-    ///   Initializes a new instance of the <see cref="CompositeDataSource"/> class.
+    /// Initializes a new instance of the <see cref="CompositeDataSource"/> class.
     /// </summary>
     /// <param name="dataSources">
-    ///   Data sources.
+    /// Data sources.
     /// </param>
     public CompositeDataSource(params IPointDataSource[] dataSources)
     {
@@ -36,7 +36,7 @@ namespace JinHu.Visualization.Plotter2D.DataSources
       }
     }
 
-    #endregion [ -- Constructors -- ]
+    #endregion Constructors
 
     #region 
 

@@ -21,15 +21,13 @@ namespace JinHu.Visualization.Plotter2D.DataSources
         context = new DataSource2dContext();
       }
 
-      using (IPointEnumerator enumerator = dataSource.GetEnumerator(context))
+      using IPointEnumerator enumerator = dataSource.GetEnumerator(context);
+      Point p = new Point();
+      while (enumerator.MoveNext())
       {
-        Point p = new Point();
-        while (enumerator.MoveNext())
-        {
-          enumerator.GetCurrent(ref p);
-          yield return p;
-          p = new Point();
-        }
+        enumerator.GetCurrent(ref p);
+        yield return p;
+        p = new Point();
       }
     }
   }

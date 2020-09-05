@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Windows;
 
 namespace JinHu.Visualization.Plotter2D.DataSources

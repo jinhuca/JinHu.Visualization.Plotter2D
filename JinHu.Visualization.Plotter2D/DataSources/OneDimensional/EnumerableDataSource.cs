@@ -9,43 +9,57 @@ namespace JinHu.Visualization.Plotter2D.DataSources
   {
     public EnumerableDataSource(IEnumerable<T> data) : base(data) { }
     public EnumerableDataSource(IEnumerable data) : base(data) { }
+    
+    #region Property XYMapping
 
+    private Func<T, Point> _xyMapping;
     public Func<T, Point> XYMapping
     {
-      get => GetXyMapping();
-      set => SetXYMapping(value);
+      get => _xyMapping;
+      set
+      {
+        _xyMapping = value ?? throw new ArgumentNullException(nameof(XYMapping));
+        RaiseDataChanged();
+      }
     }
 
-    internal List<Mapping<T>> Mappings { get; } = new List<Mapping<T>>();
-    public Func<T, double> XMapping { get; set; }
-    public Func<T, double> YMapping { get; set; }
+    #endregion Property XYMapping
 
-    private Func<T, Point> xyMapping;
+    #region Property XMapping
 
-    public Func<T, Point> GetXyMapping() => xyMapping;
-
-    public void SetXyMapping(Func<T, Point> value) => xyMapping = value;
-
-    public void SetXMapping(Func<T, double> mapping)
+    private Func<T, double> _xMapping;
+    public Func<T, double> XMapping
     {
-      XMapping = mapping ?? throw new ArgumentNullException(nameof(mapping));
-      RaiseDataChanged();
+      get => _xMapping;
+      set
+      {
+        _xMapping = value ?? throw new ArgumentNullException(nameof(XMapping));
+        RaiseDataChanged();
+      }
     }
 
-    public void SetYMapping(Func<T, double> mapping)
+    #endregion Property XMapping
+
+    #region Property YMapping
+
+    private Func<T, double> _yMapping;
+    public Func<T, double> YMapping
     {
-      YMapping = mapping ?? throw new ArgumentNullException(nameof(mapping));
-      RaiseDataChanged();
+      get => _yMapping;
+      set
+      {
+        _yMapping = value ?? throw new ArgumentNullException(nameof(YMapping));
+        RaiseDataChanged();
+      }
     }
 
-#pragma warning disable CS3005 // Identifier 'EnumerableDataSource<T>.SetXYMapping(Func<T, Point>)' differing only in case is not CLS-compliant
-    public void SetXYMapping(Func<T, Point> mapping)
-#pragma warning restore CS3005 // Identifier 'EnumerableDataSource<T>.SetXYMapping(Func<T, Point>)' differing only in case is not CLS-compliant
-    {
-      SetXyMapping(mapping ?? throw new ArgumentNullException(nameof(mapping)));
-      RaiseDataChanged();
-    }
+    #endregion Property YMapping
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="property"></param>
+    /// <param name="mapping"></param>
     public void AddMapping(DependencyProperty property, Func<T, object> mapping)
     {
       if (property == null)
@@ -61,11 +75,13 @@ namespace JinHu.Visualization.Plotter2D.DataSources
 
     public override IPointEnumerator GetEnumerator(DependencyObject context) => new EnumerablePointEnumerator<T>(this);
 
+    internal List<Mapping<T>> Mappings { get; } = new List<Mapping<T>>();
+
     internal void FillPoint(T elem, ref Point point)
     {
-      if (GetXyMapping() != null)
+      if (XYMapping != null)
       {
-        point = GetXyMapping()(elem);
+        point = XYMapping(elem);
       }
       else
       {

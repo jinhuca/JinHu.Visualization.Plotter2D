@@ -4,59 +4,7 @@
         xmlns:d3="http://jinhuca.visualization.com/Plotter2D/1.0"
         Title="MainWindow" Height="650" Width="825" Loaded="Window_Loaded">
   <d3:Plotter Name="plotter" Loaded="ChartPlotter_Loaded">
-    <d3:Plotter.Template>
-      <ControlTemplate TargetType="{x:Type d3:PlotterBase}">
-        <Grid Name="PART_ContentsGrid" Background="{TemplateBinding Background}" DataContext="{TemplateBinding DataContext}">
-          <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-            <RowDefinition Height="Auto"/>
-          </Grid.RowDefinitions>
-          <StackPanel Name="PART_HeaderPanel" Orientation="Vertical" Grid.Row="0" Background="LightBlue"/>
-          <Grid Name="PART_MainGrid" Grid.Row="1" Background="LightCyan">
-            <Grid.RowDefinitions>
-              <RowDefinition Height="Auto"/>
-              <RowDefinition/>
-              <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="Auto"/>
-              <ColumnDefinition/>
-              <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-
-            <StackPanel Name="PART_LeftPanel" Grid.Column="0" Grid.Row="1" Orientation="Horizontal" Background="LightSlateGray"/>
-            <StackPanel Name="PART_RightPanel" Grid.Column="2" Grid.Row="1" Orientation="Horizontal" Background="LightGray"/>
-            <StackPanel Name="PART_BottomPanel" Grid.Column="1" Grid.Row="2" Orientation="Vertical" Background="LightPink"/>
-            <StackPanel Name="PART_TopPanel" Grid.Column="1" Grid.Row="0" Orientation="Vertical" Background="Teal"/>
-
-            <!-- Border of viewport -->
-            <Rectangle Name="Border" Grid.Column="1" Grid.Row="1" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BorderThickness}"/>
-
-            <Grid Name="PART_CentralGrid" Grid.Column="1" Grid.Row="1" Background="Transparent">
-              <Rectangle Stroke="DarkGray" StrokeThickness="3" RadiusX="4" RadiusY="4" Panel.ZIndex="1" Fill="#70FFFFA0">
-                <Rectangle.RenderTransform>
-                  <TranslateTransform X="10" Y="10"/>
-                </Rectangle.RenderTransform>
-              </Rectangle>
-              <Rectangle Stroke="Black" StrokeThickness="3" RadiusX="4" RadiusY="4" Panel.ZIndex="1" Fill="#50FFA0FF">
-                <Rectangle.RenderTransform>
-                  <TranslateTransform X="30" Y="30"/>
-                </Rectangle.RenderTransform>
-              </Rectangle>
-              <Canvas Panel.ZIndex="2">
-                <TextBlock Text="CentralGrid" FontSize="12" Canvas.Top="12" Canvas.Left="14"/>
-                <TextBlock Text="MainCanvas" FontSize="12" Canvas.Top="32" Canvas.Left="34"/>
-              </Canvas>
-            </Grid>
-            <Canvas Name="PART_MainCanvas" Grid.Column="1" Grid.Row="1" ClipToBounds="True"/>
-          </Grid>
-          <Canvas Name="PART_ParallelCanvas" Grid.Column="1" Grid.Row="1"/>
-          <StackPanel Name="PART_FooterPanel" Orientation="Vertical" Grid.Row="2" Background="LightBlue"/>
-          <Rectangle Stroke="DarkGray" StrokeThickness="3" Grid.RowSpan="3"/>
-        </Grid>
-      </ControlTemplate>
-    </d3:Plotter.Template>
+    
     <d3:Header Height="20" Content="Header Panel"/>
     <d3:HorizontalAxis Placement="Top" Background="LightBlue"/>
     <d3:VerticalAxis Placement="Right" Foreground="Red"/>
@@ -65,6 +13,10 @@
     <d3:VerticalAxisTitle Placement="Left" Content="LeftPanel - VerticalAxisTitle"/>
     <d3:VerticalAxisTitle Placement="Right" Content="RightPanel - VerticalAxisTitle"/>
     <d3:Footer Height="40" Content="FooterPanel - Footer"/>
-    <d3:Legend/>
+    <d3:Legend />
+    <d3:VerticalAxis Placement="Right"></d3:VerticalAxis>
+    <d3:VerticalAxis></d3:VerticalAxis>
+    <!--<d3:CursorCoordinateGraph ></d3:CursorCoordinateGraph>-->
+    <d3:AxisNavigation Placement="Bottom" ></d3:AxisNavigation>
   </d3:Plotter>
 </Window>

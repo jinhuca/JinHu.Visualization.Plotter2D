@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="JinHu.Visualization.Plotter2D.Charts.ContentGraph" Collapsed="true">
+    <Position X="3.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIECAgAAAAAgABAAAAgAAAAAAAACAAQAAAAAAIAAgA=</HashCode>
+      <FileName>Charts\ContentGraph.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.Charts.IsolineGraphBase" Collapsed="true">
+    <Position X="1.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KAgIAAAQkCAAUlAQAMAAACYAgAESAgRBAAAAAEgAAAA=</HashCode>
+      <FileName>Charts\Isolines\IsolineGraphBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.Charts.CursorCoordinateGraph" Collapsed="true">
+    <Position X="3.5" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gIiBAAAAAEAAkAAiEXYgQBQgAABBGABIQTAAEBGAARA=</HashCode>
+      <FileName>Charts\Navigation\CursorCoordinateGraph.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.Charts.OldAxisNavigation" Collapsed="true">
+    <Position X="6" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AABHAAAMgQQAAACAAAAAAAQEABkAAAAAAAABAAAIAIA=</HashCode>
+      <FileName>Charts\Navigation\OldAxisNavigation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.Charts.AxisNavigation" Collapsed="true">
+    <Position X="9.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAIAgCQAIAAACkAAAoIAwECRkACAAQiAABAAAIJoA=</HashCode>
+      <FileName>Charts\Navigation\AxisNavigation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

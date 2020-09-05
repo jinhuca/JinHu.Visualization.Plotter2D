@@ -27,7 +27,7 @@ namespace JinHu.Visualization.Plotter2D.DataSources
     public static EnumerableDataSource<float> AsXDataSource(this IEnumerable<float> collection)
     {
       EnumerableXDataSource<float> ds = new EnumerableXDataSource<float>(collection);
-      ds.SetXMapping(f => f);
+      ds.XMapping = f => f;
       return ds;
     }
 
@@ -47,21 +47,24 @@ namespace JinHu.Visualization.Plotter2D.DataSources
     public static EnumerableDataSource<double> AsXDataSource(this IEnumerable<double> collection)
     {
       EnumerableXDataSource<double> ds = new EnumerableXDataSource<double>(collection);
-      ds.SetXMapping(x => x);
+      ds.XMapping = x => x;
+      //ds.SetXMapping(x => x);
       return ds;
     }
 
     public static EnumerableDataSource<double> AsYDataSource(this IEnumerable<double> collection)
     {
       EnumerableYDataSource<double> ds = new EnumerableYDataSource<double>(collection);
-      ds.SetYMapping(y => y);
+      ds.YMapping = y => y;
+      //ds.SetYMapping(y => y);
       return ds;
     }
 
     public static EnumerableDataSource<float> AsYDataSource(this IEnumerable<float> collection)
     {
       EnumerableYDataSource<float> ds = new EnumerableYDataSource<float>(collection);
-      ds.SetYMapping(f => f);
+      ds.YMapping = f => f;
+      //ds.SetYMapping(f => f);
       return ds;
     }
 

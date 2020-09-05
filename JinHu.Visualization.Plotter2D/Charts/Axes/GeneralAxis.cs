@@ -42,24 +42,14 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
     protected Panel GetPanelByPlacement(AxisPlacement placement)
     {
-      Panel panel = null;
-      switch (placement)
+      Panel panel = placement switch
       {
-        case AxisPlacement.Left:
-          panel = ParentPlotter.LeftPanel;
-          break;
-        case AxisPlacement.Right:
-          panel = ParentPlotter.RightPanel;
-          break;
-        case AxisPlacement.Top:
-          panel = ParentPlotter.TopPanel;
-          break;
-        case AxisPlacement.Bottom:
-          panel = ParentPlotter.BottomPanel;
-          break;
-        default:
-          break;
-      }
+        AxisPlacement.Left => ParentPlotter.LeftPanel,
+        AxisPlacement.Right => ParentPlotter.RightPanel,
+        AxisPlacement.Top => ParentPlotter.TopPanel,
+        AxisPlacement.Bottom => ParentPlotter.BottomPanel,
+        _ => null
+      };
       return panel;
     }
 
@@ -104,18 +94,15 @@ namespace JinHu.Visualization.Plotter2D.Charts
     private PlotterBase plotter;
     [EditorBrowsable(EditorBrowsableState.Never)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public PlotterBase ParentPlotter
+    public PlotterBase ParentPlotter => plotter;
+
+    void IPlotterElement.OnPlotterAttached(PlotterBase plotter_)
     {
-      get { return plotter; }
+      plotter = (PlotterBase)plotter_;
+      OnPlotterAttached(plotter);
     }
 
-    void IPlotterElement.OnPlotterAttached(PlotterBase plotter)
-    {
-      this.plotter = (PlotterBase)plotter;
-      OnPlotterAttached(this.plotter);
-    }
-
-    protected virtual void OnPlotterAttached(PlotterBase plotter) { }
+    protected virtual void OnPlotterAttached(PlotterBase plotter_) { }
 
     void IPlotterElement.OnPlotterDetaching(PlotterBase plotter)
     {
@@ -125,15 +112,9 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
     protected virtual void OnPlotterDetaching(PlotterBase plotter) { }
 
-    public PlotterBase Plotter
-    {
-      get { return plotter; }
-    }
+    public PlotterBase Plotter => plotter;
 
-    PlotterBase IPlotterElement.Plotter
-    {
-      get { return plotter; }
-    }
+    PlotterBase IPlotterElement.Plotter => plotter;
 
     #endregion
   }

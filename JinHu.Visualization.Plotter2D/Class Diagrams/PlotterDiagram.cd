@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="JinHu.Visualization.Plotter2D.TimeChartPlotter">
-    <Position X="9" Y="1" Width="3" />
+    <Position X="7.25" Y="1" Width="3" />
     <TypeIdentifier>
       <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>TimeChartPlotter.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="JinHu.Visualization.Plotter2D.PlotterBase">
+  <Class Name="JinHu.Visualization.Plotter2D.PlotterBase" Collapsed="true">
     <Position X="0.5" Y="1" Width="2.75" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AMIEAxAAgAHMIBBUTEAMKIdQAQQJjmIYkWRCwhITBDA=</HashCode>
+      <HashCode>AMIUAxAAgAHMIBRUTEAMKIdQAQQJjmIYkWRCwhITBDA=</HashCode>
       <FileName>Common\PlotterBase.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="JinHu.Visualization.Plotter2D.Plotter">
-    <Position X="5.25" Y="1" Width="2.5" />
+  <Class Name="JinHu.Visualization.Plotter2D.Plotter" Collapsed="true">
+    <Position X="4" Y="1" Width="2.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Nested Types" Collapsed="false" />
@@ -31,7 +31,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>IUAAIEEEJQAAA0QuAAAUAgQAEBAAAAQZQEEQAABBAIA=</HashCode>
+      <HashCode>IQAAAAGGBQAAAUQuAAAUAgQAEAAAAAQZQEEQAABBAIA=</HashCode>
       <FileName>Plotter.cs</FileName>
     </TypeIdentifier>
   </Class>

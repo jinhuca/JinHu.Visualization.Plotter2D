@@ -175,10 +175,10 @@
     <value>Vertical type of GenericPlotter is invalid.</value>
   </data>
   <data name="InvalidParentPlotterValue" xml:space="preserve">
-    <value>Invalid value of child's parent plotter - it should be equal to plotter that child is added to.</value>
+    <value>Invalid value of child's parent plotter_ - it should be equal to plotter_ that child is added to.</value>
   </data>
   <data name="InvalidParentPlotterValueRemoving" xml:space="preserve">
-    <value>Invalid value of child's parent plotter - it should be equal to plotter that child is being removed from.</value>
+    <value>Invalid value of child's parent plotter_ - it should be equal to plotter_ that child is being removed from.</value>
   </data>
   <data name="IsolinesDataIsUndetailized" xml:space="preserve">
     <value>Input data must be more detailized to build isolines.</value>
@@ -202,13 +202,13 @@
     <value>Parameter should be positive.</value>
   </data>
   <data name="ParentPlotterNotNull" xml:space="preserve">
-    <value>Child's parent plotter should be equal to null after it was removed from plotter.</value>
+    <value>Child's parent plotter_ should be equal to null after it was removed from plotter_.</value>
   </data>
   <data name="PlotterElementAddedToAnotherPlotter" xml:space="preserve">
     <value>Cannot add item to Plotter - first it should be removed from another Plotter.</value>
   </data>
   <data name="PlotterElementDidnotCleanedAfterItself" xml:space="preserve">
-    <value>IPlotterElement {0} did not removed all its contents from plotter's visual tree. Change this wrong behaviour in OnPlotterDetaching method of this IPlotterElement.</value>
+    <value>IPlotterElement {0} did not removed all its contents from plotter_'s visual tree. Change this wrong behaviour in OnPlotterDetaching method of this IPlotterElement.</value>
   </data>
   <data name="PlotterMainHorizontalAxisShouldNotBeNull" xml:space="preserve">
     <value>Plotter's MainHorizontalAxis should not be null.</value>

@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="JinHu.Visualization.Plotter2D.Charts.AxisBase&lt;T&gt;" Collapsed="true">
+    <Position X="11.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wAIAAABQBAAAkAAEQAAgAAAQgAACGgACBSAQBoAAQAA=</HashCode>
+      <FileName>Charts\Axes\AxisBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.Charts.GeneralAxis" Collapsed="true">
+    <Position X="11.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIACEgAAAAAgAAQCQAgAAgAABAICAIQAQAAAAAAQgA=</HashCode>
+      <FileName>Charts\Axes\GeneralAxis.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.Charts.DateTimeAxis" Collapsed="true">
+    <Position X="4.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAgAAABAAAAIABCAAAKAAIACAAAAAAAAg=</HashCode>
+      <FileName>Charts\Axes\DateTime\DateTimeAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.Charts.IntegerAxis" Collapsed="true">
+    <Position X="9.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Charts\Axes\Integer\IntegerAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.Charts.NumericAxis" Collapsed="true">
+    <Position X="12.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Charts\Axes\Numeric\NumericAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.Charts.TimeSpanAxis" Collapsed="true">
+    <Position X="18.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAIAACAAAAAAIACAAAAAAAAA=</HashCode>
+      <FileName>Charts\Axes\TimeSpan\TimeSpanAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.Charts.HorizontalDateTimeAxis" Collapsed="true">
+    <Position X="2.75" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Charts\Axes\DateTime\HorizontalDateTimeAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.Charts.VerticalDateTimeAxis" Collapsed="true">
+    <Position X="5" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Charts\Axes\DateTime\VerticalDateTimeAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.Charts.HorizontalIntegerAxis" Collapsed="true">
+    <Position X="8.25" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Charts\Axes\Integer\HorizontalIntegerAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.Charts.VerticalIntegerAxis" Collapsed="true">
+    <Position X="10.5" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Charts\Axes\Integer\VerticalIntegerAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.Charts.HorizontalAxis" Collapsed="true">
+    <Position X="13.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Charts\Axes\Numeric\HorizontalAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.Charts.VerticalAxis" Collapsed="true">
+    <Position X="16" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Charts\Axes\Numeric\VerticalAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.Charts.HorizontalTimeSpanAxis" Collapsed="true">
+    <Position X="18.75" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Charts\Axes\TimeSpan\HorizontalTimeSpanAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.Charts.VerticalTimeSpanAxis" Collapsed="true">
+    <Position X="21" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Charts\Axes\TimeSpan\VerticalTimeSpanAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

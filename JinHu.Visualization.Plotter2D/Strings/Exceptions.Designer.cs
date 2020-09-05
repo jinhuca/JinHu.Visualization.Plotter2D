@@ -241,7 +241,7 @@ namespace JinHu.Visualization.Plotter2D.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid value of child&apos;s parent plotter - it should be equal to plotter that child is added to..
+        ///   Looks up a localized string similar to Invalid value of child&apos;s parent plotter_ - it should be equal to plotter_ that child is added to..
         /// </summary>
         internal static string InvalidParentPlotterValue {
             get {
@@ -250,7 +250,7 @@ namespace JinHu.Visualization.Plotter2D.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid value of child&apos;s parent plotter - it should be equal to plotter that child is being removed from..
+        ///   Looks up a localized string similar to Invalid value of child&apos;s parent plotter_ - it should be equal to plotter_ that child is being removed from..
         /// </summary>
         internal static string InvalidParentPlotterValueRemoving {
             get {
@@ -322,7 +322,7 @@ namespace JinHu.Visualization.Plotter2D.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Child&apos;s parent plotter should be equal to null after it was removed from plotter..
+        ///   Looks up a localized string similar to Child&apos;s parent plotter_ should be equal to null after it was removed from plotter_..
         /// </summary>
         internal static string ParentPlotterNotNull {
             get {
@@ -340,7 +340,7 @@ namespace JinHu.Visualization.Plotter2D.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to IPlotterElement {0} did not removed all its contents from plotter&apos;s visual tree. Change this wrong behaviour in OnPlotterDetaching method of this IPlotterElement..
+        ///   Looks up a localized string similar to IPlotterElement {0} did not removed all its contents from plotter_&apos;s visual tree. Change this wrong behaviour in OnPlotterDetaching method of this IPlotterElement..
         /// </summary>
         internal static string PlotterElementDidnotCleanedAfterItself {
             get {

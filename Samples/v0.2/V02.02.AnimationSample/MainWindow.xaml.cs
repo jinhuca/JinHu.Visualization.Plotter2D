@@ -51,9 +51,11 @@ namespace V02.AnimationSample
       }
 
       EnumerableDataSource<double> xSrc = new EnumerableDataSource<double>(animatedX);
-      xSrc.SetXMapping(x => x);
+      xSrc.XMapping = x => x;
+      //xSrc.SetXMapping(x => x);
       animatedDataSource = new EnumerableDataSource<double>(animatedY);
-      animatedDataSource.SetYMapping(y => y);
+      //animatedDataSource.SetYMapping(y => y);
+      animatedDataSource.YMapping = y => y;
 
       plotter.AddLineGraph(new CompositeDataSource(xSrc, animatedDataSource), new Pen(Brushes.Magenta, 3), new PenDescription("Sin(x + phase)"));
 

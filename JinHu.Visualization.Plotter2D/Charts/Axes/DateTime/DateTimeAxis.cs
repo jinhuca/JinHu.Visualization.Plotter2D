@@ -61,11 +61,11 @@ namespace JinHu.Visualization.Plotter2D.Charts
       set { constraint = value; }
     }
 
-    protected override void OnPlotterAttached(PlotterBase plotter)
+    protected override void OnPlotterAttached(PlotterBase plotter_)
     {
-      base.OnPlotterAttached(plotter);
+      base.OnPlotterAttached(plotter_);
 
-      plotter.Viewport.Constraints.Add(constraint);
+      plotter_.Viewport.Constraints.Add(constraint);
     }
 
     protected override void OnPlotterDetaching(PlotterBase plotter)

@@ -57,20 +57,18 @@ namespace JinHu.Visualization.Plotter2D
 
       var transform = Plotter.Viewport.Transform;
       DataRect bounds = DataRect.Empty;
-      using (IPointEnumerator enumerator = DataSource.GetEnumerator(GetContext()))
+      using IPointEnumerator enumerator = DataSource.GetEnumerator(GetContext());
+      Point point = new Point();
+      while (enumerator.MoveNext())
       {
-        Point point = new Point();
-        while (enumerator.MoveNext())
-        {
-          enumerator.GetCurrent(ref point);
-          enumerator.ApplyMappings(Marker);
+        enumerator.GetCurrent(ref point);
+        enumerator.ApplyMappings(Marker);
 
-          //Point screenPoint = point.Transform(state.Visible, state.Output);
-          Point screenPoint = point.DataToScreen(transform);
+        //Point screenPoint = point.Transform(state.Visible, state.Output);
+        Point screenPoint = point.DataToScreen(transform);
 
-          bounds = DataRect.Union(bounds, point);
-          Marker.Render(dc, screenPoint);
-        }
+        bounds = DataRect.Union(bounds, point);
+        Marker.Render(dc, screenPoint);
       }
 
       Viewport2D.SetContentBounds(this, bounds);

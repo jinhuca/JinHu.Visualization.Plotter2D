@@ -1,47 +1,77 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="JinHu.Visualization.Plotter2D.DataSources.EnumerableDataSource&lt;T&gt;">
-    <Position X="8.5" Y="1" Width="2.75" />
+    <Position X="8.5" Y="2.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAgAAAAIAIAAAJAAAAAAYAIAAAAAIAwAAAgAAAEAgAA=</HashCode>
+      <HashCode>AAgAAAAIAIAAABAAAAAAYAAAAAAQIAAAAgAAAAEAgAA=</HashCode>
       <FileName>DataSources\OneDimensional\EnumerableDataSource.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="JinHu.Visualization.Plotter2D.DataSources.EnumerableDataSourceBase&lt;T&gt;">
-    <Position X="3.75" Y="4.25" Width="3" />
+    <Position X="4.5" Y="4.25" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAAAACAABAAAABAAAAAAQAAAAAAAABQAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAACAAAAAAABAAAAAAQAAAAAAAABQAAAAQAAAAAAA=</HashCode>
       <FileName>DataSources\OneDimensional\EnumerableDataSourceBase.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="JinHu.Visualization.Plotter2D.DataSources.RawDataSource">
-    <Position X="8.5" Y="6" Width="2.5" />
+    <Position X="8.5" Y="6.25" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DataSources\OneDimensional\RawDataSource.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="JinHu.Visualization.Plotter2D.DataSources.EnumerableXDataSource&lt;T&gt;">
-    <Position X="12.25" Y="3" Width="2.25" />
+    <Position X="12.25" Y="3.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DataSources\OneDimensional\EnumerableXDataSource.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="JinHu.Visualization.Plotter2D.DataSources.EnumerableYDataSource&lt;T&gt;">
-    <Position X="12.25" Y="4.5" Width="2.25" />
+    <Position X="12.25" Y="5.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DataSources\OneDimensional\EnumerableYDataSource.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="JinHu.Visualization.Plotter2D.DataSources.TableDataSource">
-    <Position X="12.25" Y="1" Width="2.25" />
+    <Position X="12.25" Y="1.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DataSources\OneDimensional\TableDataSource.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.DataSources.CompositeDataSource">
+    <Position X="15.25" Y="1" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="JinHu.Visualization.Plotter2D.DataSources.CompositeDataSource.CompositeEnumerator">
+        <TypeIdentifier>
+          <NewMemberFileName>DataSources\OneDimensional\CompositeDataSource.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAIAAABQAAAAEAAAAAAAAAAQAgAAAAAAAAAA=</HashCode>
+      <FileName>DataSources\OneDimensional\CompositeDataSource.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.DataSources.EnumerablePointEnumerator&lt;T&gt;" Collapsed="true">
+    <Position X="1.25" Y="3.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAEAACAAAgAAAAAAAAAAAAAAIAAAIAAAAAAAAAA=</HashCode>
+      <FileName>DataSources\OneDimensional\EnumerablePointEnumerator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Interface Name="JinHu.Visualization.Plotter2D.DataSources.IPointDataSource">
     <Position X="6" Y="1" Width="1.5" />
@@ -51,7 +81,7 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="JinHu.Visualization.Plotter2D.DataSources.IPointEnumerator">
-    <Position X="3.75" Y="1" Width="1.5" />
+    <Position X="1.25" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAIAAAIAAAAAAAAAA=</HashCode>
       <FileName>DataSources\OneDimensional\IPointEnumerator.cs</FileName>

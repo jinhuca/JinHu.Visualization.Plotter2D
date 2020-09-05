@@ -153,9 +153,9 @@ namespace JinHu.Visualization.Plotter2D.Charts
       set => axisControl.DrawMajorLabels = value;
     }
 
-    protected override void OnPlotterAttached(PlotterBase plotter)
+    protected override void OnPlotterAttached(PlotterBase plotter_)
     {
-      plotter.Viewport.PropertyChanged += OnViewportPropertyChanged;
+      plotter_.Viewport.PropertyChanged += OnViewportPropertyChanged;
 
       Panel panel = GetPanelByPlacement(Placement);
       if (panel != null)
@@ -166,7 +166,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
       using (axisControl.OpenUpdateRegion(true))
       {
-        UpdateAxisControl(plotter);
+        UpdateAxisControl(plotter_);
       }
     }
 
@@ -187,8 +187,6 @@ namespace JinHu.Visualization.Plotter2D.Charts
           break;
         case AxisPlacement.Top:
           index = 0;
-          break;
-        default:
           break;
       }
 

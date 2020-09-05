@@ -36,17 +36,17 @@
       <FileName>ViewportConstraints\ConstraintCollection.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="JinHu.Visualization.Plotter2D.LineGraph">
-    <Position X="6" Y="5.75" Width="2.25" />
+  <Class Name="JinHu.Visualization.Plotter2D.LineGraph" Collapsed="true">
+    <Position X="8" Y="5.75" Width="2.25" />
     <Compartments>
       <Compartment Name="Properties" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AABAIIQAACAASAIAAIBAAQDAAAgQQAAAEAAAADgAQQA=</HashCode>
+      <HashCode>AABAIIQAACAASAIAAIBAAQDAAAgQQAAAAAAAADgAQQA=</HashCode>
       <FileName>Charts\LineGraph.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="JinHu.Visualization.Plotter2D.PointsGraphBase">
+  <Class Name="JinHu.Visualization.Plotter2D.PointsGraphBase" Collapsed="true">
     <Position X="10.5" Y="4.25" Width="2.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
@@ -68,7 +68,7 @@
   <Class Name="JinHu.Visualization.Plotter2D.ViewportElement2D" Collapsed="true">
     <Position X="5.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AASCCAwGAAAmgIJMJAQgCAAAgRAAKgCBAAIAJBoEhQg=</HashCode>
+      <HashCode>AAQCCAwGAAAmgIIMIAQgCAAAgRAAKgCBAAIAJBoEhQg=</HashCode>
       <FileName>ViewportElement2D.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.1" />
@@ -88,15 +88,15 @@
       <FileName>Charts\Navigation\NavigationBase.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="JinHu.Visualization.Plotter2D.ElementMarkerPointsGraph">
-    <Position X="15.25" Y="6.25" Width="3" />
+  <Class Name="JinHu.Visualization.Plotter2D.ElementMarkerPointsGraph" Collapsed="true">
+    <Position X="11" Y="5.75" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAQAAAIAwAAAAAIAAQACAEAACAAAAAAAAAAAAAA=</HashCode>
       <FileName>Charts\MarkerElementPointGraph.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="JinHu.Visualization.Plotter2D.MarkerPointsGraph">
-    <Position X="21" Y="6" Width="2.5" />
+  <Class Name="JinHu.Visualization.Plotter2D.MarkerPointsGraph" Collapsed="true">
+    <Position X="14.75" Y="5.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAQAAAAAAAIAAAAAAQAAAEAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Charts\MarkerPointsGraph.cs</FileName>

@@ -21,22 +21,20 @@ namespace V02.HelloAdvPlotter
 
     private void LoadDataSource()
     {
-      const int N = 15000;
+      const int N = 10100;
       double[] x = new double[N];
       double[] y = new double[N];
       for (var i = 0; i < N; i++)
       {
         x[i] = i * 0.001;
-        y[i] = Math.Tanh(x[i]);
+        y[i] = Math.Sin(x[i]);
       }
 
-      var yDataSource = new EnumerableDataSource<double>(y);
-      yDataSource.SetYMapping(yy => yy);
-      var xDataSource = new EnumerableDataSource<double>(x);
-      xDataSource.SetXMapping(xx => xx);
-      var cData = new CompositeDataSource(xDataSource, yDataSource);
+      var xDataSource = new EnumerableDataSource<double>(x) { XMapping = xx => xx };
+      var yDataSource = new EnumerableDataSource<double>(y) { YMapping = yy => yy };
+      var composedData = new CompositeDataSource(xDataSource, yDataSource);
 
-      plotter.AddLineGraph(cData, Colors.DarkBlue, 1);
+      plotter.AddLineGraph(pointSource: composedData, lineColor: Colors.DarkBlue, lineThickness: 1, description: "Sin");
     }
   }
 }

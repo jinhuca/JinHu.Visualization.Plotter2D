@@ -71,9 +71,11 @@ namespace Plotter2DSample1
       }
 
       EnumerableDataSource<double> xSrc = new EnumerableDataSource<double>(animatedX);
-      xSrc.SetXMapping(x => x);
+      xSrc.XMapping = x => x;
+      //xSrc.SetXMapping(x => x);
       animatedDataSource = new EnumerableDataSource<double>(animatedY);
-      animatedDataSource.SetYMapping(y => y);
+      animatedDataSource.YMapping = y => y;
+      //animatedDataSource.SetYMapping(y => y);
 
       // Adding graph to plotter
       plotter.AddLineGraph(

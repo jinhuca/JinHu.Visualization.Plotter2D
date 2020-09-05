@@ -35,16 +35,20 @@ namespace V02.MarkerSample
       // Add data sources:
       // 3 partial data sources, containing each of arrays
       var snDataSource = new EnumerableDataSource<double>(sn);
-      snDataSource.SetYMapping(y => y);
+      //snDataSource.SetYMapping(y => y);
+      snDataSource.YMapping = y => y;
 
       var xDataSource = new EnumerableDataSource<double>(x);
-      xDataSource.SetXMapping(lx => lx);
+      xDataSource.XMapping = lx => lx;
+      //xDataSource.SetXMapping(lx => lx);
 
       var csDataSource = new EnumerableDataSource<double>(cs);
-      csDataSource.SetYMapping(y => y);
+      csDataSource.YMapping = y => y;
+      //csDataSource.SetYMapping(y => y);
 
       var csqDataSource = new EnumerableDataSource<double>(cs);
-      csqDataSource.SetYMapping(y => y * y);
+      //csqDataSource.SetYMapping(y => y * y);
+      csqDataSource.YMapping = y => y * y;
 
       // 2 composite data sources and 2 charts respectively:
       //  creating composite data source

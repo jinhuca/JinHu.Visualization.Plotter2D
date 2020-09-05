@@ -14,6 +14,8 @@ namespace JinHu.Visualization.Plotter2D.DataSources
   /// </typeparam>
   public abstract class EnumerableDataSourceBase<T> : IPointDataSource
   {
+    #region Property Data
+    
     private IEnumerable data;
 
     public IEnumerable Data
@@ -28,17 +30,26 @@ namespace JinHu.Visualization.Plotter2D.DataSources
         }
       }
     }
+    private void ObservableCollection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e) => RaiseDataChanged();
 
-    protected EnumerableDataSourceBase(IEnumerable<T> data) : this((IEnumerable)data) { }
+    #endregion Property Data
+
+    #region Constructors
 
     protected EnumerableDataSourceBase(IEnumerable data) => Data = data ?? throw new ArgumentNullException(nameof(data));
 
-    private void ObservableCollection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e) => RaiseDataChanged();
+    protected EnumerableDataSourceBase(IEnumerable<T> data) : this((IEnumerable)data) { }
+
+    #endregion Constructors
+
+    #region IPointDataSource implementation
 
     public event EventHandler DataChanged;
 
     public void RaiseDataChanged() => DataChanged?.Invoke(this, EventArgs.Empty);
 
     public abstract IPointEnumerator GetEnumerator(DependencyObject context);
+
+    #endregion IPointDataSource implementation
   }
 }

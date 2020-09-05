@@ -19,21 +19,23 @@ namespace LineChart_1
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
       // (1) Prepare data in arrays
-      const int N = 400;
+      const int N = 240;
       double[] xA = new double[N];
       double[] yA = new double[N];
 
       for (int i = 0; i < N; i++)
       {
         xA[i] = i;
-        yA[i] = Math.Sin(i);
+        yA[i] = 0.01*Math.Sin(i);
       }
 
       var xDataSource = new EnumerableDataSource<double>(xA);
-      xDataSource.SetXMapping(x => x);
+      xDataSource.XMapping = x => x;
+      //xDataSource.SetXMapping(x => x);
 
       var yDataSource = new EnumerableDataSource<double>(yA);
-      yDataSource.SetYMapping(y => y);
+      yDataSource.YMapping = y => y;
+      //yDataSource.SetYMapping(y => y);
 
       // (2) Composite data sources
       CompositeDataSource compositeDataSource1 = new CompositeDataSource(xDataSource, yDataSource);
