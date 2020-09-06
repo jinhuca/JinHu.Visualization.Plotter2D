@@ -1,54 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="JinHu.Visualization.Plotter2D.PointMarker" Collapsed="true">
-    <Position X="5.25" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAQAAAQAAAAAAAAAAAABAAAAAAAAA=</HashCode>
-      <FileName>PointMarkers\PointMarker.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="JinHu.Visualization.Plotter2D.CenteredTextMarker" Collapsed="true">
-    <Position X="2" Y="2.25" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAEBAACAAAAAA=</HashCode>
-      <FileName>PointMarkers\CenteredTextMarker.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="JinHu.Visualization.Plotter2D.CompositePointMarker" Collapsed="true">
-    <Position X="4.25" Y="2.25" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
-      <FileName>PointMarkers\CompositePointMarker.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="JinHu.Visualization.Plotter2D.DelegatePointMarker" Collapsed="true">
-    <Position X="6.5" Y="2.25" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
-      <FileName>PointMarkers\DelegatePointMarker.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="JinHu.Visualization.Plotter2D.ShapePointMarker" Collapsed="true">
-    <Position X="8.75" Y="2.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAhAAAAABAgAAAAAACAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
-      <FileName>PointMarkers\ShapePointMarker.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="JinHu.Visualization.Plotter2D.CirclePointMarker" Collapsed="true">
-    <Position X="7.75" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
-      <FileName>PointMarkers\CirclePointMarker.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="JinHu.Visualization.Plotter2D.TrianglePointMarker" Collapsed="true">
-    <Position X="10" Y="3.75" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
-      <FileName>PointMarkers\TrianglePointMarker.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="JinHu.Visualization.Plotter2D.ElementPointMarker" Collapsed="true">
     <Position X="13.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
@@ -77,8 +28,57 @@
       <FileName>PointMarkers\RectElementPointMarker.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.PointMarker" Collapsed="true">
+    <Position X="4.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAQAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>PointMarkers\PointMarker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.CenteredTextMarker" Collapsed="true">
+    <Position X="1.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAEBAACAAAAAA=</HashCode>
+      <FileName>PointMarkers\CenteredTextMarker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.CompositePointMarker" Collapsed="true">
+    <Position X="3.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>PointMarkers\CompositePointMarker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.DelegatePointMarker" Collapsed="true">
+    <Position X="6" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>PointMarkers\DelegatePointMarker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.ShapePointMarker" Collapsed="true">
+    <Position X="8.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAiAAAAABAAAAAAAAACAACAAAABAAAAAA=</HashCode>
+      <FileName>PointMarkers\ShapePointMarker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.CirclePointMarker" Collapsed="true">
+    <Position X="7.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>PointMarkers\CirclePointMarker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.TrianglePointMarker" Collapsed="true">
+    <Position X="9.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>PointMarkers\TrianglePointMarker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Delegate Name="JinHu.Visualization.Plotter2D.MarkerRenderHandler" Collapsed="true">
-    <Position X="2" Y="0.75" Width="1.75" />
+    <Position X="2" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>KAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>PointMarkers\PointMarker.cs</FileName>

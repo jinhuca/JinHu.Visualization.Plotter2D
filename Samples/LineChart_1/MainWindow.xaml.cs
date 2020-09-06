@@ -19,14 +19,14 @@ namespace LineChart_1
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
       // (1) Prepare data in arrays
-      const int N = 40;
+      const int N = 240;
       double[] xA = new double[N];
       double[] yA = new double[N];
 
       for (int i = 0; i < N; i++)
       {
         xA[i] = i;
-        yA[i] = 0.01*Math.Sin(i);
+        yA[i] = 0.4*Math.Sin(i);
       }
 
       var xDataSource = new EnumerableDataSource<double>(xA);

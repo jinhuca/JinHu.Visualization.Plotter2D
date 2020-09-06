@@ -37,36 +37,40 @@
     </TypeIdentifier>
   </Class>
   <Class Name="JinHu.Visualization.Plotter2D.LineGraph">
-    <Position X="8" Y="5.75" Width="2.25" />
-    <Compartments>
-      <Compartment Name="Properties" Collapsed="true" />
-    </Compartments>
+    <Position X="7.25" Y="5.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AABAIIQAACAASAIAAIBAAQDAAAgQQAAAAAAAADgAQQA=</HashCode>
+      <HashCode>AABEIIQIACAASAIAAIAAAABAAAkQQAAAAAAAADgAAQA=</HashCode>
       <FileName>Graphs\LineGraph.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="JinHu.Visualization.Plotter2D.PointsGraphBase" Collapsed="true">
+  <Class Name="JinHu.Visualization.Plotter2D.PointsGraphBase">
     <Position X="10.5" Y="4.25" Width="2.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <InheritanceLine Type="JinHu.Visualization.Plotter2D.ViewportElement2D" ManuallyRouted="true">
       <Path>
-        <Point X="6" Y="3.191" />
-        <Point X="6" Y="3.654" />
+        <Point X="7.75" Y="2.441" />
+        <Point X="7.75" Y="3.654" />
         <Point X="11.75" Y="3.654" />
         <Point X="11.75" Y="4.25" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAECYCABAAAAQkAAAJBAQBQMAAAAAASAAiAgAAIAAgA=</HashCode>
+      <HashCode>AAEAYCAAAAAARkAAAJBAQBQMAAAAgASAAmAgAAAAAgA=</HashCode>
       <FileName>Graphs\PointGraphBase.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="JinHu.Visualization.Plotter2D.ViewportElement2D" Collapsed="true">
-    <Position X="5.25" Y="2.5" Width="1.5" />
+    <Position X="7" Y="1.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="JinHu.Visualization.Plotter2D.ViewportElement2D.ImageKind" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ViewportElement2D.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAQCCAwGAAAmgIIMIAQgCAAAgRAAKgCBAAIAJBoEhQg=</HashCode>
       <FileName>ViewportElement2D.cs</FileName>
@@ -89,14 +93,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="JinHu.Visualization.Plotter2D.ElementMarkerPointsGraph">
-    <Position X="11" Y="5.75" Width="3" />
+    <Position X="13.5" Y="5.75" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAQAAAAAwIAAAIIAAQAAAEAACAAAAAAAAAAAAAA=</HashCode>
       <FileName>Graphs\MarkerElementPointGraph.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="JinHu.Visualization.Plotter2D.MarkerPointsGraph">
-    <Position X="14.75" Y="5.75" Width="2.5" />
+    <Position X="17" Y="5.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAQAAAAAAAIAAAAAAQAAAEAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Graphs\MarkerPointsGraph.cs</FileName>

@@ -26,14 +26,11 @@ namespace JinHu.Visualization.Plotter2D
     protected override void AttachCore(UIElement graph)
     {
       base.AttachCore(graph);
-      var g = graph as LineGraph;
-      if (g == null)
+      if (graph is LineGraph g)
       {
-        throw new ArgumentException("OutlinePen description can only be attached to PointsGraph", "graph");
+        SetBinding(StrokeProperty, new Binding(nameof(g.Stroke)) { Source = g });
+        SetBinding(StrokeThicknessProperty, new Binding(nameof(g.StrokeThickness)) { Source = g });
       }
-
-      SetBinding(StrokeProperty, new Binding("Stroke") { Source = g });
-      SetBinding(StrokeThicknessProperty, new Binding("StrokeThickness") { Source = g });
     }
 
     public Brush Stroke

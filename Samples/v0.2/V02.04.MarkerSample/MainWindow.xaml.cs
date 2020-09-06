@@ -55,13 +55,12 @@ namespace V02.MarkerSample
       CompositeDataSource compositeDataSource1 = new CompositeDataSource(xDataSource, csDataSource);
       // adding graph to plotter
 
-      plotter.AddLineGraph(
-        compositeDataSource1,
-        new Pen(Brushes.Blue, .1),
-        new PenDescription("Sin"));
+      //plotter.AddLineGraph(
+      //  compositeDataSource1,
+      //  new Pen(Brushes.Blue, .1),
+      //  new PenDescription("Sin"));
 
       plotter.AddCursor(new CursorCoordinateGraph() { LineStroke = Brushes.Red, LineStrokeThickness = 0.5 });
-
       plotter.MainCanvas.Background = Brushes.Transparent;
       plotter.MainCanvas.Opacity = 1;
 
@@ -69,9 +68,7 @@ namespace V02.MarkerSample
       CompositeDataSource compositeDataSource2 = new CompositeDataSource(xDataSource, csDataSource);
 
       // Adding second graph to plotter
-      plotter.AddLineGraph(compositeDataSource2,
-          new Pen(Brushes.Blue, 3),
-          new PenDescription("Cos"));
+      // plotter.AddLineGraph(compositeDataSource2, new Pen(Brushes.Blue, 3), new PenDescription("Cos"));
 
       // creating composite data source for cs^2 values
       CompositeDataSource compositeDataSource3 = new CompositeDataSource(xDataSource, csqDataSource);
@@ -79,9 +76,17 @@ namespace V02.MarkerSample
       // Adding thirs graph to plotter
       Pen dashed = new Pen(Brushes.Magenta, 3);
       dashed.DashStyle = DashStyles.Dot;
-      plotter.AddLineGraph(compositeDataSource3, dashed, new PenDescription("Cos^2"));
+      //plotter.AddLineGraph(compositeDataSource3, dashed, new PenDescription("Cos^2"));
 
-      // Force evertyhing plotted to be visible
+      var marker = new CirclePointMarker()
+      {
+        Fill = new SolidColorBrush(Colors.Red),
+        Pen = new Pen {Brush = new SolidColorBrush(Colors.LightBlue)},
+        Size = 15
+      };
+      plotter.AddMarkerPointsGraph(compositeDataSource1, marker, new PenDescription("Cos^2"));
+      
+      // Force everything plotted to be visible
       plotter.FitToView();
     }
   }

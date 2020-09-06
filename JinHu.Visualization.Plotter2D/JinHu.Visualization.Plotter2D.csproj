@@ -176,6 +176,7 @@
     <Compile Include="Charts\Navigation\IPlotterContextMenuSource.cs" />
     <Compile Include="Charts\Navigation\LongOperationsIndicator.cs" />
     <Compile Include="Charts\Navigation\PlotterScrollBar.cs" />
+    <Compile Include="Graphs\MarkerGraph.cs" />
     <Compile Include="Plotter.cs" />
     <Compile Include="Charts\Axes\TimeSpan\TimeSpanTicksProviderBase.cs" />
     <Compile Include="Charts\Axes\TimeSpan\TimeSpanToDoubleConversion.cs" />
