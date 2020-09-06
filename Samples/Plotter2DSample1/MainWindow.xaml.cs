@@ -67,10 +67,12 @@ namespace Plotter2DSample1
       animatedDataSource.YMapping = y => y;
       //animatedDataSource.SetYMapping(y => y);
 
+      var linePen = new Pen(Brushes.Red, 1);
+      linePen.Freeze();
       // Adding graph to plotter
       plotter.AddLineGraph(
         new CompositeDataSource(xSrc, animatedDataSource),
-        new Pen(Brushes.Red, 1),
+        linePen,
         new PenDescription("Sin(x + phase)"));
 
       timer.Interval = TimeSpan.FromMilliseconds(10);

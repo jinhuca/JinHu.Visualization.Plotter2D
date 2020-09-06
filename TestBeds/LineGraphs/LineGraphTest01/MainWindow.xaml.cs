@@ -23,9 +23,11 @@ namespace LineGraphTest01
     private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
     {
       _source = await CreateDataSource();
+      var linePen = new Pen(brush: Brushes.GreenYellow, thickness: 3);
+      linePen.Freeze();
       plotter.AddLineGraph(
         pointSource: _source,
-        penForDrawingLine: new Pen(brush: Brushes.GreenYellow, thickness: 3),
+        penForDrawingLine: linePen,
         descriptionForPen: new PenDescription(nameof(Math.Sign)));
     }
 

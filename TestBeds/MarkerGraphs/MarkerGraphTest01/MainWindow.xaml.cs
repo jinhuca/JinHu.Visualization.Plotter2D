@@ -24,5 +24,11 @@ namespace MarkerGraphTest01
     {
       InitializeComponent();
     }
+
+    private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+    {
+      const int N = 300;
+      double[] x = new double[N];
+    }
   }
 }

@@ -4,6 +4,7 @@ using JinHu.Visualization.Plotter2D.DataSources;
 using System;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace V02.MarkerSample
 {
@@ -81,7 +82,7 @@ namespace V02.MarkerSample
       var marker = new CirclePointMarker()
       {
         Fill = new SolidColorBrush(Colors.Red),
-        Pen = new Pen {Brush = new SolidColorBrush(Colors.LightBlue)},
+        Pen = new Pen {Brush = new SolidColorBrush(Colors.Blue)},
         Size = 15
       };
       plotter.AddMarkerPointsGraph(compositeDataSource1, marker, new PenDescription("Cos^2"));

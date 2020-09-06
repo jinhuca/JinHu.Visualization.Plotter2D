@@ -88,7 +88,6 @@ namespace JinHu.Visualization.Plotter2D
             pen.Brush = value;
             LinePen = pen;
           }
-
           RaisePropertyChanged();
         }
       }

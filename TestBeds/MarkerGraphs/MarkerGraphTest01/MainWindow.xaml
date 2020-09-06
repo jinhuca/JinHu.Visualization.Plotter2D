@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:jin="http://jinhuca.visualization.com/Plotter2D/1.0"
         xmlns:local="clr-namespace:MarkerGraphTest01"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Loaded="MainWindow_OnLoaded"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+  <Grid>
+    <jin:Plotter x:Name="plotter"/>
+  </Grid>
 </Window>
