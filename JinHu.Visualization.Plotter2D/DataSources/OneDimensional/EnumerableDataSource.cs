@@ -28,6 +28,8 @@ namespace JinHu.Visualization.Plotter2D.DataSources
     #region Property XMapping
 
     private Func<T, double> _xMapping;
+
+    [NotNull]
     public Func<T, double> XMapping
     {
       get => _xMapping;
@@ -43,6 +45,8 @@ namespace JinHu.Visualization.Plotter2D.DataSources
     #region Property YMapping
 
     private Func<T, double> _yMapping;
+    
+    [NotNull]
     public Func<T, double> YMapping
     {
       get => _yMapping;

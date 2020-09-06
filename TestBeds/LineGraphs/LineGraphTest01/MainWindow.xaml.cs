@@ -1,28 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using JinHu.Visualization.Plotter2D;
 using JinHu.Visualization.Plotter2D.DataSources;
 
 namespace LineGraphTest01
 {
   /// <summary>
-  /// Interaction logic for MainWindow.xaml
+  /// Test basic operations: adding LineGraphs to Plotter.
   /// </summary>
   public partial class MainWindow : Window
   {
-    private CompositeDataSource source = new CompositeDataSource();
+    private CompositeDataSource _source = new CompositeDataSource();
 
     public MainWindow()
     {
@@ -32,22 +22,23 @@ namespace LineGraphTest01
 
     private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
     {
-      source = await CreateDataSource();
-      plotter.AddLineGraph(pointSource: source,
-        penForDrawingLine: new Pen(brush: Brushes.DarkRed, thickness: 2),
+      _source = await CreateDataSource();
+      plotter.AddLineGraph(
+        pointSource: _source,
+        penForDrawingLine: new Pen(brush: Brushes.GreenYellow, thickness: 3),
         descriptionForPen: new PenDescription(nameof(Math.Sign)));
     }
 
     private async Task<CompositeDataSource> CreateDataSource()
     {
+      const int N = 100_000;
       return await Task.Run(() =>
       {
-        const int N = 10_000;
         double[] xs = new double[N];
         double[] ys = new double[N];
         for (int i = 0; i < N; ++i)
         {
-          xs[i] = i * 0.001;
+          xs[i] = i * 0.0001;
           ys[i] = Math.Sin(xs[i]);
         }
 

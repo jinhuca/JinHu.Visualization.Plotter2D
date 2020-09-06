@@ -37,12 +37,15 @@ namespace JinHu.Visualization.Plotter2D
       {
         throw new ArgumentNullException(nameof(pointSource));
       }
-      var lineGraph = new LineGraph { DataSource = pointSource, LinePen = penForDrawingLine };
-      if (descriptionForPen != null)
+
+      penForDrawingLine ??= new Pen { Brush = new SolidColorBrush(Colors.Red), Thickness = 1 };
+      descriptionForPen ??= new PenDescription(nameof(pointSource));
+
+      var lineGraph = new LineGraph
       {
-        Legend.SetDescription(lineGraph, descriptionForPen.Brief);
-        lineGraph.Description = descriptionForPen;
-      }
+        DataSource = pointSource, LinePen = penForDrawingLine, Description = descriptionForPen
+      };
+      Legend.SetDescription(lineGraph, descriptionForPen.Brief);
       lineGraph.Filters.Add(new FrequencyFilter());
       plotter.Children.Add(lineGraph);
       return lineGraph;
