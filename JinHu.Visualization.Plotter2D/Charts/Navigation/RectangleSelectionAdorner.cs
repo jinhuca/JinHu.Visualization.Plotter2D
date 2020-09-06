@@ -25,7 +25,7 @@ namespace JinHu.Visualization.Plotter2D
 
     public static readonly DependencyProperty FillProperty =
       DependencyProperty.Register(
-        "Fill",
+        "InnerBrush",
         typeof(Brush),
         typeof(RectangleSelectionAdorner),
         new FrameworkPropertyMetadata(

@@ -32,24 +32,24 @@ namespace JinHu.Visualization.Plotter2D
       DataSource = dataSource;
     }
 
-    Grid grid;
-    Canvas canvas;
+    Grid _grid;
+    Canvas _canvas;
 
     protected override void OnPlotterAttached(PlotterBase plotter)
     {
-      base.OnPlotterAttached(plotter);
-      grid = new Grid();
-      canvas = new Canvas { ClipToBounds = true };
-      grid.Children.Add(canvas);
-      Plotter.CentralGrid.Children.Add(grid);
+      base.OnPlotterAttached(plotter: plotter);
+      _grid = new Grid();
+      _canvas = new Canvas { ClipToBounds = true };
+      _grid.Children.Add(element: _canvas);
+      Plotter.CentralGrid.Children.Add(element: _grid);
     }
 
     protected override void OnPlotterDetaching(PlotterBase plotter)
     {
-      Plotter.CentralGrid.Children.Remove(grid);
-      grid = null;
-      canvas = null;
-      base.OnPlotterDetaching(plotter);
+      Plotter.CentralGrid.Children.Remove(element: _grid);
+      _grid = null;
+      _canvas = null;
+      base.OnPlotterDetaching(plotter: plotter);
     }
 
     protected override void OnDataChanged()
@@ -66,15 +66,15 @@ namespace JinHu.Visualization.Plotter2D
 
     public ElementPointMarker Marker
     {
-      get => (ElementPointMarker)GetValue(MarkerProperty);
-      set => SetValue(MarkerProperty, value);
+      get => (ElementPointMarker)GetValue(dp: MarkerProperty);
+      set => SetValue(dp: MarkerProperty, value: value);
     }
 
     public static readonly DependencyProperty MarkerProperty = DependencyProperty.Register(
-      "Marker",
-      typeof(ElementPointMarker),
-      typeof(ElementMarkerPointsGraph),
-      new FrameworkPropertyMetadata { DefaultValue = null, AffectsRender = true });
+      name: nameof(Marker),
+      propertyType: typeof(ElementPointMarker),
+      ownerType: typeof(ElementMarkerPointsGraph),
+      typeMetadata: new FrameworkPropertyMetadata { DefaultValue = null, AffectsRender = true });
 
     protected override void OnRenderCore(DrawingContext dc, RenderState state)
     {
@@ -85,56 +85,56 @@ namespace JinHu.Visualization.Plotter2D
 
       if (DataSource == null) // No data is specified
       {
-        if (canvas != null)
+        if (_canvas != null)
         {
-          foreach (UIElement child in canvas.Children)
+          foreach (UIElement child in _canvas.Children)
           {
-            unused.Add(child);
+            unused.Add(item: child);
           }
-          canvas.Children.Clear();
+          _canvas.Children.Clear();
         }
       }
       else // There is some data
       {
         int index = 0;
         var transform = GetTransform();
-        using IPointEnumerator enumerator = DataSource.GetEnumerator(GetContext());
+        using IPointEnumerator enumerator = DataSource.GetEnumerator(context: GetContext());
         Point point = new Point();
         DataRect bounds = DataRect.Empty;
 
         while (enumerator.MoveNext())
         {
-          enumerator.GetCurrent(ref point);
-          enumerator.ApplyMappings(Marker);
+          enumerator.GetCurrent(p: ref point);
+          enumerator.ApplyMappings(target: Marker);
 
-          if (index >= canvas.Children.Count)
+          if (index >= _canvas.Children.Count)
           {
             UIElement newMarker;
             if (unused.Count > 0)
             {
-              newMarker = unused[unused.Count - 1];
-              unused.RemoveAt(unused.Count - 1);
+              newMarker = unused[index: unused.Count - 1];
+              unused.RemoveAt(index: unused.Count - 1);
             }
             else
             {
               newMarker = Marker.CreateMarker();
             }
-            canvas.Children.Add(newMarker);
+            _canvas.Children.Add(element: newMarker);
           }
 
-          Marker.SetMarkerProperties(canvas.Children[index]);
-          bounds.Union(point);
-          Point screenPoint = point.DataToScreen(transform);
-          Marker.SetPosition(canvas.Children[index], screenPoint);
+          Marker.SetMarkerProperties(marker: _canvas.Children[index: index]);
+          bounds.Union(point: point);
+          Point screenPoint = point.DataToScreen(transform: transform);
+          Marker.SetPosition(marker: _canvas.Children[index: index], screenPoint: screenPoint);
           index++;
         }
 
-        Viewport2D.SetContentBounds(this, bounds);
+        Viewport2D.SetContentBounds(obj: this, value: bounds);
 
-        while (index < canvas.Children.Count)
+        while (index < _canvas.Children.Count)
         {
-          unused.Add(canvas.Children[index]);
-          canvas.Children.RemoveAt(index);
+          unused.Add(item: _canvas.Children[index: index]);
+          _canvas.Children.RemoveAt(index: index);
         }
       }
     }

@@ -14,30 +14,32 @@ namespace JinHu.Visualization.Plotter2D
     /// </summary>
     protected PointsGraphBase()
     {
-      Viewport2D.SetIsContentBoundsHost(this, true);
+      Viewport2D.SetIsContentBoundsHost(obj: this, value: true);
     }
 
     #region DataSource
 
     public IPointDataSource DataSource
     {
-      get => (IPointDataSource)GetValue(DataSourceProperty);
-      set => SetValue(DataSourceProperty, value);
+      get => (IPointDataSource)GetValue(dp: DataSourceProperty);
+      set => SetValue(dp: DataSourceProperty, value: value);
     }
 
     public static readonly DependencyProperty DataSourceProperty = DependencyProperty.Register(
-      nameof(DataSource), typeof(IPointDataSource), typeof(PointsGraphBase),
-      new FrameworkPropertyMetadata { AffectsRender = true, DefaultValue = null, PropertyChangedCallback = OnDataSourceChangedCallback });
+      name: nameof(DataSource), 
+      propertyType: typeof(IPointDataSource), 
+      ownerType: typeof(PointsGraphBase),
+      typeMetadata: new FrameworkPropertyMetadata { AffectsRender = true, DefaultValue = null, PropertyChangedCallback = OnDataSourceChangedCallback });
 
     private static void OnDataSourceChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
       var graph = (PointsGraphBase)d;
       if (e.NewValue != e.OldValue)
       {
-        graph.DetachDataSource(e.OldValue as IPointDataSource);
-        graph.AttachDataSource(e.NewValue as IPointDataSource);
+        graph.DetachDataSource(source: e.OldValue as IPointDataSource);
+        graph.AttachDataSource(source: e.NewValue as IPointDataSource);
       }
-      graph.OnDataSourceChanged(e);
+      graph.OnDataSourceChanged(args: e);
     }
 
     private void AttachDataSource(IPointDataSource source)
@@ -60,20 +62,20 @@ namespace JinHu.Visualization.Plotter2D
 
     protected virtual void OnDataChanged()
     {
-      UpdateBounds(DataSource);
+      UpdateBounds(dataSource: DataSource);
       RaiseDataChanged();
       Update();
     }
 
     public event EventHandler DataChanged;
-    private void RaiseDataChanged() => DataChanged?.Invoke(this, EventArgs.Empty);
+    private void RaiseDataChanged() => DataChanged?.Invoke(sender: this, e: EventArgs.Empty);
 
     protected virtual void OnDataSourceChanged(DependencyPropertyChangedEventArgs args)
     {
-      IPointDataSource newDataSource = (IPointDataSource)args.NewValue;
+      var newDataSource = (IPointDataSource)args.NewValue;
       if (newDataSource != null)
       {
-        UpdateBounds(newDataSource);
+        UpdateBounds(dataSource: newDataSource);
       }
       Update();
     }
@@ -83,8 +85,8 @@ namespace JinHu.Visualization.Plotter2D
       if (Plotter != null)
       {
         var transform = GetTransform();
-        DataRect bounds = BoundsHelper.GetViewportBounds(dataSource.GetPoints(), transform.DataTransform);
-        Viewport2D.SetContentBounds(this, bounds);
+        DataRect bounds = BoundsHelper.GetViewportBounds(dataPoints: dataSource.GetPoints(), transform: transform.DataTransform);
+        Viewport2D.SetContentBounds(obj: this, value: bounds);
       }
     }
 
@@ -92,15 +94,15 @@ namespace JinHu.Visualization.Plotter2D
 
     #region DataTransform
 
-    private DataTransform dataTransform;
+    private DataTransform _dataTransform;
     public DataTransform DataTransform
     {
-      get { return dataTransform; }
+      get => _dataTransform;
       set
       {
-        if (dataTransform != value)
+        if (_dataTransform != value)
         {
-          dataTransform = value;
+          _dataTransform = value;
           Update();
         }
       }
@@ -113,9 +115,9 @@ namespace JinHu.Visualization.Plotter2D
         return null;
       }
       var transform = Plotter.Viewport.Transform;
-      if (dataTransform != null)
+      if (_dataTransform != null)
       {
-        transform = transform.WithDataTransform(dataTransform);
+        transform = transform.WithDataTransform(dataTransform: _dataTransform);
       }
       return transform;
     }
@@ -126,54 +128,47 @@ namespace JinHu.Visualization.Plotter2D
 
     public ReadOnlyCollection<Point> VisiblePoints
     {
-      get { return GetVisiblePoints(this); }
-      protected set { SetVisiblePoints(this, value); }
+      get => GetVisiblePoints(obj: this);
+      protected set => SetVisiblePoints(obj: this, value: value);
     }
 
-    public static ReadOnlyCollection<Point> GetVisiblePoints(DependencyObject obj)
-    {
-      return (ReadOnlyCollection<Point>)obj.GetValue(VisiblePointsProperty);
-    }
+    public static ReadOnlyCollection<Point> GetVisiblePoints(DependencyObject obj) => (ReadOnlyCollection<Point>)obj.GetValue(dp: VisiblePointsProperty);
 
-    public static void SetVisiblePoints(DependencyObject obj, ReadOnlyCollection<Point> value)
-    {
-      obj.SetValue(VisiblePointsProperty, value);
-    }
+    public static void SetVisiblePoints(DependencyObject obj, ReadOnlyCollection<Point> value) => obj.SetValue(dp: VisiblePointsProperty, value: value);
 
     public static readonly DependencyProperty VisiblePointsProperty = DependencyProperty.RegisterAttached(
-      "VisiblePoints",
-      typeof(ReadOnlyCollection<Point>),
-      typeof(PointsGraphBase),
-      new FrameworkPropertyMetadata(null, OnVisiblePointsChanged));
+      name: nameof(VisiblePoints),
+      propertyType: typeof(ReadOnlyCollection<Point>),
+      ownerType: typeof(PointsGraphBase),
+      defaultMetadata: new FrameworkPropertyMetadata(defaultValue: null, propertyChangedCallback: OnVisiblePointsChanged));
 
     private static void OnVisiblePointsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-      PointsGraphBase graph = d as PointsGraphBase;
-      if (graph != null)
+      if (d is PointsGraphBase graph)
       {
         graph.RaiseVisiblePointsChanged();
       }
     }
 
     public event EventHandler VisiblePointsChanged;
-    protected void RaiseVisiblePointsChanged() => VisiblePointsChanged?.Raise(this);
+    protected void RaiseVisiblePointsChanged() => VisiblePointsChanged?.Raise(sender: this);
 
-    private bool provideVisiblePoints = false;
+    private bool _provideVisiblePoints;
     public bool ProvideVisiblePoints
     {
-      get { return provideVisiblePoints; }
+      get => _provideVisiblePoints;
       set
       {
-        provideVisiblePoints = value;
+        _provideVisiblePoints = value;
         UpdateCore();
       }
     }
 
     #endregion
 
-    protected IEnumerable<Point> GetPoints() => DataSource.GetPoints(GetContext());
+    protected IEnumerable<Point> GetPoints() => DataSource.GetPoints(context: GetContext());
 
-    private readonly DataSource2dContext context = new DataSource2dContext();
-    protected DependencyObject GetContext() => context;
+    private readonly DataSource2dContext _context = new DataSource2dContext();
+    protected DependencyObject GetContext() => _context;
   }
 }

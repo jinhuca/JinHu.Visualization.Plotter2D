@@ -19,7 +19,7 @@ namespace LineChart_1
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
       // (1) Prepare data in arrays
-      const int N = 240;
+      const int N = 40;
       double[] xA = new double[N];
       double[] yA = new double[N];
 
@@ -42,9 +42,11 @@ namespace LineChart_1
 
       // (3) Create LineGraph
       plotter.AddLineGraph(
-        compositeDataSource1,
+        compositeDataSource1, 
+         
+
         new Pen(Brushes.Red, 1),
-        new CirclePointMarker { Size = 2, Fill = Brushes.Red },
+        //new CirclePointMarker { Size = 2, Fill = Brushes.Red },
         new PenDescription("Sin"));
     }
   }

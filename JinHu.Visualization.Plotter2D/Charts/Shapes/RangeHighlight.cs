@@ -49,7 +49,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
     #region Presentation DPs
 
     public static readonly DependencyProperty FillProperty = DependencyProperty.Register(
-      "Fill",
+      "InnerBrush",
       typeof(Brush),
       typeof(RangeHighlight),
       new PropertyMetadata(Shape.FillProperty.DefaultMetadata.DefaultValue));

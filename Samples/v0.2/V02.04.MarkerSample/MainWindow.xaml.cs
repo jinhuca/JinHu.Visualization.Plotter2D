@@ -58,7 +58,6 @@ namespace V02.MarkerSample
       plotter.AddLineGraph(
         compositeDataSource1,
         new Pen(Brushes.Blue, .1),
-        new CirclePointMarker { Size = 12, Fill = new SolidColorBrush(new Color() { R = 123, G = 25, B = 0, A = 255 }) },
         new PenDescription("Sin"));
 
       plotter.AddCursor(new CursorCoordinateGraph() { LineStroke = Brushes.Red, LineStrokeThickness = 0.5 });
@@ -72,7 +71,6 @@ namespace V02.MarkerSample
       // Adding second graph to plotter
       plotter.AddLineGraph(compositeDataSource2,
           new Pen(Brushes.Blue, 3),
-          new TrianglePointMarker { Size = 20, Fill = Brushes.Blue },
           new PenDescription("Cos"));
 
       // creating composite data source for cs^2 values

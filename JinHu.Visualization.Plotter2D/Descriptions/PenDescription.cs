@@ -26,10 +26,10 @@ namespace JinHu.Visualization.Plotter2D
     protected override void AttachCore(UIElement graph)
     {
       base.AttachCore(graph);
-      LineGraph g = graph as LineGraph;
+      var g = graph as LineGraph;
       if (g == null)
       {
-        throw new ArgumentException("Pen description can only be attached to PointsGraph", "graph");
+        throw new ArgumentException("OutlinePen description can only be attached to PointsGraph", "graph");
       }
 
       SetBinding(StrokeProperty, new Binding("Stroke") { Source = g });
@@ -38,24 +38,24 @@ namespace JinHu.Visualization.Plotter2D
 
     public Brush Stroke
     {
-      get { return (Brush)GetValue(StrokeProperty); }
-      set { SetValue(StrokeProperty, value); }
+      get => (Brush)GetValue(StrokeProperty);
+      set => SetValue(StrokeProperty, value);
     }
 
     public static readonly DependencyProperty StrokeProperty = DependencyProperty.Register(
-      "Stroke",
+      name: nameof(Stroke),
       typeof(Brush),
       typeof(PenDescription),
       new FrameworkPropertyMetadata(null));
 
     public double StrokeThickness
     {
-      get { return (double)GetValue(StrokeThicknessProperty); }
-      set { SetValue(StrokeThicknessProperty, value); }
+      get => (double)GetValue(StrokeThicknessProperty);
+      set => SetValue(StrokeThicknessProperty, value);
     }
 
     public static readonly DependencyProperty StrokeThicknessProperty = DependencyProperty.Register(
-      "StrokeThickness",
+      name: nameof(StrokeThickness),
       typeof(double),
       typeof(PenDescription),
       new FrameworkPropertyMetadata(0.0));

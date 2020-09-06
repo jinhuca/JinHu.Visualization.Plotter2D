@@ -65,7 +65,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
       // Get first control points Y-values
       double[] y = GetFirstControlPoints(rhs);
 
-      // Fill output arrays.
+      // InnerBrush output arrays.
       firstControlPoints = new Point[n];
       secondControlPoints = new Point[n];
       for (int i = 0; i < n; ++i)

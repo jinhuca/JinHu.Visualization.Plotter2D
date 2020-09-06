@@ -224,10 +224,10 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
     private static FormattedText CreateFormattedText(string text)
     {
-#pragma warning disable CS0618 // 'FormattedText.FormattedText(string, CultureInfo, FlowDirection, Typeface, double, Brush)' is obsolete: 'Use the PixelsPerDip override'
+#pragma warning disable CS0618 // 'FormattedText.FormattedText(string, CultureInfo, FlowDirection, Typeface, double, StrokeBrush)' is obsolete: 'Use the PixelsPerDip override'
       FormattedText result = new FormattedText(text,
         CultureInfo.CurrentCulture, FlowDirection.LeftToRight, new Typeface("Arial"), 12, Brushes.Black);
-#pragma warning restore CS0618 // 'FormattedText.FormattedText(string, CultureInfo, FlowDirection, Typeface, double, Brush)' is obsolete: 'Use the PixelsPerDip override'
+#pragma warning restore CS0618 // 'FormattedText.FormattedText(string, CultureInfo, FlowDirection, Typeface, double, StrokeBrush)' is obsolete: 'Use the PixelsPerDip override'
       return result;
     }
   }

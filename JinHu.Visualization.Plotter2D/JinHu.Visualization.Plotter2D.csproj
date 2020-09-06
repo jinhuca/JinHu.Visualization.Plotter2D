@@ -406,18 +406,18 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="ExtendedPropertyChangedEventArgs.cs" />
     <Compile Include="Charts\LineAndMarker.cs" />
-    <Compile Include="Charts\MarkerElementPointGraph.cs" />
+    <Compile Include="Graphs\MarkerElementPointGraph.cs" />
     <Compile Include="Descriptions\Description.cs" />
     <Compile Include="Descriptions\PenDescription.cs" />
     <Compile Include="Descriptions\StandardDescription.cs" />
     <Compile Include="Charts\FakePointList.cs" />
     <Compile Include="Charts\LegendItem.cs" />
-    <Compile Include="Charts\LineGraph.cs" />
+    <Compile Include="Graphs\LineGraph.cs" />
     <Compile Include="Charts\LineLegendItem.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>LineLegendItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Charts\MarkerPointsGraph.cs" />
+    <Compile Include="Graphs\MarkerPointsGraph.cs" />
     <Compile Include="PointMarkers\CirclePointMarker.cs" />
     <Compile Include="PointMarkers\ShapePointMarker.cs" />
     <Compile Include="PointMarkers\ElementPointMarker.cs" />
@@ -472,7 +472,7 @@
     <Compile Include="Common\Auxiliary\RectExtensions.cs" />
     <Compile Include="Common\RenderState.cs" />
     <Compile Include="Common\Auxiliary\PointExtensions.cs" />
-    <Compile Include="Charts\PointGraphBase.cs" />
+    <Compile Include="Graphs\PointGraphBase.cs" />
     <Compile Include="Common\VerticalAxisTitle.cs" />
     <Compile Include="PlotterBaseExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -669,6 +669,8 @@
     <None Include="Class Diagrams\ClassDiagram1.cd" />
     <None Include="Class Diagrams\ClassDiagram2.cd" />
     <None Include="Class Diagrams\DataSourceClassDiagram.cd" />
+    <None Include="Class Diagrams\Description.cd" />
+    <None Include="Class Diagrams\Markers.cd" />
     <None Include="Class Diagrams\PlotterDiagram.cd" />
     <None Include="ClassDiagram2.cd" />
   </ItemGroup>

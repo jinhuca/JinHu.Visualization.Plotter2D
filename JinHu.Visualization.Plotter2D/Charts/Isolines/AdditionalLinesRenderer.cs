@@ -81,7 +81,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
       var transform = Plotter2D.Transform.WithRects(bounds, new Rect(RenderSize));
 
-      //dc.DrawRectangle(null, new Pen(Brushes.Green, 2), new Rect(RenderSize));
+      //dc.DrawRectangle(null, new OutlinePen(Brushes.Green, 2), new Rect(RenderSize));
 
       var additionalLevels = GetAdditionalLevels(collection);
       IsolineBuilder.DataSource = DataSource;

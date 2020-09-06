@@ -34,7 +34,7 @@ namespace V02.HelloAdvPlotter
       var yDataSource = new EnumerableDataSource<double>(y) { YMapping = yy => yy };
       var composedData = new CompositeDataSource(xDataSource, yDataSource);
 
-      plotter.AddLineGraph(pointSource: composedData, lineColor: Colors.DarkBlue, lineThickness: 1, description: "Sin");
+      plotter.AddLineGraph(pointSource: composedData, penForDrawingLine: new Pen(Brushes.Aqua, 1), descriptionForPen: new PenDescription("sin"));
     }
   }
 }

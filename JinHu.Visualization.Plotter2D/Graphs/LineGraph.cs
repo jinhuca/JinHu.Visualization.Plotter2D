@@ -18,30 +18,40 @@ namespace JinHu.Visualization.Plotter2D
     static LineGraph()
     {
       Type thisType = typeof(LineGraph);
-      Legend.DescriptionProperty.OverrideMetadata(thisType, new FrameworkPropertyMetadata("LineGraph"));
-      Legend.LegendItemsBuilderProperty.OverrideMetadata(thisType, new FrameworkPropertyMetadata(new LegendItemsBuilder(DefaultLegendItemsBuilder)));
+      Legend.DescriptionProperty.OverrideMetadata(forType: thisType, typeMetadata: new FrameworkPropertyMetadata(defaultValue: "LineGraph"));
+      Legend.LegendItemsBuilderProperty.OverrideMetadata(forType: thisType, typeMetadata: new FrameworkPropertyMetadata(defaultValue: new LegendItemsBuilder(DefaultLegendItemsBuilder)));
     }
 
     private static IEnumerable<FrameworkElement> DefaultLegendItemsBuilder(IPlotterElement plotterElement)
     {
       LineGraph lineGraph = (LineGraph)plotterElement;
       Line line = new Line { X1 = 0, Y1 = 10, X2 = 20, Y2 = 0, Stretch = Stretch.Fill, DataContext = lineGraph };
-      line.SetBinding(Shape.StrokeProperty, "Stroke");
-      line.SetBinding(Shape.StrokeThicknessProperty, "StrokeThickness");
-      Legend.SetVisualContent(lineGraph, line);
-      var legendItem = LegendItemsHelper.BuildDefaultLegendItem(lineGraph);
+      line.SetBinding(dp: Shape.StrokeProperty, path: nameof(Stroke));
+      line.SetBinding(dp: Shape.StrokeThicknessProperty, path: nameof(StrokeThickness));
+      Legend.SetVisualContent(obj: lineGraph, value: line);
+      var legendItem = LegendItemsHelper.BuildDefaultLegendItem(chart: lineGraph);
       yield return legendItem;
     }
 
-    private readonly FilterCollection filters = new FilterCollection();
+    /// <summary>Provides access to filters collection</summary>
+    public FilterCollection Filters { get; } = new FilterCollection();
 
     /// <summary>
-    ///   Initializes a new instance of the <see cref="LineGraph"/> class.
+    /// Initializes a new instance of the <see cref="LineGraph"/> class.
     /// </summary>
     public LineGraph()
     {
       ManualTranslate = true;
-      filters.CollectionChanged += filters_CollectionChanged;
+      Filters.CollectionChanged += filters_CollectionChanged;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="LineGraph"/> class.
+    /// </summary>
+    /// <param name="pointSource">The point source.</param>
+    public LineGraph(IPointDataSource pointSource) : this()
+    {
+      DataSource = pointSource;
     }
 
     private void filters_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -50,26 +60,9 @@ namespace JinHu.Visualization.Plotter2D
       Update();
     }
 
-    /// <summary>
-    ///   Initializes a new instance of the <see cref="LineGraph"/> class.
-    /// </summary>
-    /// <param name="pointSource">
-    ///   The point source.
-    /// </param>
-    public LineGraph(IPointDataSource pointSource) : this()
-    {
-      DataSource = pointSource;
-    }
+    protected override Description CreateDefaultDescription() => new PenDescription();
 
-    protected override Description CreateDefaultDescription()
-    {
-      return new PenDescription();
-    }
-
-    /// <summary>Provides access to filters collection</summary>
-    public FilterCollection Filters => filters;
-
-    #region Pen
+    #region OutlinePen
 
     /// <summary>
     ///   Gets or sets the brush, using which polyline is plotted.
@@ -79,7 +72,7 @@ namespace JinHu.Visualization.Plotter2D
     /// </value>
     public Brush Stroke
     {
-      get { return LinePen.Brush; }
+      get => LinePen.Brush;
       set
       {
         if (LinePen.Brush != value)
@@ -109,7 +102,7 @@ namespace JinHu.Visualization.Plotter2D
     /// </value>
     public double StrokeThickness
     {
-      get { return LinePen.Thickness; }
+      get => LinePen.Thickness;
       set
       {
         if (LinePen.Thickness != value)
@@ -125,7 +118,7 @@ namespace JinHu.Visualization.Plotter2D
             LinePen = pen;
           }
 
-          RaisePropertyChanged(nameof(StrokeThickness));
+          RaisePropertyChanged(propertyNamme: nameof(StrokeThickness));
         }
       }
     }
@@ -139,15 +132,15 @@ namespace JinHu.Visualization.Plotter2D
     [NotNull]
     public Pen LinePen
     {
-      get => (Pen)GetValue(LinePenProperty);
-      set => SetValue(LinePenProperty, value);
+      get => (Pen)GetValue(dp: LinePenProperty);
+      set => SetValue(dp: LinePenProperty, value: value);
     }
 
     public static readonly DependencyProperty LinePenProperty = DependencyProperty.Register(
-      nameof(LinePen),
-      typeof(Pen),
-      typeof(LineGraph),
-      new FrameworkPropertyMetadata(new Pen(Brushes.Blue, 1), FrameworkPropertyMetadataOptions.AffectsRender), OnValidatePen);
+      name: nameof(LinePen),
+      propertyType: typeof(Pen),
+      ownerType: typeof(LineGraph),
+      typeMetadata: new FrameworkPropertyMetadata(defaultValue: new Pen(brush: Brushes.Blue, thickness: 1), flags: FrameworkPropertyMetadataOptions.AffectsRender), validateValueCallback: OnValidatePen);
 
     private static bool OnValidatePen(object value) => value != null;
 
@@ -156,7 +149,7 @@ namespace JinHu.Visualization.Plotter2D
     protected override void OnOutputChanged(Rect newRect, Rect oldRect)
     {
       FilteredPoints = null;
-      base.OnOutputChanged(newRect, oldRect);
+      base.OnOutputChanged(newRect: newRect, oldRect: oldRect);
     }
 
     protected override void OnDataChanged()
@@ -168,7 +161,7 @@ namespace JinHu.Visualization.Plotter2D
     protected override void OnDataSourceChanged(DependencyPropertyChangedEventArgs args)
     {
       FilteredPoints = null;
-      base.OnDataSourceChanged(args);
+      base.OnDataSourceChanged(args: args);
     }
 
     protected override void OnVisibleChanged(DataRect newRect, DataRect oldRect)
@@ -177,24 +170,17 @@ namespace JinHu.Visualization.Plotter2D
       {
         FilteredPoints = null;
       }
-
-      base.OnVisibleChanged(newRect, oldRect);
+      base.OnVisibleChanged(newRect: newRect, oldRect: oldRect);
     }
 
     protected FakePointList FilteredPoints { get; set; }
 
     protected override void UpdateCore()
     {
-      if (DataSource == null)
+      if (Plotter == null || DataSource == null)
       {
         return;
       }
-
-      if (Plotter == null)
-      {
-        return;
-      }
-
       Rect output = Viewport.Output;
       var transform = GetTransform();
 
@@ -202,30 +188,30 @@ namespace JinHu.Visualization.Plotter2D
       {
         IEnumerable<Point> points = GetPoints();
 
-        var bounds = BoundsHelper.GetViewportBounds(points, transform.DataTransform);
-        Viewport2D.SetContentBounds(this, bounds);
+        var bounds = BoundsHelper.GetViewportBounds(dataPoints: points, transform: transform.DataTransform);
+        Viewport2D.SetContentBounds(obj: this, value: bounds);
 
         // getting new value of transform as it could change after calculating and setting content bounds.
         transform = GetTransform();
-        List<Point> transformedPoints = transform.DataToScreenAsList(points);
+        List<Point> transformedPoints = transform.DataToScreenAsList(dataPoints: points);
 
         // Analysis and filtering of unnecessary points
-        FilteredPoints = new FakePointList(FilterPoints(transformedPoints), output.Left, output.Right);
+        FilteredPoints = new FakePointList(points: FilterPoints(points: transformedPoints), left: output.Left, right: output.Right);
 
         if (ProvideVisiblePoints)
         {
-          List<Point> viewportPointsList = new List<Point>(transformedPoints.Count);
+          List<Point> viewportPointsList = new List<Point>(capacity: transformedPoints.Count);
           if (transform.DataTransform is IdentityTransform)
           {
-            viewportPointsList.AddRange(points);
+            viewportPointsList.AddRange(collection: points);
           }
           else
           {
-            var viewportPoints = points.DataToViewport(transform.DataTransform);
-            viewportPointsList.AddRange(viewportPoints);
+            var viewportPoints = points.DataToViewport(transform: transform.DataTransform);
+            viewportPointsList.AddRange(collection: viewportPoints);
           }
 
-          SetVisiblePoints(this, new ReadOnlyCollection<Point>(viewportPointsList));
+          SetVisiblePoints(obj: this, value: new ReadOnlyCollection<Point>(list: viewportPointsList));
         }
 
         Offset = new Vector();
@@ -237,25 +223,23 @@ namespace JinHu.Visualization.Plotter2D
         double shift = Offset.X;
         left -= shift;
         right -= shift;
-
-        FilteredPoints.SetXBorders(left, right);
+        FilteredPoints.SetXBorders(left: left, right: right);
       }
     }
 
-    StreamGeometry streamGeometry = new StreamGeometry();
+    private readonly StreamGeometry _streamGeometry = new StreamGeometry();
     protected override void OnRenderCore(DrawingContext dc, RenderState state)
     {
       if (DataSource == null)
       {
         return;
       }
-
       if (FilteredPoints.HasPoints)
       {
-        using (StreamGeometryContext context = streamGeometry.Open())
+        using (StreamGeometryContext context = _streamGeometry.Open())
         {
-          context.BeginFigure(FilteredPoints.StartPoint, false, false);
-          context.PolyLineTo(FilteredPoints, true, smoothLinesJoin);
+          context.BeginFigure(startPoint: FilteredPoints.StartPoint, isFilled: false, isClosed: false);
+          context.PolyLineTo(points: FilteredPoints, isStroked: true, isSmoothJoin: _smoothLinesJoin);
         }
 
         Brush brush = null;
@@ -264,57 +248,49 @@ namespace JinHu.Visualization.Plotter2D
         bool isTranslated = IsTranslated;
         if (isTranslated)
         {
-          dc.PushTransform(new TranslateTransform(Offset.X, Offset.Y));
+          dc.PushTransform(transform: new TranslateTransform(offsetX: Offset.X, offsetY: Offset.Y));
         }
-        dc.DrawGeometry(brush, pen, streamGeometry);
+        dc.DrawGeometry(brush: brush, pen: pen, geometry: _streamGeometry);
         if (isTranslated)
         {
           dc.Pop();
         }
-
-#if __DEBUG
-				FormattedText text = new FormattedText(filteredPoints.Count.ToString(),
-					CultureInfo.InvariantCulture, FlowDirection.LeftToRight,
-					new Typeface("Arial"), 12, Brushes.Black);
-				dc.DrawText(text, Viewport.Output.GetCenter());
-#endif
       }
     }
 
-    private bool filteringEnabled = true;
+    private bool _filteringEnabled = true;
     public bool FilteringEnabled
     {
-      get { return filteringEnabled; }
+      get => _filteringEnabled;
       set
       {
-        if (filteringEnabled != value)
+        if (_filteringEnabled != value)
         {
-          filteringEnabled = value;
+          _filteringEnabled = value;
           FilteredPoints = null;
           Update();
         }
       }
     }
 
-    private bool smoothLinesJoin = true;
+    private bool _smoothLinesJoin = true;
     public bool SmoothLinesJoin
     {
-      get { return smoothLinesJoin; }
+      get => _smoothLinesJoin;
       set
       {
-        smoothLinesJoin = value;
+        _smoothLinesJoin = value;
         Update();
       }
     }
 
     private List<Point> FilterPoints(List<Point> points)
     {
-      if (!filteringEnabled)
+      if (!_filteringEnabled)
       {
         return points;
       }
-
-      var filteredPoints = filters.Filter(points, Viewport.Output);
+      var filteredPoints = Filters.Filter(points: points, screenRect: Viewport.Output);
       return filteredPoints;
     }
   }
