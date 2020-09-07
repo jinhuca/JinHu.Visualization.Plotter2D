@@ -1,5 +1,6 @@
 ﻿using System.Collections.Specialized;
 using System.Windows;
+using JinHu.Visualization.Plotter2D.Graphs;
 
 namespace JinHu.Visualization.Plotter2D
 {

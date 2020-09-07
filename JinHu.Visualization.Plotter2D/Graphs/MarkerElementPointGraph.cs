@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace JinHu.Visualization.Plotter2D
+namespace JinHu.Visualization.Plotter2D.Graphs
 {
   public class ElementMarkerPointsGraph : PointsGraphBase
   {

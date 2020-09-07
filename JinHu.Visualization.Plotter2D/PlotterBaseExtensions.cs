@@ -3,6 +3,7 @@ using JinHu.Visualization.Plotter2D.DataSources;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Windows.Media;
+using JinHu.Visualization.Plotter2D.Graphs;
 
 namespace JinHu.Visualization.Plotter2D
 {

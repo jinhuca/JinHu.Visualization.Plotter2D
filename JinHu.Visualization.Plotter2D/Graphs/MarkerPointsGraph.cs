@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Media;
 
-namespace JinHu.Visualization.Plotter2D
+namespace JinHu.Visualization.Plotter2D.Graphs
 {
   /// <summary>
   /// Class represents a series of markers.

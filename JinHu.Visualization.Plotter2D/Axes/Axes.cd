@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="JinHu.Visualization.Plotter2D.AxisBase&lt;T&gt;" Collapsed="true">
+    <Position X="9.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAIAAAhQBBAAkAAEQAAgAAAQgAACGgACBSAQBoAAQAA=</HashCode>
+      <FileName>Axes\AxisBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.DateTimeAxis" Collapsed="true">
+    <Position X="3.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAgAAABAAAAIABCAAAKAAIACAAAAAAAAg=</HashCode>
+      <FileName>Axes\DateTime\DateTimeAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.IntegerAxis" Collapsed="true">
+    <Position X="8" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Axes\Integer\IntegerAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.NumericAxis" Collapsed="true">
+    <Position X="12.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Axes\Numeric\NumericAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.TimeSpanAxis" Collapsed="true">
+    <Position X="16.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAIAACAAAAAAIACAAAAAAAAA=</HashCode>
+      <FileName>Axes\TimeSpan\TimeSpanAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.GeneralAxis">
+    <Position X="22" Y="1.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAIACEgAAAAAgAAQCQAgAAoAABAACAIQAQAAAAAAQgA=</HashCode>
+      <FileName>Axes\GeneralAxis.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.HorizontalDateTimeAxis" Collapsed="true">
+    <Position X="2.25" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Axes\DateTime\HorizontalDateTimeAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.VerticalDateTimeAxis" Collapsed="true">
+    <Position X="4.5" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Axes\DateTime\VerticalDateTimeAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.HorizontalIntegerAxis" Collapsed="true">
+    <Position X="7" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Axes\Integer\HorizontalIntegerAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.VerticalIntegerAxis" Collapsed="true">
+    <Position X="9.25" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Axes\Integer\VerticalIntegerAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.HorizontalAxis" Collapsed="true">
+    <Position X="11.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Axes\Numeric\HorizontalAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.VerticalAxis" Collapsed="true">
+    <Position X="13.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Axes\Numeric\VerticalAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.HorizontalTimeSpanAxis" Collapsed="true">
+    <Position X="15.75" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Axes\TimeSpan\HorizontalTimeSpanAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.VerticalTimeSpanAxis" Collapsed="true">
+    <Position X="18" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Axes\TimeSpan\VerticalTimeSpanAxis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

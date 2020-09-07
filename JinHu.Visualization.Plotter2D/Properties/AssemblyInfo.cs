@@ -26,6 +26,7 @@ using System.Windows.Markup;
 [assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
 [assembly: XmlnsDefinition(AssemblyConstants.DefaultXmlNamespace, "JinHu.Visualization.Plotter2D")]
 [assembly: XmlnsDefinition(AssemblyConstants.DefaultXmlNamespace, "JinHu.Visualization.Plotter2D.Charts")]
+[assembly: XmlnsDefinition(AssemblyConstants.DefaultXmlNamespace, "JinHu.Visualization.Plotter2D.Graphs")]
 [assembly: XmlnsDefinition(AssemblyConstants.DefaultXmlNamespace, "JinHu.Visualization.Plotter2D.DataSources")]
 [assembly: XmlnsDefinition(AssemblyConstants.DefaultXmlNamespace, "JinHu.Visualization.Plotter2D.Common")]
 [assembly: XmlnsPrefix(AssemblyConstants.DefaultXmlNamespace, "Plotter2D")]

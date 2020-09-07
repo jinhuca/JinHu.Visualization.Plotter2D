@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 
-namespace JinHu.Visualization.Plotter2D
+namespace JinHu.Visualization.Plotter2D.Graphs
 {
   public abstract class PointsGraphBase : ViewportElement2D, IOneDimensionalChart
   {

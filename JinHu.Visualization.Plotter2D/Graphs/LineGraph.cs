@@ -8,7 +8,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace JinHu.Visualization.Plotter2D
+namespace JinHu.Visualization.Plotter2D.Graphs
 {
   /// <summary>
   /// Class represents a series of points connected by one polyline.
