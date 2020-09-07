@@ -63,7 +63,7 @@ namespace JinHu.Visualization.Plotter2D
       {
         InitViewport();
       }
-      var uri = new Uri("/JinHu.Visualization.Plotter2D;component/Themes/Generic.xaml", UriKind.Relative);
+      var uri = new Uri(Constants.ThemeUri, UriKind.Relative);
       GenericResources = (ResourceDictionary)Application.LoadComponent(uri);
       ContextMenu = null;
     }

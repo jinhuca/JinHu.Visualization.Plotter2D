@@ -9,5 +9,7 @@ namespace JinHu.Visualization.Plotter2D
   public static class Constants
   {
     public const double DoubleMinimum = 0.01d;
+
+    public const string ThemeUri = @"/JinHu.Visualization.Plotter2D;component/Themes/Generic.xaml";
   }
 }

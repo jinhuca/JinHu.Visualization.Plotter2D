@@ -23,7 +23,7 @@ namespace JinHu.Visualization.Plotter2D
 #if RELEASEXBAP
 			return null;
 #else
-      return ((ResourceDictionary)Application.LoadComponent(new Uri("/JinHu.Visualization.Plotter2D;component/Themes/Generic.xaml", UriKind.Relative)))[Value];
+      return ((ResourceDictionary)Application.LoadComponent(new Uri(Constants.ThemeUri, UriKind.Relative)))[Value];
 #endif
     }
   }
