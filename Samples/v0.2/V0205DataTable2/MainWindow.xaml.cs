@@ -37,7 +37,7 @@ namespace V0205DataTable2
       data.XMapping = row => ((DateTime) row["Time"] - (DateTime) table.Rows[0][1]).TotalSeconds;
       //data.SetYMapping(row=>10*(double)row["Sine"]);
       data.YMapping = row => 10 * (double) row["Sine"];
-      data.AddMapping(ShapePointMarker.FillProperty, 
+      data.AddMapping(ShapePointMarker.FillBrushProperty, 
         row => new SolidColorBrush(new HsbColor(3 * (int)row["Index"], 1, 1).ToArgbColor()));
       plotter.AddLineGraph(data, new Pen(Brushes.DarkGray, 10), new PenDescription("Sine"));
     }

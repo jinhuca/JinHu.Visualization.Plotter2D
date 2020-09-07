@@ -4,12 +4,12 @@ using System.Windows.Media;
 namespace JinHu.Visualization.Plotter2D
 {
   /// <summary>
-  ///   Abstract class that extends ElementPointMarker and contains marker property as Pen, Brush and Size.
+  ///   Abstract class that extends ElementPointMarker and contains marker property as OutlinePen, Brush and Diameter.
   /// </summary>
   public abstract class ShapeElementPointMarker : ElementPointMarker
   {
     /// <summary>
-    ///   Size of marker in points.
+    ///   Diameter of marker in points.
     /// </summary>
     public double Size
     {
@@ -18,7 +18,7 @@ namespace JinHu.Visualization.Plotter2D
     }
 
     public static readonly DependencyProperty SizeProperty = DependencyProperty.Register(
-      "Size",
+      "Diameter",
       typeof(double),
       typeof(ShapeElementPointMarker),
       new FrameworkPropertyMetadata(5.0));
@@ -36,7 +36,7 @@ namespace JinHu.Visualization.Plotter2D
       typeof(ShapeElementPointMarker),
       new FrameworkPropertyMetadata(string.Empty));
 
-    /// <summary>Pen to outline marker</summary>
+    /// <summary>OutlinePen to outline marker</summary>
     public Pen Pen
     {
       get { return (Pen)GetValue(PenProperty); }
@@ -44,7 +44,7 @@ namespace JinHu.Visualization.Plotter2D
     }
 
     public static readonly DependencyProperty PenProperty = DependencyProperty.Register(
-      "Pen",
+      "OutlinePen",
       typeof(Pen),
       typeof(ShapeElementPointMarker),
       new FrameworkPropertyMetadata(null));
@@ -68,7 +68,7 @@ namespace JinHu.Visualization.Plotter2D
     }
 
     public static readonly DependencyProperty FillProperty = DependencyProperty.Register(
-      "Fill",
+      "FillBrush",
       typeof(Brush),
       typeof(ShapeElementPointMarker),
       new FrameworkPropertyMetadata(Brushes.Red));

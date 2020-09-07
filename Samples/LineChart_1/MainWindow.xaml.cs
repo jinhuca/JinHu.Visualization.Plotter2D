@@ -46,7 +46,7 @@ namespace LineChart_1
          
 
         new Pen(Brushes.Red, 1),
-        //new CirclePointMarker { Size = 2, Fill = Brushes.Red },
+        //new CirclePointMarker { Diameter = 2, FillBrush = Brushes.Red },
         new PenDescription("Sin"));
     }
   }

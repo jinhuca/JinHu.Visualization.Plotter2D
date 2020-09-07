@@ -85,7 +85,7 @@ namespace JinHu.Visualization.Plotter2D
           }
           else
           {
-            Pen pen = LinePen.Clone();
+            OutlinePen pen = LinePen.Clone();
             pen.Brush = value;
             LinePen = pen;
           }
@@ -115,7 +115,7 @@ namespace JinHu.Visualization.Plotter2D
           }
           else
           {
-            Pen pen = LinePen.Clone();
+            OutlinePen pen = LinePen.Clone();
             pen.Thickness = value;
             LinePen = pen;
           }

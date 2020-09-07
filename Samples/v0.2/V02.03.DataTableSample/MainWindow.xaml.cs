@@ -43,14 +43,14 @@ namespace DataTableSample
       data.YMapping = row => 10 * (double)row["Sine"];
 
       // Map HSB color computes from "Index" column to dependency property Brush of marker
-      //data.AddMapping(ShapePointMarker.FillProperty, row => new HsbColor(2 * (int)row["Index"], 1, 1).ToArgb());
-      data.AddMapping(ShapePointMarker.FillProperty, row => new SolidColorBrush(new HsbColor(3 * (int)row["Index"], 1, 1).ToArgbColor()));
+      //data.AddMapping(ShapePointMarker.FillBrushProperty, row => new HsbColor(2 * (int)row["Index"], 1, 1).ToArgb());
+      data.AddMapping(ShapePointMarker.FillBrushProperty, row => new SolidColorBrush(new HsbColor(3 * (int)row["Index"], 1, 1).ToArgbColor()));
 
       // Map "Sqrt" based values to marker size
-      data.AddMapping(ShapePointMarker.SizeProperty, row => (double)row["Sqrt"]);
+      data.AddMapping(ShapePointMarker.DiameterProperty, row => (double)row["Sqrt"]);
 
       // Plot first graph
-      //plotter.AddLineGraph(data, new Pen(Brushes.Red, 1), new PenDescription("Sine"));
+      //plotter.AddLineGraph(data, new OutlinePen(Brushes.Red, 1), new PenDescription("Sine"));
       plotter.AddMarkerPointsGraph(data);
 
       //plotter.AxisGrid.Visibility = Visibility.Collapsed;

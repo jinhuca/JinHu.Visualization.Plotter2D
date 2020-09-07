@@ -45,10 +45,10 @@ namespace MarkerGraphTest01
       };
 
       // Map HSB color computes from "Index" column to dependency property Brush of marker
-      data1.AddMapping(ShapePointMarker.FillProperty, row => new SolidColorBrush(new HsbColor(15 * (int)row["Index"], 1, 1).ToArgbColor()));
+      data1.AddMapping(ShapePointMarker.FillBrushProperty, row => new SolidColorBrush(new HsbColor(15 * (int)row["Index"], 1, 1).ToArgbColor()));
 
       // Map "Sqrt" based values to marker size
-      data1.AddMapping(ShapePointMarker.SizeProperty, row => 3 * (double)row["Sqrt"]);
+      data1.AddMapping(ShapePointMarker.DiameterProperty, row => 3 * (double)row["Sqrt"]);
 
       // Plot first graph
       plotter.AddMarkerPointsGraph(data1);
@@ -60,23 +60,23 @@ namespace MarkerGraphTest01
         YMapping = row => 10 * (double)row["Cosine"]
       };
 
-      data2.AddMapping(ShapePointMarker.FillProperty, row => new SolidColorBrush(new HsbColor(15 * (int)row["Index"], 1, 1).ToArgbColor()));
-      data2.AddMapping(ShapePointMarker.SizeProperty, row => 3 * (double)row["Sqrt"]);
+      data2.AddMapping(ShapePointMarker.FillBrushProperty, row => new SolidColorBrush(new HsbColor(15 * (int)row["Index"], 1, 1).ToArgbColor()));
+      data2.AddMapping(ShapePointMarker.DiameterProperty, row => 3 * (double)row["Sqrt"]);
 
       var circleMarker = new CirclePointMarker()
       {
-        Pen = new Pen {Brush = new SolidColorBrush(Colors.Black)}
+        OutlinePen = new Pen {Brush = new SolidColorBrush(Colors.Black)}
       };
 
       var triangleMarker = new TrianglePointMarker()
       {
-        Pen = new Pen {Brush = new SolidColorBrush(Colors.Black)}
+        OutlinePen = new Pen {Brush = new SolidColorBrush(Colors.Black)}
       };
-      triangleMarker.Pen.Freeze();
+      triangleMarker.OutlinePen.Freeze();
 
       var rectangleMarker = new RectanglePointMarker()
       {
-        Pen = new Pen {Brush = new SolidColorBrush(Colors.Black)}
+        OutlinePen = new Pen {Brush = new SolidColorBrush(Colors.Black)}
       };
 
       plotter.AddMarkerPointsGraph(pointSource: data2, triangleMarker);

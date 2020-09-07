@@ -27,8 +27,8 @@ namespace JinHu.Visualization.Plotter2D
     /// </summary>
     /// <param name="plotter">Host Plotter</param>
     /// <param name="pointSource">Data Source</param>
-    /// <param name="penForDrawingLine">Optional Pen</param>
-    /// <param name="descriptionForPen">Optional descriptionForPen for Pen</param>
+    /// <param name="penForDrawingLine">Optional OutlinePen</param>
+    /// <param name="descriptionForPen">Optional descriptionForPen for OutlinePen</param>
     /// <returns>LineGraph</returns>
     public static LineGraph AddLineGraph(this PlotterBase plotter, IPointDataSource pointSource,
       Pen penForDrawingLine = default, PenDescription descriptionForPen = default)

@@ -10,7 +10,7 @@ namespace JinHu.Visualization.Plotter2D
   {
     public override void Render(DrawingContext dc, Point screenPoint)
     {
-      dc.DrawEllipse(Fill, Pen, screenPoint, Size / 2, Size / 2);
+      dc.DrawEllipse(FillBrush, OutlinePen, screenPoint, Diameter / 2, Diameter / 2);
     }
   }
 }

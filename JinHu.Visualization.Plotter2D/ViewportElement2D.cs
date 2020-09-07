@@ -121,7 +121,7 @@ namespace JinHu.Visualization.Plotter2D
 
     protected internal Vector Offset { get; set; }
 
-    //bool SizeEqual(Size s1, Size s2, double eps)
+    //bool SizeEqual(Diameter s1, Diameter s2, double eps)
     //{
     //    double width = Math.Min(s1.Width, s2.Width);
     //    double height = Math.Min(s1.Height, s2.Height);

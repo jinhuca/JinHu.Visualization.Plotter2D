@@ -14,8 +14,8 @@ namespace JinHu.Visualization.Plotter2D.PointMarkers
   {
     public override void Render(DrawingContext dc, Point screenPoint)
     {
-      var rec = new Rect(screenPoint, new Size(this.Size / 2, this.Size / 2));
-      dc.DrawRectangle(Fill, Pen, rec);
+      var rec = new Rect(screenPoint, new Size(this.Diameter / 2, this.Diameter / 2));
+      dc.DrawRectangle(FillBrush, OutlinePen, rec);
     }
   }
 }

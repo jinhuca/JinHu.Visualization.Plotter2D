@@ -58,7 +58,7 @@ namespace V02.MarkerSample
 
       //plotter.AddLineGraph(
       //  compositeDataSource1,
-      //  new Pen(Brushes.Blue, .1),
+      //  new OutlinePen(Brushes.Blue, .1),
       //  new PenDescription("Sin"));
 
       plotter.AddCursor(new CursorCoordinateGraph() { LineStroke = Brushes.Red, LineStrokeThickness = 0.5 });
@@ -69,7 +69,7 @@ namespace V02.MarkerSample
       CompositeDataSource compositeDataSource2 = new CompositeDataSource(xDataSource, csDataSource);
 
       // Adding second graph to plotter
-      // plotter.AddLineGraph(compositeDataSource2, new Pen(Brushes.Blue, 3), new PenDescription("Cos"));
+      // plotter.AddLineGraph(compositeDataSource2, new OutlinePen(Brushes.Blue, 3), new PenDescription("Cos"));
 
       // creating composite data source for cs^2 values
       CompositeDataSource compositeDataSource3 = new CompositeDataSource(xDataSource, csqDataSource);
@@ -81,9 +81,9 @@ namespace V02.MarkerSample
 
       var marker = new CirclePointMarker()
       {
-        Fill = new SolidColorBrush(Colors.Red),
-        Pen = new Pen {Brush = new SolidColorBrush(Colors.Blue)},
-        Size = 15
+        FillBrush = new SolidColorBrush(Colors.Red),
+        OutlinePen = new Pen {Brush = new SolidColorBrush(Colors.Blue)},
+        Diameter = 15
       };
       plotter.AddMarkerPointsGraph(compositeDataSource1, marker, new PenDescription("Cos^2"));
       
