@@ -138,7 +138,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
     {
       ResourceDictionary resources = new ResourceDictionary
       {
-        Source = new Uri("/JinHu.Visualization.Plotter2D;component/Charts/Axes/AxisControlStyle.xaml", UriKind.Relative)
+        Source = new Uri(uriString: Constants.AxisResourceUri, uriKind: UriKind.Relative)
       };
 
       AxisPlacement placement = GetBetterPlacement(this.placement);
