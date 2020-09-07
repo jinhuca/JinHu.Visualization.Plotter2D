@@ -167,9 +167,9 @@
     <Compile Include="LegendItems\LegendItem.cs" />
     <Compile Include="LegendItems\LegendBottomButtonIsEnabledConverter.cs" />
     <Compile Include="LegendItems\LegendTopButtonToIsEnabledConverter.cs" />
-    <Compile Include="Charts\LiveToolTips\LiveToolTip.cs" />
-    <Compile Include="Charts\LiveToolTips\LiveToolTipAdorner.cs" />
-    <Compile Include="Charts\LiveToolTips\LiveToolTipService.cs" />
+    <Compile Include="LiveToolTips\LiveToolTip.cs" />
+    <Compile Include="LiveToolTips\LiveToolTipAdorner.cs" />
+    <Compile Include="LiveToolTips\LiveToolTipService.cs" />
     <Compile Include="Charts\NaiveColorMap.cs" />
     <Compile Include="Navigation\AxisNavigation.cs" />
     <Compile Include="Navigation\HorizontalScrollBar.cs" />
