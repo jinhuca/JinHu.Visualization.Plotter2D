@@ -5,7 +5,7 @@
                     xmlns:markup="clr-namespace:JinHu.Visualization.Plotter2D">
 
   <ResourceDictionary.MergedDictionaries>
-    <ResourceDictionary Source="/JinHu.Visualization.Plotter2D;component/Charts/LegendItems/LegendResources.xaml"/>
+    <ResourceDictionary Source="/JinHu.Visualization.Plotter2D;component/LegendItems/LegendResources.xaml"/>
     <ResourceDictionary Source="/JinHu.Visualization.Plotter2D;component/Charts/Navigation/DefaultContextMenu.xaml"/>
   </ResourceDictionary.MergedDictionaries>
 
