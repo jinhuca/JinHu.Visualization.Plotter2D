@@ -155,13 +155,13 @@
     <Compile Include="Charts\DebugMenu.cs" />
     <Compile Include="Charts\Filters\EmptyFilter.cs" />
     <Compile Include="Charts\Filters\FrequencyFilter2.cs" />
-    <Compile Include="Charts\Isolines\AdditionalLinesDisplay.cs" />
-    <Compile Include="Charts\Isolines\AdditionalLinesRenderer.cs" />
-    <Compile Include="Charts\Isolines\FastIsolineDisplay.xaml.cs">
+    <Compile Include="Isolines\AdditionalLinesDisplay.cs" />
+    <Compile Include="Isolines\AdditionalLinesRenderer.cs" />
+    <Compile Include="Isolines\FastIsolineDisplay.xaml.cs">
       <DependentUpon>FastIsolineDisplay.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Charts\Isolines\FastIsolineRenderer.cs" />
-    <Compile Include="Charts\Isolines\IsolineRenderer.cs" />
+    <Compile Include="Isolines\FastIsolineRenderer.cs" />
+    <Compile Include="Isolines\IsolineRenderer.cs" />
     <Compile Include="LegendItems\LegendItemsHelper.cs" />
     <Compile Include="LegendItems\LegendStyles.cs" />
     <Compile Include="LegendItems\LegendItem.cs" />
@@ -188,18 +188,18 @@
     <Compile Include="Charts\Filters\IPointsFilter.cs" />
     <Compile Include="Charts\Filters\PointsFilterBase.cs" />
     <Compile Include="Charts\IOneDimensionalChart.cs" />
-    <Compile Include="Charts\Isolines\CellInfo.cs" />
-    <Compile Include="Charts\Isolines\Enums.cs" />
-    <Compile Include="Charts\Isolines\IsolineBuilder.cs" />
-    <Compile Include="Charts\Isolines\IsolineCollection.cs" />
-    <Compile Include="Charts\Isolines\IsolineGenerationException.cs" />
-    <Compile Include="Charts\Isolines\IsolineGraph.cs" />
-    <Compile Include="Charts\Isolines\IsolineGraphBase.cs" />
-    <Compile Include="Charts\Isolines\IsolineTextAnnotater.cs" />
-    <Compile Include="Charts\Isolines\IsolineTrackingGraph.xaml.cs">
+    <Compile Include="Isolines\CellInfo.cs" />
+    <Compile Include="Isolines\Enums.cs" />
+    <Compile Include="Isolines\IsolineBuilder.cs" />
+    <Compile Include="Isolines\IsolineCollection.cs" />
+    <Compile Include="Isolines\IsolineGenerationException.cs" />
+    <Compile Include="Isolines\IsolineGraph.cs" />
+    <Compile Include="Isolines\IsolineGraphBase.cs" />
+    <Compile Include="Isolines\IsolineTextAnnotater.cs" />
+    <Compile Include="Isolines\IsolineTrackingGraph.xaml.cs">
       <DependentUpon>IsolineTrackingGraph.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Charts\Isolines\Quad.cs" />
+    <Compile Include="Isolines\Quad.cs" />
     <Compile Include="Navigation\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
@@ -503,13 +503,13 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Charts\Isolines\FastIsolineDisplay.xaml">
+    <Page Include="Isolines\FastIsolineDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Charts\Isolines\IsolineTrackingGraph.xaml">
+    <Page Include="Isolines\IsolineTrackingGraph.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
