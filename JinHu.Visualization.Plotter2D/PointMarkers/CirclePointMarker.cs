@@ -4,7 +4,7 @@ using System.Windows.Media;
 namespace JinHu.Visualization.Plotter2D
 {
   /// <summary>
-  ///   Renders circle around each point of graph.
+  /// Class that Renders circle around each point of graph.
   /// </summary>
   public class CirclePointMarker : ShapePointMarker
   {
@@ -14,3 +14,4 @@ namespace JinHu.Visualization.Plotter2D
     }
   }
 }
+

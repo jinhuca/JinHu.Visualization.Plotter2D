@@ -60,10 +60,10 @@ namespace JinHu.Visualization.Plotter2D.DataSources
     #endregion Property YMapping
 
     /// <summary>
-    /// 
+    /// Method to apply a mapping from a object value to a DependencyProperty of DependencyObject.
     /// </summary>
-    /// <param name="property"></param>
-    /// <param name="mapping"></param>
+    /// <param name="property">DependencyProperty</param>
+    /// <param name="mapping">mapping from value to dp</param>
     public void AddMapping(DependencyProperty property, Func<T, object> mapping)
     {
       if (property == null)

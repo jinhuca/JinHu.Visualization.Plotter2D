@@ -28,8 +28,8 @@ namespace JinHu.Visualization.Plotter2D
       base.AttachCore(graph);
       if (graph is LineGraph g)
       {
-        SetBinding(StrokeProperty, new Binding(nameof(g.Stroke)) { Source = g });
-        SetBinding(StrokeThicknessProperty, new Binding(nameof(g.StrokeThickness)) { Source = g });
+        SetBinding(StrokeProperty, new Binding(nameof(g.LinePen.Brush)) { Source = g });
+        SetBinding(StrokeThicknessProperty, new Binding(nameof(g.LinePen.Thickness)) { Source = g });
       }
     }
 

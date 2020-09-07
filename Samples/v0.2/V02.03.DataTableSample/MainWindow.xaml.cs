@@ -50,13 +50,15 @@ namespace DataTableSample
       data.AddMapping(ShapePointMarker.SizeProperty, row => (double)row["Sqrt"]);
 
       // Plot first graph
-      plotter.AddLineGraph(data, new Pen(Brushes.Red, 1), new PenDescription("Sine"));
+      //plotter.AddLineGraph(data, new Pen(Brushes.Red, 1), new PenDescription("Sine"));
+      plotter.AddMarkerPointsGraph(data);
 
+      //plotter.AxisGrid.Visibility = Visibility.Collapsed;
       // Prepare data source for second graph. table.Rows is enumerable, 
       // so we can plot its contents as IEnumerable with items of TableRow type
-      //EnumerableDataSource<DataRow> data2 = new EnumerableDataSource<DataRow>(table.Rows);
+      EnumerableDataSource<DataRow> data2 = new EnumerableDataSource<DataRow>(table.Rows);
       // X is time in seconds again
-      //data2.XMapping = row => ((DateTime)row["Time"] - (DateTime)table.Rows[0][1]).TotalSeconds;
+      data2.XMapping = row => ((DateTime)row["Time"] - (DateTime)table.Rows[0][1]).TotalSeconds;
       //data2.SetXMapping(row => ((DateTime)row["Time"] - (DateTime)table.Rows[0][1]).TotalSeconds);
       // Y is value of "Sqrt" column
       //data2.SetYMapping(row => (double)row["Sqrt"]);

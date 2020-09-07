@@ -64,16 +64,30 @@ namespace JinHu.Visualization.Plotter2D
     /// <param name="description">Description</param>
     /// <returns></returns>
     public static MarkerPointsGraph AddMarkerPointsGraph(this PlotterBase plotter, IPointDataSource pointSource,
-      PointMarker marker, Description description = default)
+      PointMarker marker = default, Description description = default)
     {
-      if (pointSource == null || marker == null)
+      if (pointSource == null)
       {
         throw new ArgumentNullException(nameof(pointSource));
       }
-
+      marker ??= new CirclePointMarker();
       var markerPointGraph = new MarkerPointsGraph { DataSource = pointSource, Marker = marker, Description = description };
       plotter.Children.Add(markerPointGraph);
       return markerPointGraph;
+    }
+
+    public static MarkerPointsGraph AddMarkerGraph<TMarker>(this PlotterBase plotter, IPointDataSource pointSource,
+      TMarker marker = default, Description description = default) where TMarker : PointMarker
+    {
+      var res = new MarkerPointsGraph();
+      switch (marker)
+      {
+        case CirclePointMarker s:
+          break;
+        case TrianglePointMarker t:
+          break;
+      }
+      return res;
     }
 
     #endregion [-- MarkerPointsGraph --]

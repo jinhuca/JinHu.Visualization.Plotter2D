@@ -176,6 +176,7 @@
     <Compile Include="Charts\Navigation\IPlotterContextMenuSource.cs" />
     <Compile Include="Charts\Navigation\LongOperationsIndicator.cs" />
     <Compile Include="Charts\Navigation\PlotterScrollBar.cs" />
+    <Compile Include="Constants\Constants.cs" />
     <Compile Include="Graphs\MarkerGraph.cs" />
     <Compile Include="Plotter.cs" />
     <Compile Include="Charts\Axes\TimeSpan\TimeSpanTicksProviderBase.cs" />
@@ -328,6 +329,7 @@
     <Compile Include="DataSources\MultiDimensional\WarpedDataSource2D.cs" />
     <Compile Include="GenericChartPlotter.cs" />
     <Compile Include="PlotterLoadMode.cs" />
+    <Compile Include="PointMarkers\RectanglePointMarker.cs" />
     <Compile Include="PointMarkers\RectElementPointMarker.cs" />
     <Compile Include="Resources\D3IconHelper.cs" />
     <Compile Include="Common\Auxiliary\DispatcherExtensions.cs" />

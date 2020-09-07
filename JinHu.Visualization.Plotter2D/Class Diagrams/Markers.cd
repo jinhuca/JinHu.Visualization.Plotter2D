@@ -64,17 +64,24 @@
     </TypeIdentifier>
   </Class>
   <Class Name="JinHu.Visualization.Plotter2D.CirclePointMarker" Collapsed="true">
-    <Position X="7.25" Y="3.75" Width="1.5" />
+    <Position X="8.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
       <FileName>PointMarkers\CirclePointMarker.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="JinHu.Visualization.Plotter2D.TrianglePointMarker" Collapsed="true">
-    <Position X="9.5" Y="3.75" Width="1.5" />
+    <Position X="3.5" Y="3.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
       <FileName>PointMarkers\TrianglePointMarker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JinHu.Visualization.Plotter2D.PointMarkers.RectanglePointMarker" Collapsed="true">
+    <Position X="6" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>PointMarkers\RectanglePointMarker.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Delegate Name="JinHu.Visualization.Plotter2D.MarkerRenderHandler" Collapsed="true">

@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using JinHu.Visualization.Plotter2D;
+using JinHu.Visualization.Plotter2D.Charts;
+using JinHu.Visualization.Plotter2D.DataSources;
+using JinHu.Visualization.Plotter2D.PointMarkers;
 
 namespace MarkerGraphTest01
 {
@@ -27,8 +21,66 @@ namespace MarkerGraphTest01
 
     private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
     {
-      const int N = 300;
-      double[] x = new double[N];
+      var table = new DataTable();
+      table.Columns.Add("Sine", typeof(double));
+      table.Columns.Add("Time", typeof(DateTime));
+      table.Columns.Add("Index", typeof(int));
+      table.Columns.Add("Sqrt", typeof(double));
+      table.Columns.Add("Cosine", typeof(double));
+
+      for (int i = 0; i < 100; i++)
+      {
+        table.Rows.Add(
+          Math.Sin(i / 10.0),
+          DateTime.Now + new TimeSpan(0, 0, i),
+          i,
+          Math.Sqrt(i / 10.0),
+          Math.Cos(i / 10.0));
+      }
+
+      var data1 = new TableDataSource(table)
+      {
+        XMapping = row => ((DateTime)row["Time"] - (DateTime)table.Rows[0][1]).TotalSeconds,
+        YMapping = row => 10 * (double)row["Sine"]
+      };
+
+      // Map HSB color computes from "Index" column to dependency property Brush of marker
+      data1.AddMapping(ShapePointMarker.FillProperty, row => new SolidColorBrush(new HsbColor(15 * (int)row["Index"], 1, 1).ToArgbColor()));
+
+      // Map "Sqrt" based values to marker size
+      data1.AddMapping(ShapePointMarker.SizeProperty, row => 3 * (double)row["Sqrt"]);
+
+      // Plot first graph
+      plotter.AddMarkerPointsGraph(data1);
+
+      // Plot second graph
+      var data2 = new TableDataSource(table)
+      {
+        XMapping = row => ((DateTime)row["Time"] - (DateTime)table.Rows[0][1]).TotalSeconds,
+        YMapping = row => 10 * (double)row["Cosine"]
+      };
+
+      data2.AddMapping(ShapePointMarker.FillProperty, row => new SolidColorBrush(new HsbColor(15 * (int)row["Index"], 1, 1).ToArgbColor()));
+      data2.AddMapping(ShapePointMarker.SizeProperty, row => 3 * (double)row["Sqrt"]);
+
+      var circleMarker = new CirclePointMarker()
+      {
+        Pen = new Pen {Brush = new SolidColorBrush(Colors.Black)}
+      };
+
+      var triangleMarker = new TrianglePointMarker()
+      {
+        Pen = new Pen {Brush = new SolidColorBrush(Colors.Black)}
+      };
+
+      var rectangleMarker = new RectanglePointMarker()
+      {
+        Pen = new Pen {Brush = new SolidColorBrush(Colors.Black)}
+      };
+
+      plotter.AddMarkerPointsGraph(pointSource: data2, triangleMarker);
+
+      plotter.AddCursor(new CursorCoordinateGraph());
     }
   }
 }

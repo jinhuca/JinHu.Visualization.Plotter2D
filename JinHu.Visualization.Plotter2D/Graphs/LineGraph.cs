@@ -26,8 +26,8 @@ namespace JinHu.Visualization.Plotter2D
     {
       LineGraph lineGraph = (LineGraph)plotterElement;
       Line line = new Line { X1 = 0, Y1 = 10, X2 = 20, Y2 = 0, Stretch = Stretch.Fill, DataContext = lineGraph };
-      line.SetBinding(dp: Shape.StrokeProperty, path: nameof(Stroke));
-      line.SetBinding(dp: Shape.StrokeThicknessProperty, path: nameof(StrokeThickness));
+      line.SetBinding(dp: Shape.StrokeProperty, path: "LinePen.Brush");
+      line.SetBinding(dp: Shape.StrokeThicknessProperty, path: "LinePen.Thickness");
       Legend.SetVisualContent(obj: lineGraph, value: line);
       var legendItem = LegendItemsHelper.BuildDefaultLegendItem(chart: lineGraph);
       yield return legendItem;
@@ -64,6 +64,7 @@ namespace JinHu.Visualization.Plotter2D
 
     #region OutlinePen
 
+    /*
     /// <summary>
     ///   Gets or sets the brush, using which polyline is plotted.
     /// </summary>
@@ -92,7 +93,9 @@ namespace JinHu.Visualization.Plotter2D
         }
       }
     }
+    */
 
+    /*
     /// <summary>
     ///   Gets or sets the line thickness.
     /// </summary>
@@ -121,7 +124,8 @@ namespace JinHu.Visualization.Plotter2D
         }
       }
     }
-
+    */
+    
     /// <summary>
     ///   Gets or sets the line pen.
     /// </summary>
