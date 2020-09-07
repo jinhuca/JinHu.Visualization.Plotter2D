@@ -668,14 +668,14 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="Class Diagrams\AxisClassDiagram.cd" />
-    <None Include="Class Diagrams\ClassDiagram1.cd" />
-    <None Include="Class Diagrams\ClassDiagram2.cd" />
-    <None Include="Class Diagrams\DataSourceClassDiagram.cd" />
-    <None Include="Class Diagrams\Description.cd" />
-    <None Include="Class Diagrams\Markers.cd" />
-    <None Include="Class Diagrams\PlotterDiagram.cd" />
-    <None Include="Class Diagrams\ContentGraph.cd" />
+    <None Include="ClassDiagrams\AxisClassDiagram.cd" />
+    <None Include="ClassDiagrams\ClassDiagram1.cd" />
+    <None Include="ClassDiagrams\ClassDiagram2.cd" />
+    <None Include="ClassDiagrams\DataSourceClassDiagram.cd" />
+    <None Include="ClassDiagrams\Description.cd" />
+    <None Include="ClassDiagrams\Markers.cd" />
+    <None Include="ClassDiagrams\PlotterDiagram.cd" />
+    <None Include="ClassDiagrams\ContentGraph.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
