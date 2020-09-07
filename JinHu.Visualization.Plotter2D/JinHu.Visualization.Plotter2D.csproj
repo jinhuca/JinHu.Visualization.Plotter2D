@@ -171,11 +171,11 @@
     <Compile Include="Charts\LiveToolTips\LiveToolTipAdorner.cs" />
     <Compile Include="Charts\LiveToolTips\LiveToolTipService.cs" />
     <Compile Include="Charts\NaiveColorMap.cs" />
-    <Compile Include="Charts\Navigation\AxisNavigation.cs" />
-    <Compile Include="Charts\Navigation\HorizontalScrollBar.cs" />
-    <Compile Include="Charts\Navigation\IPlotterContextMenuSource.cs" />
-    <Compile Include="Charts\Navigation\LongOperationsIndicator.cs" />
-    <Compile Include="Charts\Navigation\PlotterScrollBar.cs" />
+    <Compile Include="Navigation\AxisNavigation.cs" />
+    <Compile Include="Navigation\HorizontalScrollBar.cs" />
+    <Compile Include="Navigation\IPlotterContextMenuSource.cs" />
+    <Compile Include="Navigation\LongOperationsIndicator.cs" />
+    <Compile Include="Navigation\PlotterScrollBar.cs" />
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="Graphs\MarkerGraph.cs" />
     <Compile Include="Plotter.cs" />
@@ -200,22 +200,22 @@
       <DependentUpon>IsolineTrackingGraph.xaml</DependentUpon>
     </Compile>
     <Compile Include="Charts\Isolines\Quad.cs" />
-    <Compile Include="Charts\Navigation\AboutWindow.xaml.cs">
+    <Compile Include="Navigation\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Charts\Navigation\AxisCursorGraph.cs" />
-    <Compile Include="Charts\Navigation\OldAxisNavigation.cs" />
-    <Compile Include="Charts\Navigation\EndlessRectAnimation.cs" />
-    <Compile Include="Charts\Navigation\InertialMouseNavigation.cs" />
-    <Compile Include="Charts\Navigation\PhysicalNavigation.cs" />
-    <Compile Include="Charts\Navigation\PhysicalRectAnimation.cs" />
-    <Compile Include="Charts\Navigation\SimpleNavigationBar.xaml.cs">
+    <Compile Include="Navigation\AxisCursorGraph.cs" />
+    <Compile Include="Navigation\OldAxisNavigation.cs" />
+    <Compile Include="Navigation\EndlessRectAnimation.cs" />
+    <Compile Include="Navigation\InertialMouseNavigation.cs" />
+    <Compile Include="Navigation\PhysicalNavigation.cs" />
+    <Compile Include="Navigation\PhysicalRectAnimation.cs" />
+    <Compile Include="Navigation\SimpleNavigationBar.xaml.cs">
       <DependentUpon>SimpleNavigationBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Charts\Navigation\CursorCoordinateGraph.xaml.cs">
+    <Compile Include="Navigation\CursorCoordinateGraph.xaml.cs">
       <DependentUpon>CursorCoordinateGraph.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Charts\Navigation\VerticalScrollBar.cs" />
+    <Compile Include="Navigation\VerticalScrollBar.cs" />
     <Compile Include="LegendItems\Legend.cs" />
     <Compile Include="Charts\PopupTip.cs" />
     <Compile Include="Charts\PopupTipElement.cs" />
@@ -225,7 +225,7 @@
       <DependentUpon>DraggablePoint.xaml</DependentUpon>
     </Compile>
     <Compile Include="Charts\Shapes\HorizontalLine.cs" />
-    <Compile Include="Charts\Navigation\MouseNavigationBase.cs" />
+    <Compile Include="Navigation\MouseNavigationBase.cs" />
     <Compile Include="Charts\Axes\AxisControl.cs" />
     <Compile Include="Charts\Axes\AxisPlacement.cs" />
     <Compile Include="Charts\Axes\DateTime\HorizontalDateTimeAxis.cs" />
@@ -358,15 +358,15 @@
     <Compile Include="Charts\Axes\Numeric\ToStringLabelProvider.cs" />
     <Compile Include="Charts\Filters\FrequencyFilter.cs" />
     <Compile Include="Charts\Filters\InclinationFilter.cs" />
-    <Compile Include="Charts\Navigation\ChartCommands.cs" />
-    <Compile Include="Charts\Navigation\DefaultContextMenu.cs" />
-    <Compile Include="Charts\Navigation\KeyboardNavigation.cs" />
-    <Compile Include="Charts\Navigation\MessagesHelper.cs" />
-    <Compile Include="Charts\Navigation\MouseNavigation.cs" />
-    <Compile Include="Charts\Navigation\NavigationBase.cs" />
-    <Compile Include="Charts\Navigation\RectangleSelectionAdorner.cs" />
-    <Compile Include="Charts\Navigation\TouchPadScroll.cs" />
-    <Compile Include="Charts\Navigation\WindowsMessages.cs" />
+    <Compile Include="Navigation\ChartCommands.cs" />
+    <Compile Include="Navigation\DefaultContextMenu.cs" />
+    <Compile Include="Navigation\KeyboardNavigation.cs" />
+    <Compile Include="Navigation\MessagesHelper.cs" />
+    <Compile Include="Navigation\MouseNavigation.cs" />
+    <Compile Include="Navigation\NavigationBase.cs" />
+    <Compile Include="Navigation\RectangleSelectionAdorner.cs" />
+    <Compile Include="Navigation\TouchPadScroll.cs" />
+    <Compile Include="Navigation\WindowsMessages.cs" />
     <Compile Include="Charts\RemoveAll.cs" />
     <Compile Include="Charts\Shapes\HorizontalRange.cs" />
     <Compile Include="Charts\Shapes\RangeHighlight.cs" />
@@ -539,7 +539,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Charts\Navigation\AboutWindow.xaml">
+    <Page Include="Navigation\AboutWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
@@ -547,17 +547,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Charts\Navigation\DefaultContextMenu.xaml">
+    <Page Include="Navigation\DefaultContextMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Charts\Navigation\LongOperationsIndicatorResources.xaml">
+    <Page Include="Navigation\LongOperationsIndicatorResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Charts\Navigation\SimpleNavigationBar.xaml">
+    <Page Include="Navigation\SimpleNavigationBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
@@ -565,7 +565,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Charts\Navigation\CursorCoordinateGraph.xaml">
+    <Page Include="Navigation\CursorCoordinateGraph.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>

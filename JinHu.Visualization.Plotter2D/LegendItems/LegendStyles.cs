@@ -37,7 +37,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
     private static ResourceDictionary GetLegendStyles()
     {
-      var legendStyles = (ResourceDictionary)Application.LoadComponent(new Uri("/JinHu.Visualization.Plotter2D;component/LegendItems/LegendResources.xaml", UriKind.Relative));
+      var legendStyles = (ResourceDictionary)Application.LoadComponent(new Uri(Constants.LegendResourceUri, UriKind.Relative));
       return legendStyles;
     }
   }

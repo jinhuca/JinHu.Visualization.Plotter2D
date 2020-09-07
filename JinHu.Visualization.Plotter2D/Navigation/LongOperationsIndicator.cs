@@ -43,29 +43,29 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
     public static void BeginLongOperation(DependencyObject obj)
     {
-      obj.SetValue(LongOperationRunningProperty, true);
+      obj.SetValue(dp: LongOperationRunningProperty, value: true);
     }
 
     public static void EndLongOperation(DependencyObject obj)
     {
-      obj.SetValue(LongOperationRunningProperty, false);
+      obj.SetValue(dp: LongOperationRunningProperty, value: false);
     }
 
     public static bool GetLongOperationRunning(DependencyObject obj)
     {
-      return (bool)obj.GetValue(LongOperationRunningProperty);
+      return (bool)obj.GetValue(dp: LongOperationRunningProperty);
     }
 
     public static void SetLongOperationRunning(DependencyObject obj, bool value)
     {
-      obj.SetValue(LongOperationRunningProperty, value);
+      obj.SetValue(dp: LongOperationRunningProperty, value: value);
     }
 
     public static readonly DependencyProperty LongOperationRunningProperty = DependencyProperty.RegisterAttached(
-      "LongOperationRunning",
-      typeof(bool),
-      typeof(LongOperationsIndicator),
-      new FrameworkPropertyMetadata(false, OnLongOperationRunningChanged));
+      name: "LongOperationRunning",
+      propertyType: typeof(bool),
+      ownerType: typeof(LongOperationsIndicator),
+      defaultMetadata: new FrameworkPropertyMetadata(defaultValue: false, propertyChangedCallback: OnLongOperationRunningChanged));
 
     private static void OnLongOperationRunningChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
@@ -73,7 +73,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
       IPlotterElement element = d as IPlotterElement;
       if (element == null)
       {
-        plotter = PlotterBase.GetPlotter(d);
+        plotter = PlotterBase.GetPlotter(obj: d);
       }
       else
       {
@@ -85,7 +85,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
         var indicator = plotter.Children.OfType<LongOperationsIndicator>().FirstOrDefault();
         if (indicator != null)
         {
-          indicator.OnLongOperationRunningChanged(element, (bool)e.NewValue);
+          indicator.OnLongOperationRunningChanged(element: element, longOperationRunning: (bool)e.NewValue);
         }
       }
     }
@@ -94,12 +94,12 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
     private static UIElement LoadIndicator()
     {
-      var resources = (ResourceDictionary)Application.LoadComponent(new Uri("/JinHu.Visualization.Plotter2D;component/Charts/Navigation/LongOperationsIndicatorResources.xaml", UriKind.Relative));
-      UIElement indicator = (UIElement)resources["Indicator"];
+      var resources = (ResourceDictionary)Application.LoadComponent(resourceLocator: new Uri(uriString: Constants.NavigationResourceUri, uriKind: UriKind.Relative));
+      UIElement indicator = (UIElement)resources[key: "Indicator"];
       return indicator;
     }
 
-    private readonly DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(100) };
+    private readonly DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(value: 100) };
     private int operationsCounter = 0;
     private void OnLongOperationRunningChanged(IPlotterElement element, bool longOperationRunning)
     {
@@ -126,16 +126,16 @@ namespace JinHu.Visualization.Plotter2D.Charts
     {
       if (operationsCounter == 1)
       {
-        if (!plotter.MainCanvas.Children.Contains(indicator))
+        if (!plotter.MainCanvas.Children.Contains(element: indicator))
         {
-          plotter.MainCanvas.Children.Add(indicator);
+          plotter.MainCanvas.Children.Add(element: indicator);
         }
         plotter.Cursor = Cursors.Wait;
       }
       else if (operationsCounter == 0)
       {
-        plotter.MainCanvas.Children.Remove(indicator);
-        plotter.ClearValue(FrameworkElement.CursorProperty);
+        plotter.MainCanvas.Children.Remove(element: indicator);
+        plotter.ClearValue(dp: FrameworkElement.CursorProperty);
       }
     }
 

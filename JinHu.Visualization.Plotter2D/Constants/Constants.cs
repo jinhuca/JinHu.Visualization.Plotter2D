@@ -11,5 +11,7 @@ namespace JinHu.Visualization.Plotter2D
     public const double DoubleMinimum = 0.01d;
 
     public const string ThemeUri = @"/JinHu.Visualization.Plotter2D;component/Themes/Generic.xaml";
+    public const string LegendResourceUri = @"/JinHu.Visualization.Plotter2D;component/LegendItems/LegendResources.xaml";
+    public const string NavigationResourceUri = @"/JinHu.Visualization.Plotter2D;component/Navigation/LongOperationsIndicatorResources.xaml";
   }
 }

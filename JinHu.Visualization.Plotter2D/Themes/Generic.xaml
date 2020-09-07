@@ -6,7 +6,7 @@
 
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="/JinHu.Visualization.Plotter2D;component/LegendItems/LegendResources.xaml"/>
-    <ResourceDictionary Source="/JinHu.Visualization.Plotter2D;component/Charts/Navigation/DefaultContextMenu.xaml"/>
+    <ResourceDictionary Source="/JinHu.Visualization.Plotter2D;component/Navigation/DefaultContextMenu.xaml"/>
   </ResourceDictionary.MergedDictionaries>
 
   <!--Draggable Point-->
