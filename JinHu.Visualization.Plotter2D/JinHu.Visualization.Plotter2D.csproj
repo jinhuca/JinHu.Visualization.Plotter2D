@@ -219,12 +219,12 @@
     <Compile Include="LegendItems\Legend.cs" />
     <Compile Include="Charts\PopupTip.cs" />
     <Compile Include="Charts\PopupTipElement.cs" />
-    <Compile Include="Charts\Shapes\Arrow.cs" />
+    <Compile Include="Shapes\Arrow.cs" />
     <Compile Include="Charts\BackgroundRenderer.cs" />
-    <Compile Include="Charts\Shapes\DraggablePoint.xaml.cs">
+    <Compile Include="Shapes\DraggablePoint.xaml.cs">
       <DependentUpon>DraggablePoint.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Charts\Shapes\HorizontalLine.cs" />
+    <Compile Include="Shapes\HorizontalLine.cs" />
     <Compile Include="Navigation\MouseNavigationBase.cs" />
     <Compile Include="Charts\Axes\AxisControl.cs" />
     <Compile Include="Charts\Axes\AxisPlacement.cs" />
@@ -248,12 +248,12 @@
     <Compile Include="Charts\Axes\ITicksProvider.cs" />
     <Compile Include="Charts\Axes\Numeric\NumericLabelProviderBase.cs" />
     <Compile Include="Charts\Axes\AxisBase.cs" />
-    <Compile Include="Charts\Shapes\PolylineEditor.cs" />
-    <Compile Include="Charts\Shapes\TemplateableDraggablePoint.cs" />
-    <Compile Include="Charts\Shapes\ViewportPolyBezierCurve.cs" />
-    <Compile Include="Charts\Shapes\ViewportPolygon.cs" />
-    <Compile Include="Charts\Shapes\ViewportPolyline.cs" />
-    <Compile Include="Charts\Shapes\ViewportPolylineBase.cs" />
+    <Compile Include="Shapes\PolylineEditor.cs" />
+    <Compile Include="Shapes\TemplateableDraggablePoint.cs" />
+    <Compile Include="Shapes\ViewportPolyBezierCurve.cs" />
+    <Compile Include="Shapes\ViewportPolygon.cs" />
+    <Compile Include="Shapes\ViewportPolyline.cs" />
+    <Compile Include="Shapes\ViewportPolylineBase.cs" />
     <Compile Include="Charts\ViewportHostPanel.cs" />
     <Compile Include="Charts\ViewportPanel.cs" />
     <Compile Include="Charts\ViewportPanel.Properties.cs" />
@@ -368,15 +368,15 @@
     <Compile Include="Navigation\TouchPadScroll.cs" />
     <Compile Include="Navigation\WindowsMessages.cs" />
     <Compile Include="Charts\RemoveAll.cs" />
-    <Compile Include="Charts\Shapes\HorizontalRange.cs" />
-    <Compile Include="Charts\Shapes\RangeHighlight.cs" />
-    <Compile Include="Charts\Shapes\RectangleHighlight.cs" />
-    <Compile Include="Charts\Shapes\Segment.cs" />
-    <Compile Include="Charts\Shapes\SimpleLine.cs" />
-    <Compile Include="Charts\Shapes\VerticalRange.cs" />
-    <Compile Include="Charts\Shapes\ViewportShape.cs" />
-    <Compile Include="Charts\Shapes\VerticalLine.cs" />
-    <Compile Include="Charts\Shapes\PositionalViewportUIContainer.cs" />
+    <Compile Include="Shapes\HorizontalRange.cs" />
+    <Compile Include="Shapes\RangeHighlight.cs" />
+    <Compile Include="Shapes\RectangleHighlight.cs" />
+    <Compile Include="Shapes\Segment.cs" />
+    <Compile Include="Shapes\SimpleLine.cs" />
+    <Compile Include="Shapes\VerticalRange.cs" />
+    <Compile Include="Shapes\ViewportShape.cs" />
+    <Compile Include="Shapes\VerticalLine.cs" />
+    <Compile Include="Shapes\PositionalViewportUIContainer.cs" />
     <Compile Include="Common\Auxiliary\ArrayExtensions.cs" />
     <Compile Include="Common\Auxiliary\BrushHelper.cs" />
     <Compile Include="Common\Auxiliary\DebugVerify.cs" />
@@ -573,7 +573,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Charts\Shapes\DraggablePoint.xaml">
+    <Page Include="Shapes\DraggablePoint.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
@@ -581,7 +581,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Charts\Shapes\RangeHighlightStyle.xaml">
+    <Page Include="Shapes\RangeHighlightStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>

@@ -10,7 +10,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
   {
     public LongOperationsIndicator()
     {
-      timer.Tick += new EventHandler(timer_Tick);
+      timer.Tick += timer_Tick;
     }
 
     private void timer_Tick(object sender, EventArgs e)
@@ -69,24 +69,13 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
     private static void OnLongOperationRunningChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-      PlotterBase plotter = null;
       IPlotterElement element = d as IPlotterElement;
-      if (element == null)
-      {
-        plotter = PlotterBase.GetPlotter(obj: d);
-      }
-      else
-      {
-        plotter = element.Plotter;
-      }
+      var plotter = element == null ? PlotterBase.GetPlotter(obj: d) : element.Plotter;
 
       if (plotter != null)
       {
         var indicator = plotter.Children.OfType<LongOperationsIndicator>().FirstOrDefault();
-        if (indicator != null)
-        {
-          indicator.OnLongOperationRunningChanged(element: element, longOperationRunning: (bool)e.NewValue);
-        }
+        indicator?.OnLongOperationRunningChanged(element: element, longOperationRunning: (bool)e.NewValue);
       }
     }
 

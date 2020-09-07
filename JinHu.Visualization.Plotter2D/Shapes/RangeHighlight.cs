@@ -19,9 +19,9 @@ namespace JinHu.Visualization.Plotter2D.Charts
     /// </summary>
     protected RangeHighlight()
     {
-      Resources = new ResourceDictionary { Source = new Uri("/JinHu.Visualization.Plotter2D;component/Charts/Shapes/RangeHighlightStyle.xaml", UriKind.Relative) };
+      Resources = new ResourceDictionary { Source = new Uri(uriString: Constants.ShapeResourceUri, uriKind: UriKind.Relative) };
 
-      Style = (Style)FindResource(typeof(RangeHighlight));
+      Style = (Style)FindResource(resourceKey: typeof(RangeHighlight));
       ApplyTemplate();
     }
 
@@ -34,13 +34,13 @@ namespace JinHu.Visualization.Plotter2D.Charts
     {
       base.OnApplyTemplate();
 
-      linesPath = (Path)Template.FindName("PART_LinesPath", this);
+      linesPath = (Path)Template.FindName(name: "PART_LinesPath", templatedParent: this);
       GeometryGroup linesGroup = new GeometryGroup();
-      linesGroup.Children.Add(lineGeometry1);
-      linesGroup.Children.Add(lineGeometry2);
+      linesGroup.Children.Add(value: lineGeometry1);
+      linesGroup.Children.Add(value: lineGeometry2);
       linesPath.Data = linesGroup;
 
-      rectPath = (Path)Template.FindName("PART_RectPath", this);
+      rectPath = (Path)Template.FindName(name: "PART_RectPath", templatedParent: this);
       rectPath.Data = rectGeometry;
 
       partsLoaded = true;
@@ -49,124 +49,124 @@ namespace JinHu.Visualization.Plotter2D.Charts
     #region Presentation DPs
 
     public static readonly DependencyProperty FillProperty = DependencyProperty.Register(
-      "InnerBrush",
-      typeof(Brush),
-      typeof(RangeHighlight),
-      new PropertyMetadata(Shape.FillProperty.DefaultMetadata.DefaultValue));
+      name: "InnerBrush",
+      propertyType: typeof(Brush),
+      ownerType: typeof(RangeHighlight),
+      typeMetadata: new PropertyMetadata(defaultValue: Shape.FillProperty.DefaultMetadata.DefaultValue));
 
     public Brush Fill
     {
-      get { return (Brush)GetValue(FillProperty); }
-      set { SetValue(FillProperty, value); }
+      get { return (Brush)GetValue(dp: FillProperty); }
+      set { SetValue(dp: FillProperty, value: value); }
     }
 
     public static readonly DependencyProperty StrokeProperty = DependencyProperty.Register(
-      "Stroke",
-      typeof(Brush),
-      typeof(RangeHighlight),
-      new PropertyMetadata(Shape.StrokeProperty.DefaultMetadata.DefaultValue));
+      name: "Stroke",
+      propertyType: typeof(Brush),
+      ownerType: typeof(RangeHighlight),
+      typeMetadata: new PropertyMetadata(defaultValue: Shape.StrokeProperty.DefaultMetadata.DefaultValue));
 
     public Brush Stroke
     {
-      get { return (Brush)GetValue(StrokeProperty); }
-      set { SetValue(StrokeProperty, value); }
+      get { return (Brush)GetValue(dp: StrokeProperty); }
+      set { SetValue(dp: StrokeProperty, value: value); }
     }
 
     public static readonly DependencyProperty StrokeThicknessProperty = DependencyProperty.Register(
-      "StrokeThickness",
-      typeof(double),
-      typeof(RangeHighlight),
-      new PropertyMetadata(Shape.StrokeThicknessProperty.DefaultMetadata.DefaultValue));
+      name: "StrokeThickness",
+      propertyType: typeof(double),
+      ownerType: typeof(RangeHighlight),
+      typeMetadata: new PropertyMetadata(defaultValue: Shape.StrokeThicknessProperty.DefaultMetadata.DefaultValue));
 
     public double StrokeThickness
     {
-      get { return (double)GetValue(StrokeThicknessProperty); }
-      set { SetValue(StrokeThicknessProperty, value); }
+      get { return (double)GetValue(dp: StrokeThicknessProperty); }
+      set { SetValue(dp: StrokeThicknessProperty, value: value); }
     }
 
     public static readonly DependencyProperty StrokeStartLineCapProperty = DependencyProperty.Register(
-      "StrokeStartLineCap",
-      typeof(PenLineCap),
-      typeof(RangeHighlight),
-      new PropertyMetadata(Shape.StrokeStartLineCapProperty.DefaultMetadata.DefaultValue));
+      name: "StrokeStartLineCap",
+      propertyType: typeof(PenLineCap),
+      ownerType: typeof(RangeHighlight),
+      typeMetadata: new PropertyMetadata(defaultValue: Shape.StrokeStartLineCapProperty.DefaultMetadata.DefaultValue));
 
     public PenLineCap StrokeStartLineCap
     {
-      get { return (PenLineCap)GetValue(StrokeStartLineCapProperty); }
-      set { SetValue(StrokeStartLineCapProperty, value); }
+      get { return (PenLineCap)GetValue(dp: StrokeStartLineCapProperty); }
+      set { SetValue(dp: StrokeStartLineCapProperty, value: value); }
     }
 
     public static readonly DependencyProperty StrokeEndLineCapProperty = DependencyProperty.Register(
-      "StrokeEndLineCap",
-      typeof(PenLineCap),
-      typeof(RangeHighlight),
-      new PropertyMetadata(Shape.StrokeEndLineCapProperty.DefaultMetadata.DefaultValue));
+      name: "StrokeEndLineCap",
+      propertyType: typeof(PenLineCap),
+      ownerType: typeof(RangeHighlight),
+      typeMetadata: new PropertyMetadata(defaultValue: Shape.StrokeEndLineCapProperty.DefaultMetadata.DefaultValue));
 
     public PenLineCap StrokeEndLineCap
     {
-      get { return (PenLineCap)GetValue(StrokeEndLineCapProperty); }
-      set { SetValue(StrokeEndLineCapProperty, value); }
+      get { return (PenLineCap)GetValue(dp: StrokeEndLineCapProperty); }
+      set { SetValue(dp: StrokeEndLineCapProperty, value: value); }
     }
 
     public static readonly DependencyProperty StrokeDashCapProperty = DependencyProperty.Register(
-      "StrokeDashCap",
-      typeof(PenLineCap),
-      typeof(RangeHighlight),
-      new PropertyMetadata(Shape.StrokeDashCapProperty.DefaultMetadata.DefaultValue));
+      name: "StrokeDashCap",
+      propertyType: typeof(PenLineCap),
+      ownerType: typeof(RangeHighlight),
+      typeMetadata: new PropertyMetadata(defaultValue: Shape.StrokeDashCapProperty.DefaultMetadata.DefaultValue));
 
     public PenLineCap StrokeDashCap
     {
-      get { return (PenLineCap)GetValue(StrokeDashCapProperty); }
-      set { SetValue(StrokeDashCapProperty, value); }
+      get { return (PenLineCap)GetValue(dp: StrokeDashCapProperty); }
+      set { SetValue(dp: StrokeDashCapProperty, value: value); }
     }
 
     public static readonly DependencyProperty StrokeLineJoinProperty = DependencyProperty.Register(
-      "StrokeLineJoin",
-      typeof(PenLineJoin),
-      typeof(RangeHighlight),
-      new PropertyMetadata(Shape.StrokeLineJoinProperty.DefaultMetadata.DefaultValue));
+      name: "StrokeLineJoin",
+      propertyType: typeof(PenLineJoin),
+      ownerType: typeof(RangeHighlight),
+      typeMetadata: new PropertyMetadata(defaultValue: Shape.StrokeLineJoinProperty.DefaultMetadata.DefaultValue));
 
     public PenLineJoin StrokeLineJoin
     {
-      get { return (PenLineJoin)GetValue(StrokeLineJoinProperty); }
-      set { SetValue(StrokeLineJoinProperty, value); }
+      get { return (PenLineJoin)GetValue(dp: StrokeLineJoinProperty); }
+      set { SetValue(dp: StrokeLineJoinProperty, value: value); }
     }
 
     public static readonly DependencyProperty StrokeMiterLimitProperty = DependencyProperty.Register(
-      "StrokeMiterLimit",
-      typeof(double),
-      typeof(RangeHighlight),
-      new PropertyMetadata(Shape.StrokeMiterLimitProperty.DefaultMetadata.DefaultValue));
+      name: "StrokeMiterLimit",
+      propertyType: typeof(double),
+      ownerType: typeof(RangeHighlight),
+      typeMetadata: new PropertyMetadata(defaultValue: Shape.StrokeMiterLimitProperty.DefaultMetadata.DefaultValue));
 
     public double StrokeMiterLimit
     {
-      get { return (double)GetValue(StrokeMiterLimitProperty); }
-      set { SetValue(StrokeMiterLimitProperty, value); }
+      get { return (double)GetValue(dp: StrokeMiterLimitProperty); }
+      set { SetValue(dp: StrokeMiterLimitProperty, value: value); }
     }
 
     public static readonly DependencyProperty StrokeDashOffsetProperty = DependencyProperty.Register(
-      "StrokeDashOffset",
-      typeof(double),
-      typeof(RangeHighlight),
-      new PropertyMetadata(Shape.StrokeDashOffsetProperty.DefaultMetadata.DefaultValue));
+      name: "StrokeDashOffset",
+      propertyType: typeof(double),
+      ownerType: typeof(RangeHighlight),
+      typeMetadata: new PropertyMetadata(defaultValue: Shape.StrokeDashOffsetProperty.DefaultMetadata.DefaultValue));
 
     public double StrokeDashOffset
     {
-      get { return (double)GetValue(StrokeDashOffsetProperty); }
-      set { SetValue(StrokeDashOffsetProperty, value); }
+      get { return (double)GetValue(dp: StrokeDashOffsetProperty); }
+      set { SetValue(dp: StrokeDashOffsetProperty, value: value); }
     }
 
     public static readonly DependencyProperty StrokeDashArrayProperty = DependencyProperty.Register(
-      "StrokeDashArray",
-      typeof(DoubleCollection),
-      typeof(RangeHighlight),
-      new PropertyMetadata(Shape.StrokeDashArrayProperty.DefaultMetadata.DefaultValue));
+      name: "StrokeDashArray",
+      propertyType: typeof(DoubleCollection),
+      ownerType: typeof(RangeHighlight),
+      typeMetadata: new PropertyMetadata(defaultValue: Shape.StrokeDashArrayProperty.DefaultMetadata.DefaultValue));
 
-    [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    [SuppressMessage(category: "Microsoft.Usage", checkId: "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public DoubleCollection StrokeDashArray
     {
-      get { return (DoubleCollection)GetValue(StrokeDashArrayProperty); }
-      set { SetValue(StrokeDashArrayProperty, value); }
+      get { return (DoubleCollection)GetValue(dp: StrokeDashArrayProperty); }
+      set { SetValue(dp: StrokeDashArrayProperty, value: value); }
     }
 
     #endregion
@@ -179,21 +179,21 @@ namespace JinHu.Visualization.Plotter2D.Charts
     /// <value>The value1.</value>
     public double Value1
     {
-      get { return (double)GetValue(Value1Property); }
-      set { SetValue(Value1Property, value); }
+      get { return (double)GetValue(dp: Value1Property); }
+      set { SetValue(dp: Value1Property, value: value); }
     }
 
     public static readonly DependencyProperty Value1Property =
       DependencyProperty.Register(
-        "Value1",
-        typeof(double),
-        typeof(RangeHighlight),
-        new FrameworkPropertyMetadata(0.0, OnValueChanged));
+        name: "Value1",
+        propertyType: typeof(double),
+        ownerType: typeof(RangeHighlight),
+        typeMetadata: new FrameworkPropertyMetadata(defaultValue: 0.0, propertyChangedCallback: OnValueChanged));
 
     private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
       RangeHighlight r = (RangeHighlight)d;
-      r.OnValueChanged(e);
+      r.OnValueChanged(e: e);
     }
 
     /// <summary>
@@ -202,16 +202,16 @@ namespace JinHu.Visualization.Plotter2D.Charts
     /// <value>The value2.</value>
     public double Value2
     {
-      get { return (double)GetValue(Value2Property); }
-      set { SetValue(Value2Property, value); }
+      get { return (double)GetValue(dp: Value2Property); }
+      set { SetValue(dp: Value2Property, value: value); }
     }
 
     public static readonly DependencyProperty Value2Property =
       DependencyProperty.Register(
-        "Value2",
-        typeof(double),
-        typeof(RangeHighlight),
-        new FrameworkPropertyMetadata(0.0, OnValueChanged));
+        name: "Value2",
+        propertyType: typeof(double),
+        ownerType: typeof(RangeHighlight),
+        typeMetadata: new FrameworkPropertyMetadata(defaultValue: 0.0, propertyChangedCallback: OnValueChanged));
 
     private void OnValueChanged(DependencyPropertyChangedEventArgs e)
     {
@@ -250,7 +250,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
     private PlotterBase plotter;
     void IPlotterElement.OnPlotterAttached(PlotterBase plotter)
     {
-      plotter.CentralGrid.Children.Add(this);
+      plotter.CentralGrid.Children.Add(element: this);
 
       PlotterBase plotter2d = (PlotterBase)plotter;
       this.plotter = plotter2d;
@@ -282,7 +282,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
     {
       PlotterBase plotter2d = (PlotterBase)plotter;
       plotter2d.Viewport.PropertyChanged -= Viewport_PropertyChanged;
-      plotter.CentralGrid.Children.Remove(this);
+      plotter.CentralGrid.Children.Remove(element: this);
 
       this.plotter = null;
     }
