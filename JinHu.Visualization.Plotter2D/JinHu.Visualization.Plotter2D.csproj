@@ -153,8 +153,8 @@
     <Compile Include="Charts\DataFollowChart.cs" />
     <Compile Include="Charts\DataSource2dContext.cs" />
     <Compile Include="Charts\DebugMenu.cs" />
-    <Compile Include="Charts\Filters\EmptyFilter.cs" />
-    <Compile Include="Charts\Filters\FrequencyFilter2.cs" />
+    <Compile Include="Filters\EmptyFilter.cs" />
+    <Compile Include="Filters\FrequencyFilter2.cs" />
     <Compile Include="Isolines\AdditionalLinesDisplay.cs" />
     <Compile Include="Isolines\AdditionalLinesRenderer.cs" />
     <Compile Include="Isolines\FastIsolineDisplay.xaml.cs">
@@ -185,8 +185,8 @@
     <Compile Include="Axes\TimeSpan\VerticalTimeSpanAxis.cs" />
     <Compile Include="Charts\ContentGraph.cs" />
     <Compile Include="Charts\FilterCollection.cs" />
-    <Compile Include="Charts\Filters\IPointsFilter.cs" />
-    <Compile Include="Charts\Filters\PointsFilterBase.cs" />
+    <Compile Include="Filters\IPointsFilter.cs" />
+    <Compile Include="Filters\PointsFilterBase.cs" />
     <Compile Include="Charts\IOneDimensionalChart.cs" />
     <Compile Include="Isolines\CellInfo.cs" />
     <Compile Include="Isolines\Enums.cs" />
@@ -356,8 +356,8 @@
     <Compile Include="Axes\RoundingHelper.cs" />
     <Compile Include="Axes\StackCanvas.cs" />
     <Compile Include="Axes\Numeric\ToStringLabelProvider.cs" />
-    <Compile Include="Charts\Filters\FrequencyFilter.cs" />
-    <Compile Include="Charts\Filters\InclinationFilter.cs" />
+    <Compile Include="Filters\FrequencyFilter.cs" />
+    <Compile Include="Filters\InclinationFilter.cs" />
     <Compile Include="Navigation\ChartCommands.cs" />
     <Compile Include="Navigation\DefaultContextMenu.cs" />
     <Compile Include="Navigation\KeyboardNavigation.cs" />
