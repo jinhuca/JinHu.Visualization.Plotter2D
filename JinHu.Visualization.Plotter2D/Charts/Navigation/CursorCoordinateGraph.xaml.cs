@@ -50,20 +50,15 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
     #endregion
 
-    private bool autoHide = true;
     /// <summary>
     /// Gets or sets a value indicating whether to hide automatically cursor lines when mouse leaves plotter.
     /// </summary>
     /// <value><c>true</c> if auto hide; otherwise, <c>false</c>.</value>
-    public bool AutoHide
-    {
-      get { return autoHide; }
-      set { autoHide = value; }
-    }
+    public bool AutoHide { get; set; } = true;
 
     private void Parent_MouseEnter(object sender, MouseEventArgs e)
     {
-      if (autoHide)
+      if (AutoHide)
       {
         UpdateVisibility();
       }
@@ -87,7 +82,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
     private void Parent_MouseLeave(object sender, MouseEventArgs e)
     {
-      if (autoHide)
+      if (AutoHide)
       {
         horizLine.Visibility = Visibility.Hidden;
         vertLine.Visibility = Visibility.Hidden;
@@ -257,7 +252,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
       if (!output.Contains(mousePos))
       {
-        if (autoHide)
+        if (AutoHide)
         {
           horizGrid.Visibility = horizLine.Visibility = vertGrid.Visibility = vertLine.Visibility = Visibility.Hidden;
         }

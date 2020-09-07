@@ -36,14 +36,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="JinHu.Visualization.Plotter2D.CenteredTextMarker" Collapsed="true">
-    <Position X="1.5" Y="2.25" Width="1.5" />
+    <Position X="1.5" Y="2.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAEBAACAAAAAA=</HashCode>
       <FileName>PointMarkers\CenteredTextMarker.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="JinHu.Visualization.Plotter2D.CompositePointMarker" Collapsed="true">
-    <Position X="3.75" Y="2.25" Width="1.5" />
+    <Position X="3.75" Y="2.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
       <FileName>PointMarkers\CompositePointMarker.cs</FileName>

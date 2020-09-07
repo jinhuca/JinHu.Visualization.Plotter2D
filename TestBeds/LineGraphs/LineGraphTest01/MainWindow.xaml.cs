@@ -23,7 +23,12 @@ namespace LineGraphTest01
     private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
     {
       _source = await CreateDataSource();
-      var linePen = new Pen(brush: Brushes.GreenYellow, thickness: 3);
+      RenderIt(out var linePen);
+    }
+
+    private void RenderIt(out Pen linePen)
+    {
+      linePen = new Pen(brush: Brushes.Red, thickness: 3);
       linePen.Freeze();
       plotter.AddLineGraph(
         pointSource: _source,
@@ -33,14 +38,14 @@ namespace LineGraphTest01
 
     private async Task<CompositeDataSource> CreateDataSource()
     {
-      const int N = 100_000;
+      const int N = 10_000;
       return await Task.Run(() =>
       {
         double[] xs = new double[N];
         double[] ys = new double[N];
         for (int i = 0; i < N; ++i)
         {
-          xs[i] = i * 0.0001;
+          xs[i] = i * 0.001;
           ys[i] = Math.Sin(xs[i]);
         }
 

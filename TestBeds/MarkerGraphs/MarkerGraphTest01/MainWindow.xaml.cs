@@ -28,14 +28,14 @@ namespace MarkerGraphTest01
       table.Columns.Add("Sqrt", typeof(double));
       table.Columns.Add("Cosine", typeof(double));
 
-      for (int i = 0; i < 100; i++)
+      for (int i = 0; i < 1000; i++)
       {
         table.Rows.Add(
-          Math.Sin(i / 10.0),
+          Math.Sin(i / 100.0),
           DateTime.Now + new TimeSpan(0, 0, i),
           i,
-          Math.Sqrt(i / 10.0),
-          Math.Cos(i / 10.0));
+          Math.Sqrt(i / 100.0),
+          Math.Cos(i / 100.0));
       }
 
       var data1 = new TableDataSource(table)
@@ -72,6 +72,7 @@ namespace MarkerGraphTest01
       {
         Pen = new Pen {Brush = new SolidColorBrush(Colors.Black)}
       };
+      triangleMarker.Pen.Freeze();
 
       var rectangleMarker = new RectanglePointMarker()
       {
