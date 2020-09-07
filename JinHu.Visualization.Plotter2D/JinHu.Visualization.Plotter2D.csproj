@@ -162,11 +162,11 @@
     </Compile>
     <Compile Include="Charts\Isolines\FastIsolineRenderer.cs" />
     <Compile Include="Charts\Isolines\IsolineRenderer.cs" />
-    <Compile Include="Charts\Legend items\LegendItemsHelper.cs" />
-    <Compile Include="Charts\Legend items\LegendStyles.cs" />
-    <Compile Include="Charts\Legend items\LegendItem.cs" />
-    <Compile Include="Charts\Legend items\LegendBottomButtonIsEnabledConverter.cs" />
-    <Compile Include="Charts\Legend items\LegendTopButtonToIsEnabledConverter.cs" />
+    <Compile Include="Charts\LegendItems\LegendItemsHelper.cs" />
+    <Compile Include="Charts\LegendItems\LegendStyles.cs" />
+    <Compile Include="Charts\LegendItems\LegendItem.cs" />
+    <Compile Include="Charts\LegendItems\LegendBottomButtonIsEnabledConverter.cs" />
+    <Compile Include="Charts\LegendItems\LegendTopButtonToIsEnabledConverter.cs" />
     <Compile Include="Charts\LiveToolTips\LiveToolTip.cs" />
     <Compile Include="Charts\LiveToolTips\LiveToolTipAdorner.cs" />
     <Compile Include="Charts\LiveToolTips\LiveToolTipService.cs" />
@@ -216,7 +216,7 @@
       <DependentUpon>CursorCoordinateGraph.xaml</DependentUpon>
     </Compile>
     <Compile Include="Charts\Navigation\VerticalScrollBar.cs" />
-    <Compile Include="Charts\Legend items\Legend.cs" />
+    <Compile Include="Charts\LegendItems\Legend.cs" />
     <Compile Include="Charts\PopupTip.cs" />
     <Compile Include="Charts\PopupTipElement.cs" />
     <Compile Include="Charts\Shapes\Arrow.cs" />
@@ -517,7 +517,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Charts\Legend items\LegendResources.xaml">
+    <Page Include="Charts\LegendItems\LegendResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
