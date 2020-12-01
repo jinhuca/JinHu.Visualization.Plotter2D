@@ -76,7 +76,7 @@ namespace JinHu.Visualization.Plotter2D.DataSources
     public IPointEnumerator GetEnumerator(DependencyObject context) => new CompositeEnumerator(this, context);
 
     #endregion
-
+ 
     private sealed class CompositeEnumerator : IPointEnumerator
     {
       private readonly IEnumerable<IPointEnumerator> enumerators;

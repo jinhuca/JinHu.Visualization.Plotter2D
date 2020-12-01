@@ -65,7 +65,7 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="JinHu.Visualization.Plotter2D.DataSources.EnumerablePointEnumerator&lt;T&gt;" Collapsed="true">
+  <Class Name="JinHu.Visualization.Plotter2D.DataSources.EnumerablePointEnumerator&lt;T&gt;">
     <Position X="1.25" Y="3.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AACAAAEAACAAAgAAAAAAAAAAAAAAIAAAIAAAAAAAAAA=</HashCode>
@@ -74,7 +74,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Interface Name="JinHu.Visualization.Plotter2D.DataSources.IPointDataSource">
-    <Position X="6" Y="1" Width="1.5" />
+    <Position X="4" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAACAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DataSources\OneDimensional\IPointDataSource.cs</FileName>

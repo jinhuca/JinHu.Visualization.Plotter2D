@@ -26,8 +26,8 @@ namespace JinHu.Visualization.Plotter2D.Graphs
     }
 
     public static readonly DependencyProperty DataSourceProperty = DependencyProperty.Register(
-      name: nameof(DataSource), 
-      propertyType: typeof(IPointDataSource), 
+      name: nameof(DataSource),
+      propertyType: typeof(IPointDataSource),
       ownerType: typeof(PointsGraphBase),
       typeMetadata: new FrameworkPropertyMetadata { AffectsRender = true, DefaultValue = null, PropertyChangedCallback = OnDataSourceChangedCallback });
 

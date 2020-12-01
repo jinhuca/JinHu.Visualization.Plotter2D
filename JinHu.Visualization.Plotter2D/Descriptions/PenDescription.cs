@@ -1,8 +1,7 @@
-﻿using System;
+﻿using JinHu.Visualization.Plotter2D.Graphs;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
-using JinHu.Visualization.Plotter2D.Graphs;
 
 namespace JinHu.Visualization.Plotter2D
 {

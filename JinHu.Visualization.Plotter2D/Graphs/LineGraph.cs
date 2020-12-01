@@ -125,7 +125,7 @@ namespace JinHu.Visualization.Plotter2D.Graphs
       }
     }
     */
-    
+
     /// <summary>
     ///   Gets or sets the line pen.
     /// </summary>

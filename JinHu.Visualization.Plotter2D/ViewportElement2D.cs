@@ -21,8 +21,7 @@ namespace JinHu.Visualization.Plotter2D
 
     void IPlotterElement.OnPlotterAttached(PlotterBase plotter) => OnPlotterAttached(plotter);
     void IPlotterElement.OnPlotterDetaching(PlotterBase plotter) => OnPlotterDetaching(plotter);
-
-    #endregion
+    public PlotterBase Plotter { get; private set; }
 
     protected virtual void OnPlotterAttached(PlotterBase plotter)
     {
@@ -56,7 +55,7 @@ namespace JinHu.Visualization.Plotter2D
       Plotter = null;
     }
 
-    public PlotterBase Plotter { get; private set; }
+    #endregion IPlotterElement Members
 
     public int ZIndex
     {

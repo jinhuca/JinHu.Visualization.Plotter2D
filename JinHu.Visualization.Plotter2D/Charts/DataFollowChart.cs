@@ -1,4 +1,5 @@
 ﻿using JinHu.Visualization.Plotter2D.Common;
+using JinHu.Visualization.Plotter2D.Graphs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +8,6 @@ using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using JinHu.Visualization.Plotter2D.Graphs;
 
 namespace JinHu.Visualization.Plotter2D.Charts
 {

@@ -19,17 +19,16 @@ namespace JinHu.Visualization.Plotter2D
 
     void IPlotterElement.OnPlotterAttached(PlotterBase _plotter)
     {
-      plotter = _plotter;
+      Plotter = _plotter;
       _plotter.FooterPanel.Children.Add(this);
     }
 
     void IPlotterElement.OnPlotterDetaching(PlotterBase _plotter)
     {
       _plotter.FooterPanel.Children.Remove(this);
-      plotter = null;
+      Plotter = null;
     }
 
-    private PlotterBase plotter;
-    PlotterBase IPlotterElement.Plotter => plotter;
+    public PlotterBase Plotter { get; private set; }
   }
 }

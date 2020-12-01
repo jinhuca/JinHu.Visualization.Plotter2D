@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 
 namespace JinHu.Visualization.Plotter2D.Graphs
 {
-  public class MarkerGraph<T> : PointsGraphBase where T: PointMarker
+  public class MarkerGraph<T> : PointsGraphBase where T : PointMarker
   {
     public T Marker { get; set; }
 

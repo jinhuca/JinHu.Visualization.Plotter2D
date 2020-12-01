@@ -481,7 +481,6 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Viewport2D.AttachedProperties.cs" />
     <Compile Include="Viewport2dDeferredPanningProxy.cs" />
     <Compile Include="Viewport2DExtensions.cs" />
     <Compile Include="Viewport2DPanningState.cs" />
@@ -668,6 +667,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Axes\Axes.cd" />
     <None Include="ClassDiagrams\AxisClassDiagram.cd" />
     <None Include="ClassDiagrams\ClassDiagram1.cd" />
     <None Include="ClassDiagrams\ClassDiagram2.cd" />
@@ -676,6 +676,7 @@
     <None Include="ClassDiagrams\Markers.cd" />
     <None Include="ClassDiagrams\PlotterDiagram.cd" />
     <None Include="ClassDiagrams\ContentGraph.cd" />
+    <None Include="ClassDiagrams\Viewport2D.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,6 +4,8 @@
         xmlns:jin="http://jinhuca.visualization.com/Plotter2D/1.0"
         Title="MainWindow" Loaded="Window_Loaded" Width="650" Height="350">
   <Grid>
-    <jin:Plotter x:Name="plotter"/>
+    <jin:Plotter x:Name="plotter">
+      <jin:LineGraph DataSource="{Binding}"/>
+    </jin:Plotter>
   </Grid>
 </Window>

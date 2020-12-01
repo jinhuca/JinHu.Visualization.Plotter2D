@@ -5,7 +5,7 @@
         Title="MainWindow" Width="600" Height="500">
   <Grid>
     <jin:Plotter x:Name="plotter" Margin="20">
-
+      <!--<jin:LineGraph DataSource="{Binding ds}"/>-->
     </jin:Plotter>
   </Grid>
 </Window>

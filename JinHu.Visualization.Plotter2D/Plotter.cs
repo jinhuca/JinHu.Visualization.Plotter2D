@@ -11,7 +11,7 @@ namespace JinHu.Visualization.Plotter2D
   /// </summary>
   public class Plotter : PlotterBase
   {
-    private GeneralAxis _horizontalAxis = new HorizontalAxis();
+    private GeneralAxis _horizontalAxis = new HorizontalAxis();       // Default to axis of numeric??
     private GeneralAxis _verticalAxis = new VerticalAxis();
 
     public Legend Legend { get; set; } = new Legend();

@@ -9,7 +9,7 @@ namespace JinHu.Visualization.Plotter2D.DataSources
   {
     public EnumerableDataSource(IEnumerable<T> data) : base(data) { }
     public EnumerableDataSource(IEnumerable data) : base(data) { }
-    
+
     #region Property XYMapping
 
     private Func<T, Point> _xyMapping;
@@ -45,7 +45,7 @@ namespace JinHu.Visualization.Plotter2D.DataSources
     #region Property YMapping
 
     private Func<T, double> _yMapping;
-    
+
     [NotNull]
     public Func<T, double> YMapping
     {

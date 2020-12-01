@@ -15,7 +15,7 @@ namespace JinHu.Visualization.Plotter2D.DataSources
   public abstract class EnumerableDataSourceBase<T> : IPointDataSource
   {
     #region Property Data
-    
+
     private IEnumerable data;
 
     public IEnumerable Data

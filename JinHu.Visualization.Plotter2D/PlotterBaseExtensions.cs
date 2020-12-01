@@ -1,9 +1,9 @@
 ﻿using JinHu.Visualization.Plotter2D.Charts;
 using JinHu.Visualization.Plotter2D.DataSources;
+using JinHu.Visualization.Plotter2D.Graphs;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Windows.Media;
-using JinHu.Visualization.Plotter2D.Graphs;
 
 namespace JinHu.Visualization.Plotter2D
 {
@@ -44,7 +44,9 @@ namespace JinHu.Visualization.Plotter2D
 
       var lineGraph = new LineGraph
       {
-        DataSource = pointSource, LinePen = penForDrawingLine, Description = descriptionForPen
+        DataSource = pointSource,
+        LinePen = penForDrawingLine,
+        Description = descriptionForPen
       };
       Legend.SetDescription(lineGraph, descriptionForPen.Brief);
       lineGraph.Filters.Add(new FrequencyFilter());
