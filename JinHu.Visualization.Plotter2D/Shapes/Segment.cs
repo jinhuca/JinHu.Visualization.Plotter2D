@@ -86,7 +86,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
       lineGeometry.EndPoint = p2;
     }
 
-    LineGeometry lineGeometry = new LineGeometry();
+    readonly LineGeometry lineGeometry = new LineGeometry();
     protected LineGeometry LineGeometry
     {
       get { return lineGeometry; }

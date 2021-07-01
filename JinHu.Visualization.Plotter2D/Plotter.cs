@@ -92,7 +92,7 @@ namespace JinHu.Visualization.Plotter2D
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public DefaultContextMenu DefaultContextMenu => _defaultContextMenu;
 
-    private AxisNavigation horizontalAxisNavigation;
+    private readonly AxisNavigation horizontalAxisNavigation;
     /// <summary>
     /// Gets the default horizontal axis navigation of Plotter.
     /// </summary>
@@ -100,7 +100,7 @@ namespace JinHu.Visualization.Plotter2D
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public AxisNavigation HorizontalAxisNavigation => horizontalAxisNavigation;
 
-    private AxisNavigation verticalAxisNavigation;
+    private readonly AxisNavigation verticalAxisNavigation;
     /// <summary>
     /// Gets the default vertical axis navigation of Plotter.
     /// </summary>

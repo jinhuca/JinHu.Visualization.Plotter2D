@@ -4,7 +4,7 @@ namespace JinHu.Visualization.Plotter2D
 {
   public class ScaleInjectionConstraint : ViewportConstraint
   {
-    private Viewport2D parentViewport;
+    private readonly Viewport2D parentViewport;
     public ScaleInjectionConstraint(Viewport2D parentViewport)
     {
       if (parentViewport == null)

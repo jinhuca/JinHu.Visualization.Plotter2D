@@ -28,15 +28,16 @@ namespace JinHu.Visualization.Plotter2D
     }
 
     #region Coeffs
-    double rxToScreen;
-    double ryToScreen;
-    double cxToScreen;
-    double cyToScreen;
 
-    double rxToData;
-    double ryToData;
-    double cxToData;
-    double cyToData;
+    readonly double rxToScreen;
+    readonly double ryToScreen;
+    readonly double cxToScreen;
+    readonly double cyToScreen;
+
+    readonly double rxToData;
+    readonly double ryToData;
+    readonly double cxToData;
+    readonly double cyToData;
     #endregion
 
     #region Creation methods

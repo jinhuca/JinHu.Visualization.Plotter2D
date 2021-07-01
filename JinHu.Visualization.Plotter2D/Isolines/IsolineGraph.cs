@@ -13,7 +13,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
   /// </summary>
   public sealed class IsolineGraph : IsolineRenderer
   {
-    private static Brush labelBackground = new SolidColorBrush(Color.FromArgb(130, 255, 255, 255));
+    private static readonly Brush labelBackground = new SolidColorBrush(Color.FromArgb(130, 255, 255, 255));
 
     /// <summary>
     /// Initializes a new instance of the <see cref="IsolineGraph"/> class.
@@ -49,8 +49,8 @@ namespace JinHu.Visualization.Plotter2D.Charts
       }
     }
 
-    private List<FrameworkElement> textBlocks = new List<FrameworkElement>();
-    private List<Path> linePaths = new List<Path>();
+    private readonly List<FrameworkElement> textBlocks = new List<FrameworkElement>();
+    private readonly List<Path> linePaths = new List<Path>();
     protected override void CreateUIRepresentation()
     {
       if (Plotter2D == null)

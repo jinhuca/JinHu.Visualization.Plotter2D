@@ -16,10 +16,10 @@ namespace JinHu.Visualization.Plotter2D.Charts
       ticksLength = maxSpan.Ticks - ticksMin;
     }
 
-    private double min;
-    private double length;
-    private long ticksMin;
-    private long ticksLength;
+    private readonly double min;
+    private readonly double length;
+    private readonly long ticksMin;
+    private readonly long ticksLength;
 
     internal TimeSpan FromDouble(double d)
     {

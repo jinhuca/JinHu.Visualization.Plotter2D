@@ -14,7 +14,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
     /// <summary>
     /// The density of isolines means the number of levels to draw.
     /// </summary>
-    private int density = 12;
+    private readonly int density = 12;
 
     private bool[,] processed;
 
@@ -54,7 +54,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
     #region Private methods
 
-    private static Dictionary<int, Dictionary<int, Edge>> dictChooser = new Dictionary<int, Dictionary<int, Edge>>();
+    private static readonly Dictionary<int, Dictionary<int, Edge>> dictChooser = new Dictionary<int, Dictionary<int, Edge>>();
     private static void SetCellDictionaries()
     {
       var bottomDict = new Dictionary<int, Edge>();
@@ -252,16 +252,14 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
     private Edge GetOutForOpposite(Edge inEdge, CellBitmask cellVal, double value, ValuesInCell cellValues, IrregularCell rect)
     {
-      Edge outEdge;
-
-      SubCell subCell = GetSubCell(inEdge, value, cellValues);
+	    SubCell subCell = GetSubCell(inEdge, value, cellValues);
 
       int iters = 1000; // max number of iterations
       do
       {
         ValuesInCell subValues = cellValues.GetSubCell(subCell);
         IrregularCell subRect = rect.GetSubRect(subCell);
-        outEdge = GetOutEdge(inEdge, subValues, subRect, value);
+        var outEdge = GetOutEdge(inEdge, subValues, subRect, value);
         if (outEdge == Edge.None)
         {
           return Edge.None;
@@ -586,7 +584,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
           && (edges[x, 0] & (byte)Edge.Bottom) == 0)
         {
           TrackLineNonRecursive(Edge.Bottom, value, x, 0);
-        };
+        }
       }
 
       // right
@@ -604,7 +602,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
           (edges[x, y - 1] & (byte)Edge.Left) == 0)
         {
           TrackLineNonRecursive(Edge.Right, value, x - 1, y - 1);
-        };
+        }
       }
 
       // horizontals
@@ -763,14 +761,13 @@ namespace JinHu.Visualization.Plotter2D.Charts
     private const double shiftPercent = 0.05;
     private double[] GetLevelsForIsolines()
     {
-      double[] levels;
-      double min = minMax.Min;
+	    double min = minMax.Min;
       double max = minMax.Max;
 
       double step = (max - min) / (density - 1);
       double delta = (max - min);
 
-      levels = new double[density];
+      var levels = new double[density];
       levels[0] = min + delta * shiftPercent;
       levels[levels.Length - 1] = max - delta * shiftPercent;
 

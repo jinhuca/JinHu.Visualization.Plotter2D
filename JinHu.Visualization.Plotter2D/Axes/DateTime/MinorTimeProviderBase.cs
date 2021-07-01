@@ -17,7 +17,8 @@ namespace JinHu.Visualization.Plotter2D.Charts
     }
 
     private readonly ITicksProvider<T> provider;
-    public MinorTimeProviderBase(ITicksProvider<T> provider)
+
+    protected MinorTimeProviderBase(ITicksProvider<T> provider)
     {
       this.provider = provider;
     }
@@ -28,7 +29,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
       majorTicks = ticks;
     }
 
-    private double ticksSize = 0.5;
+    private readonly double ticksSize = 0.5;
     public ITicksInfo<T> GetTicks(Range<T> range, int ticksCount)
     {
       if (majorTicks.Length == 0)

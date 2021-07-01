@@ -231,10 +231,10 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
     private sealed class UpdateRegionHolder<TT> : IDisposable
     {
-      private Range<TT> prevRange;
-      private CoordinateTransform prevTransform;
+      private readonly Range<TT> prevRange;
+      private readonly CoordinateTransform prevTransform;
       private AxisControl<TT> owner;
-      private bool forceUpdate = false;
+      private readonly bool forceUpdate = false;
 
       public UpdateRegionHolder(AxisControl<TT> owner) : this(owner, false) { }
 
@@ -633,7 +633,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
     private bool independent = true;
 
-    private double scrCoord1 = 0; // px
+    private readonly double scrCoord1 = 0; // px
     private double scrCoord2 = 10; // px
     /// <summary>
     /// Gets or sets the size of main axis ticks.
@@ -868,7 +868,6 @@ namespace JinHu.Visualization.Plotter2D.Charts
         int prevActualTicksCount = -1;
         ITicksInfo<T> minorTicks;
         TickCountChange result = TickCountChange.OK;
-        TickCountChange prevResult;
         int iteration = 0;
         do
         {
@@ -877,7 +876,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
           minorTicks = minorTicksProvider.GetTicks(range, minorTicksCount);
 
           prevActualTicksCount = minorTicks.Ticks.Length;
-          prevResult = result;
+          var prevResult = result;
           result = CheckMinorTicksArrangement(minorTicks);
           if (prevResult == TickCountChange.Decrease && result == TickCountChange.Increase)
           {
@@ -976,7 +975,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
       return getCoordinate(createDataPoint(convertToDouble(value)).DataToScreen(transform));
     }
 
-    private double staticAxisMargin = 1; // px
+    private readonly double staticAxisMargin = 1; // px
 
     private void DoDrawCommonLabels(double[] screenTicksX)
     {
@@ -1133,7 +1132,6 @@ namespace JinHu.Visualization.Plotter2D.Charts
     private void CreateTicks()
     {
       TickCountChange result = TickCountChange.OK;
-      TickCountChange prevResult;
 
       int prevActualTickCount = -1;
 
@@ -1165,7 +1163,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
         labels = labelProvider.CreateLabels(ticksInfo);
 
-        prevResult = result;
+        var prevResult = result;
         result = CheckLabelsArrangement(labels, ticks);
 
         if (prevResult == TickCountChange.Decrease && result == TickCountChange.Increase)

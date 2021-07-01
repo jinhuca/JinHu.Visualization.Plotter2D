@@ -140,7 +140,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
       return res.ToArray();
     }
 
-    private static int[] tickCounts = new int[] { 20, 10, 5, 4, 2, 1 };
+    private static readonly int[] tickCounts = new int[] { 20, 10, 5, 4, 2, 1 };
 
     /// <summary>
     /// Decreases the tick count.

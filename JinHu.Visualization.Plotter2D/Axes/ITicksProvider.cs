@@ -9,7 +9,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
   /// </summary>
   /// <typeparam name="T"></typeparam>
   [DebuggerDisplay("{Value} @ {Tick}")]
-  public struct MinorTickInfo<T>
+  public readonly struct MinorTickInfo<T>
   {
     internal MinorTickInfo(double value, T tick)
     {
@@ -34,7 +34,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
   /// Used by TicksLabelProvider.
   /// </summary>
   /// <typeparam name="T">Type of axis tick.</typeparam>
-  public interface ITicksInfo<T>
+  public interface ITicksInfo<out T>
   {
     /// <summary>
     /// Gets the array of axis ticks.

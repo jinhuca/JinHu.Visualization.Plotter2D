@@ -60,9 +60,9 @@ namespace JinHu.Visualization.Plotter2D.Charts
     const double G = 9.81;
 
     DataRect from;
-    Viewport2D viewport;
-    Point initialMousePos;
-    CoordinateTransform initialTransform;
+    readonly Viewport2D viewport;
+    readonly Point initialMousePos;
+    readonly CoordinateTransform initialTransform;
 
     public PhysicalRectAnimation(Viewport2D viewport, Point initialMousePos)
     {

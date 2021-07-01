@@ -120,10 +120,7 @@ namespace JinHu.Visualization.Plotter2D
       b.Visual = null;
     }
 
-    public PlotterBase Plotter
-    {
-      get { return plotter; ; }
-    }
+    public PlotterBase Plotter => plotter;
 
     #endregion
   }

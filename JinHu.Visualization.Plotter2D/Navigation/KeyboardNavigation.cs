@@ -242,7 +242,7 @@ namespace JinHu.Visualization.Plotter2D
 
     #region Scroll
 
-    private double scrollCoeff = 0.05;
+    private readonly double scrollCoeff = 0.05;
     private void ScrollVisibleProportionally(double xShiftCoeff, double yShiftCoeff)
     {
       DataRect visible = Viewport.Visible;

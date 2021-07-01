@@ -107,7 +107,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
       return ticksCount;
     }
 
-    private MinorNumericTicksProvider minorProvider;
+    private readonly MinorNumericTicksProvider minorProvider;
     public ITicksProvider<double> MinorProvider
     {
       get

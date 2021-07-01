@@ -117,10 +117,10 @@ namespace JinHu.Visualization.Plotter2D
       }
     }
 
-    private double gridBrushThickness = 1;
+    private readonly double gridBrushThickness = 1;
 
-    private Path path = new Path();
-    private Canvas canvas = new Canvas();
+    private readonly Path path = new Path();
+    private readonly Canvas canvas = new Canvas();
     /// <summary>
     /// Initializes a new instance of the <see cref="AxisGrid"/> class.
     /// </summary>

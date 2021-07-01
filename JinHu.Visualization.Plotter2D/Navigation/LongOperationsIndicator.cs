@@ -79,7 +79,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
       }
     }
 
-    UIElement indicator = LoadIndicator();
+    readonly UIElement indicator = LoadIndicator();
 
     private static UIElement LoadIndicator()
     {

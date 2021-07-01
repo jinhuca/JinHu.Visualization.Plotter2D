@@ -5,9 +5,9 @@ namespace JinHu.Visualization.Plotter2D.Common
 {
   public sealed class DisposableTimer : IDisposable
   {
-    private bool isActive = true;
+    private readonly bool isActive = true;
     private readonly string name;
-    Stopwatch timer;
+    readonly Stopwatch timer;
     public DisposableTimer(string name) : this(name, true) { }
 
     public DisposableTimer(string name, bool isActive)

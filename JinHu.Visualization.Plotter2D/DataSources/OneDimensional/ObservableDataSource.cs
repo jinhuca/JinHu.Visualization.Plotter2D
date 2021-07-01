@@ -102,9 +102,9 @@ namespace JinHu.Visualization.Plotter2D.DataSources
 
     private class ObservableIterator : IPointEnumerator
     {
-      public ObservableDataSource<T> DataSource { get; }
+	    private ObservableDataSource<T> DataSource { get; }
 
-      public IEnumerator<T> Enumerator { get; }
+	    private IEnumerator<T> Enumerator { get; }
 
       public ObservableIterator(ObservableDataSource<T> dataSource)
       {

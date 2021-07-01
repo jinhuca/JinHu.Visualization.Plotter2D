@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace JinHu.Visualization.Plotter2D.Charts
 {
@@ -75,7 +76,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
     {
       double value = tickInfo.Tick / customBase;
 
-      string customBaseStr = customBaseString ?? customBase.ToString();
+      string customBaseStr = customBaseString ?? customBase.ToString(CultureInfo.InvariantCulture);
       string result;
       if (value == 1)
       {
@@ -87,7 +88,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
       }
       else
       {
-        result = value.ToString() + customBaseStr;
+        result = value.ToString(CultureInfo.InvariantCulture) + customBaseStr;
       }
 
       return result;

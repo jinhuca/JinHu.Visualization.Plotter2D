@@ -19,8 +19,8 @@ namespace Plotter2DSample1
     readonly double[] animatedY = new double[1000];
     EnumerableDataSource<double> animatedDataSource = null;
 
-    Header chartHeader = new Header();
-    TextBlock headerContents = new TextBlock();
+    readonly Header chartHeader = new Header();
+    readonly TextBlock headerContents = new TextBlock();
 
     readonly DispatcherTimer timer = new DispatcherTimer();
 

@@ -8,7 +8,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
 {
   public class LiveToolTipAdorner : Adorner
   {
-    private Canvas canvas = new Canvas { IsHitTestVisible = false };
+    private readonly Canvas canvas = new Canvas { IsHitTestVisible = false };
     private readonly VisualCollection visualChildren;
     public LiveToolTipAdorner(UIElement adornedElement, LiveToolTip tooltip)
       : base(adornedElement)
@@ -73,7 +73,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
       liveTooltip.Arrange(new Rect(location, tooltipSize));
     }
 
-    LiveToolTip liveTooltip;
+    readonly LiveToolTip liveTooltip;
     public LiveToolTip LiveTooltip
     {
       get { return liveTooltip; }

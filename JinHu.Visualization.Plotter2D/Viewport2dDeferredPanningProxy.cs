@@ -4,7 +4,7 @@ namespace JinHu.Visualization.Plotter2D
 {
   internal sealed class Viewport2dDeferredPanningProxy : Viewport2D
   {
-    private Viewport2D viewport;
+    private readonly Viewport2D viewport;
     internal Viewport2dDeferredPanningProxy(Viewport2D viewport) : base(viewport.HostElement, viewport.PlotterBase)
     {
       viewport.PropertyChanged += viewport_PropertyChanged;

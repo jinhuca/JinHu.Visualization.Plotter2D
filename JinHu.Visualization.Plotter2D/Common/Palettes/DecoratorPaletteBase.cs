@@ -19,7 +19,7 @@ namespace JinHu.Visualization.Plotter2D.Common
     /// <param name="palette">
     ///   The palette.
     /// </param>
-    public DecoratorPaletteBase(IPalette palette) => Palette = palette;
+    protected DecoratorPaletteBase(IPalette palette) => Palette = palette;
 
     private IPalette palette = null;
 

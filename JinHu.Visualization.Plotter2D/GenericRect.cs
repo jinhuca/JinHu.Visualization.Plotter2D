@@ -12,7 +12,7 @@ namespace JinHu.Visualization.Plotter2D
   /// <typeparam name="TVertical">
   ///   The vertical values type.
   /// </typeparam>
-  public struct GenericRect<THorizontal, TVertical> : IEquatable<GenericRect<THorizontal, TVertical>>
+  public readonly struct GenericRect<THorizontal, TVertical> : IEquatable<GenericRect<THorizontal, TVertical>>
   {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private readonly THorizontal _xMin;

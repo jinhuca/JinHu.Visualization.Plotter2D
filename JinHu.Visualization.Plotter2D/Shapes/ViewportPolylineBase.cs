@@ -57,7 +57,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
     #endregion
 
-    private PathGeometry geometry = new PathGeometry();
+    private readonly PathGeometry geometry = new PathGeometry();
     protected PathGeometry PathGeometry
     {
       get { return geometry; }

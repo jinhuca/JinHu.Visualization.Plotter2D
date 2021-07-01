@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Globalization;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace JinHu.Visualization.Plotter2D.Charts
@@ -35,7 +36,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
         }
 
         label.Text = labelText;
-        label.ToolTip = ticks[i].ToString();
+        label.ToolTip = ticks[i].ToString(CultureInfo.InvariantCulture);
 
         res[i] = label;
 

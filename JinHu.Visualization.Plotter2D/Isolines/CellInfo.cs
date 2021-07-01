@@ -113,7 +113,8 @@ namespace JinHu.Visualization.Plotter2D.Charts
 
   internal class ValuesInCell
   {
-    double min = double.MaxValue, max = double.MinValue;
+	  readonly double min = double.MaxValue;
+	  readonly double max = double.MinValue;
 
     /// <summary>Initializes values in four corners of cell</summary>
     /// <param name="leftBottom"></param>

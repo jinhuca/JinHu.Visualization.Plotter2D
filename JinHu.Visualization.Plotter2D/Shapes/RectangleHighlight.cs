@@ -45,7 +45,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
       rectGeometry.Rect = new Rect(p1, p2);
     }
 
-    private RectangleGeometry rectGeometry = new RectangleGeometry();
+    private readonly RectangleGeometry rectGeometry = new RectangleGeometry();
     protected override Geometry DefiningGeometry
     {
       get { return rectGeometry; }

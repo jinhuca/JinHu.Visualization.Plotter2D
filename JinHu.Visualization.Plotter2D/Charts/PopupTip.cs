@@ -6,7 +6,7 @@ namespace JinHu.Visualization.Plotter2D
 {
   public class PopupTip : Popup
   {
-    private TimeSpan showDurationInerval = new TimeSpan(0, 0, 10);
+    private readonly TimeSpan showDurationInerval = new TimeSpan(0, 0, 10);
     private Timer timer;
 
     public void ShowDelayed(TimeSpan delay)

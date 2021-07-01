@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace JinHu.Visualization.Plotter2D.Charts
 {
@@ -39,12 +40,12 @@ namespace JinHu.Visualization.Plotter2D.Charts
       string res;
       if (!shouldRound)
       {
-        res = tickInfo.Tick.ToString();
+        res = tickInfo.Tick.ToString(CultureInfo.InvariantCulture);
       }
       else
       {
         int round = Math.Min(15, Math.Max(-15, rounding - 3)); // was rounding - 2
-        res = RoundingHelper.Round(tickInfo.Tick, round).ToString();
+        res = RoundingHelper.Round(tickInfo.Tick, round).ToString(CultureInfo.InvariantCulture);
       }
 
       return res;

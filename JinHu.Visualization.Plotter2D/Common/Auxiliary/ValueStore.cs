@@ -15,7 +15,7 @@ namespace JinHu.Visualization.Plotter2D
       }
     }
 
-    private Dictionary<string, object> cache = new Dictionary<string, object>();
+    private readonly Dictionary<string, object> cache = new Dictionary<string, object>();
 
     public object this[string propertyName]
     {

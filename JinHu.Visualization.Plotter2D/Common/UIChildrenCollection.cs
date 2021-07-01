@@ -11,7 +11,7 @@ namespace JinHu.Visualization.Plotter2D.Common
   /// </summary>
   internal sealed class UIChildrenCollection : UIElementCollection
   {
-    IndividualArrangePanel hostPanel;
+	  readonly IndividualArrangePanel hostPanel;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="UIChildrenCollection"/> class.

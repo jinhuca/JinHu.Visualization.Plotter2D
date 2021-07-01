@@ -6,7 +6,7 @@ namespace JinHu.Visualization.Plotter2D.Common
 {
   public sealed class PlotterEventHelper
   {
-    private RoutedEvent @event;
+    private readonly RoutedEvent @event;
     internal PlotterEventHelper(RoutedEvent @event) => this.@event = @event;
 
     // todo use a weakReference here

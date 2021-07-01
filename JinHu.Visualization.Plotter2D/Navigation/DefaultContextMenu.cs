@@ -314,7 +314,7 @@ namespace JinHu.Visualization.Plotter2D
 
     #endregion
 
-    private List<DependencyObject> hitResults = new List<DependencyObject>();
+    private readonly List<DependencyObject> hitResults = new List<DependencyObject>();
     private HitTestResultBehavior CollectAllVisuals_Callback(HitTestResult result)
     {
       if (result == null || result.VisualHit == null)

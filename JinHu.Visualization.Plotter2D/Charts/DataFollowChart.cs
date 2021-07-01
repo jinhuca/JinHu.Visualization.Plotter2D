@@ -160,7 +160,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
       }
     }
 
-    private FollowDataContext followDataContext = new FollowDataContext();
+    private readonly FollowDataContext followDataContext = new FollowDataContext();
     public FollowDataContext FollowDataContext => followDataContext;
 
     private void UpdateUIRepresentation()

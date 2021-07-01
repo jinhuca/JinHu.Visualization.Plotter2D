@@ -43,9 +43,9 @@ namespace JinHu.Visualization.Plotter2D.Charts
       }
     }
 
-    TranslateTransform translateTransform = new TranslateTransform();
+    readonly TranslateTransform translateTransform = new TranslateTransform();
 
-    private Canvas hostingCanvas = new Canvas();
+    private readonly Canvas hostingCanvas = new Canvas();
     internal Canvas HostingCanvas
     {
       get { return hostingCanvas; }

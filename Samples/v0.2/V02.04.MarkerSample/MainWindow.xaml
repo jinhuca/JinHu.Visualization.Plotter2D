@@ -4,6 +4,6 @@
         xmlns:jin="http://jinhuca.visualization.com/Plotter2D/1.0"
         Title="Mark Samples" Loaded="Window_Loaded">
   <Grid>
-    <jin:Plotter Name="plotter" Margin="20"/>
+    <jin:Plotter Name="plotter" Margin="20" Background="DarkGray"/>
   </Grid>
 </Window>

@@ -45,7 +45,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
       UpdateUIRepresentation();
     }
 
-    private LineGeometry lineGeometry = new LineGeometry();
+    private readonly LineGeometry lineGeometry = new LineGeometry();
     protected LineGeometry LineGeometry
     {
       get { return lineGeometry; }

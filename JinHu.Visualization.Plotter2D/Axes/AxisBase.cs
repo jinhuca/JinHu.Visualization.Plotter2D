@@ -75,7 +75,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
     [EditorBrowsable(EditorBrowsableState.Never)]
     public override MinorTickInfo<double>[] MinorScreenTicks => axisControl.MinorScreenTicks;
 
-    private AxisControl<T> axisControl;
+    private readonly AxisControl<T> axisControl;
     /// <summary>
     /// Gets the axis control - actual UI representation of axis.
     /// </summary>
@@ -312,7 +312,6 @@ namespace JinHu.Visualization.Plotter2D.Charts
     {
       T min, max;
 
-      Range<T> range;
       switch (Placement)
       {
         case AxisPlacement.Left:
@@ -330,7 +329,7 @@ namespace JinHu.Visualization.Plotter2D.Charts
       }
 
       TrySort(ref min, ref max);
-      range = new Range<T>(min, max);
+      var range = new Range<T>(min, max);
       return range;
     }
 

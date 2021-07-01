@@ -192,7 +192,7 @@ namespace JinHu.Visualization.Plotter2D
       }
     }
 
-    TranslateTransform layoutTransform = new TranslateTransform();
+    readonly TranslateTransform layoutTransform = new TranslateTransform();
     private void UpdateTransform()
     {
       var currentTransform = plotter.Transform;
@@ -208,7 +208,7 @@ namespace JinHu.Visualization.Plotter2D
     }
 
     CoordinateTransform transformWhenCreated;
-    ResourcePool<Polyline> polylinePool = new ResourcePool<Polyline>();
+    readonly ResourcePool<Polyline> polylinePool = new ResourcePool<Polyline>();
     private const int pointCount = 500;
 
     private void Update()

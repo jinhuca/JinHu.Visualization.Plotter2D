@@ -111,9 +111,9 @@ namespace JinHu.Visualization.Plotter2D.Charts
       rightLineGeometry.EndPoint = p2 + rightArrowLine;
     }
 
-    private LineGeometry leftLineGeometry = new LineGeometry();
-    private LineGeometry rightLineGeometry = new LineGeometry();
-    private GeometryGroup geometryGroup = new GeometryGroup();
+    private readonly LineGeometry leftLineGeometry = new LineGeometry();
+    private readonly LineGeometry rightLineGeometry = new LineGeometry();
+    private readonly GeometryGroup geometryGroup = new GeometryGroup();
     protected override Geometry DefiningGeometry
     {
       get { return geometryGroup; }

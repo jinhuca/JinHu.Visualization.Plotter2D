@@ -19,7 +19,7 @@ namespace V02.AnimationSample
     readonly double[] animatedY = new double[1000];
     EnumerableDataSource<double> animatedDataSource = null;
 
-    Header chartHeader = new Header();
+    readonly Header chartHeader = new Header();
     TextBlock headerContent = new TextBlock();
 
     readonly DispatcherTimer timer = new DispatcherTimer();

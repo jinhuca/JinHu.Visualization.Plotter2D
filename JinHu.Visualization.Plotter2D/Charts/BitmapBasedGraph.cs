@@ -45,9 +45,9 @@ namespace JinHu.Visualization.Plotter2D
     /// <remarks>STA is required for creating WPF components in this thread</remarks>
     private Thread renderThread = null;
 
-    private AutoResetEvent renderRequested = new AutoResetEvent(false);
+    private readonly AutoResetEvent renderRequested = new AutoResetEvent(false);
 
-    private ManualResetEvent shutdownRequested = new ManualResetEvent(false);
+    private readonly ManualResetEvent shutdownRequested = new ManualResetEvent(false);
 
     /// <summary>True means that current bitmap is invalidated and is to be re-rendered.</summary>
     private bool bitmapInvalidated = true;
@@ -58,7 +58,7 @@ namespace JinHu.Visualization.Plotter2D
     /// <summary>
     /// Initializes a new instance of the <see cref="MarkerPointsGraph"/> class.
     /// </summary>
-    public BitmapBasedGraph()
+    protected BitmapBasedGraph()
     {
       ManualTranslate = true;
     }
@@ -281,9 +281,9 @@ namespace JinHu.Visualization.Plotter2D
 
   public class RenderRequest
   {
-    private int requestId;
-    private DataRect visible;
-    private Rect output;
+    private readonly int requestId;
+    private readonly DataRect visible;
+    private readonly Rect output;
     private int cancelling;
 
     public RenderRequest(int requestId, DataRect visible, Rect output)
@@ -309,8 +309,8 @@ namespace JinHu.Visualization.Plotter2D
 
   public class RenderResult
   {
-    private RenderRequest request;
-    private BitmapSource bitmap;
+    private readonly RenderRequest request;
+    private readonly BitmapSource bitmap;
 
     /// <summary>
     ///   Constructs successul rendering result.

@@ -363,10 +363,9 @@ namespace JinHu.Visualization.Plotter2D
 
     protected virtual void OnVisualChildRemoved(UIElement target, UIElementCollection uiElementCollection)
     {
-      IPlotterElement element = null;
-      if (_removingElements.Count > 0)
+	    if (_removingElements.Count > 0)
       {
-        element = _removingElements.Peek();
+        var element = _removingElements.Peek();
 
         var dict = VisualBindings.Cache;
         var proxy = dict[element];

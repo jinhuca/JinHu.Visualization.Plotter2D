@@ -24,7 +24,7 @@ namespace JinHu.Visualization.Plotter2D
 
     public static void RemoveAll<T>(this IList<T> collection, Type type)
     {
-      var children = collection.Where(el => type.IsAssignableFrom(el.GetType())).ToArray();
+      var children = collection.Where(el => type.IsInstanceOfType(el)).ToArray();
       foreach (var child in children)
       {
         collection.Remove((T)child);

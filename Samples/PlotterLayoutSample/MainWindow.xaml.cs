@@ -22,12 +22,12 @@ namespace PlotterLayoutSample
     /// <summary>
     /// Programmatically created header
     /// </summary>
-    Header chartHeader = new Header();
+    readonly Header chartHeader = new Header();
 
     /// <summary>
     /// Text contents of header
     /// </summary>
-    TextBlock headerContents = new TextBlock();
+    readonly TextBlock headerContents = new TextBlock();
 
     /// <summary>
     /// Timer to animate data

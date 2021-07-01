@@ -117,7 +117,7 @@ namespace JinHu.Visualization.Plotter2D.Common
       return bmp;
     }
 
-    private static Dictionary<BitmapSource, string> pendingBitmaps = new Dictionary<BitmapSource, string>();
+    private static readonly Dictionary<BitmapSource, string> pendingBitmaps = new Dictionary<BitmapSource, string>();
 
     internal static void SaveBitmapToStream(BitmapSource bitmap, Stream stream, string fileExtension)
     {
